@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bHh-9k-o10">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Proxima Nova Bold.otf">
+            <string>ProximaNova-Bold</string>
+        </array>
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="PSi-2R-YEh">
+            <objects>
+                <viewController id="bHh-9k-o10" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G70-7o-eQf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover-pic" translatesAutoresizingMaskIntoConstraints="NO" id="lZi-Io-64f">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ijc-cb-qyN">
+                                <rect key="frame" x="127" y="140" width="160" height="160"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="af1-Zl-jsj">
+                                        <rect key="frame" x="4" y="4" width="152" height="152"/>
+                                        <color key="backgroundColor" red="1" green="0.49690271229999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="circular" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="2Lg-cb-2pT"/>
+                                    <constraint firstAttribute="width" secondItem="ijc-cb-qyN" secondAttribute="height" multiplier="1:1" id="9Ue-w8-Dhh"/>
+                                    <constraint firstAttribute="bottom" secondItem="af1-Zl-jsj" secondAttribute="bottom" constant="4" id="gEn-aa-Aqr"/>
+                                    <constraint firstItem="af1-Zl-jsj" firstAttribute="top" secondItem="ijc-cb-qyN" secondAttribute="top" constant="4" id="oDd-ea-ylv"/>
+                                    <constraint firstItem="af1-Zl-jsj" firstAttribute="leading" secondItem="ijc-cb-qyN" secondAttribute="leading" constant="4" id="pfE-j5-Jen"/>
+                                    <constraint firstAttribute="trailing" secondItem="af1-Zl-jsj" secondAttribute="trailing" constant="4" id="phQ-lk-DC4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="circular" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sUA-mb-fTf">
+                                <rect key="frame" x="113.00000000000001" y="315" width="188.33333333333337" height="24"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verified" translatesAutoresizingMaskIntoConstraints="NO" id="Xvz-zz-OeH">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="O15-Ea-NwH"/>
+                                            <constraint firstAttribute="width" constant="24" id="XCk-v2-pgV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verified Student" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aE8-A1-tie">
+                                        <rect key="frame" x="32" y="0.0" width="156.33333333333334" height="24"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="22"/>
+                                        <color key="textColor" red="0.31250929830000002" green="0.68934214120000004" blue="0.37762361760000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7m2-LF-Tnn">
+                                <rect key="frame" x="151" y="371" width="112" height="30.333333333333314"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loc-k5-ZPS">
+                                <rect key="frame" x="0.0" y="401.33333333333326" width="414" height="285.66666666666674"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="bQL-bf-m0b">
+                                        <rect key="frame" x="55.333333333333343" y="81.666666666666686" width="303.66666666666663" height="122"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University of Chester" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8r-bc-u1I">
+                                                <rect key="frame" x="21" y="0.0" width="261.33333333333331" height="32.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verified until 17/11/2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUn-l8-Bcz">
+                                                <rect key="frame" x="0.0" y="44.666666666666629" width="303.66666666666669" height="32.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biology (Course)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0p-DL-sg3">
+                                                <rect key="frame" x="48.666666666666671" y="89.333333333333371" width="206.33333333333331" height="32.666666666666657"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bQL-bf-m0b" firstAttribute="centerX" secondItem="loc-k5-ZPS" secondAttribute="centerX" id="1Ch-cW-zuC"/>
+                                    <constraint firstItem="bQL-bf-m0b" firstAttribute="centerX" secondItem="loc-k5-ZPS" secondAttribute="centerX" id="gxz-oR-FdH"/>
+                                    <constraint firstItem="bQL-bf-m0b" firstAttribute="centerY" secondItem="loc-k5-ZPS" secondAttribute="centerY" id="lzT-9V-Dqf"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="bxE-eV-o7T">
+                                <rect key="frame" x="158.33333333333334" y="30" width="97.333333333333343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="8GL-Ug-5Q9"/>
+                                    <constraint firstAttribute="width" secondItem="bxE-eV-o7T" secondAttribute="height" multiplier="13:6" id="ldL-1a-Om5"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ijc-cb-qyN" firstAttribute="top" secondItem="lZi-Io-64f" secondAttribute="bottom" constant="-80" id="24r-2t-mne"/>
+                            <constraint firstItem="bxE-eV-o7T" firstAttribute="centerX" secondItem="G70-7o-eQf" secondAttribute="centerX" id="293-MT-QbX"/>
+                            <constraint firstItem="sUA-mb-fTf" firstAttribute="top" secondItem="ijc-cb-qyN" secondAttribute="bottom" constant="15" id="2Bs-Tk-pdK"/>
+                            <constraint firstItem="sUA-mb-fTf" firstAttribute="centerX" secondItem="af1-Zl-jsj" secondAttribute="centerX" id="2pq-5A-Hut"/>
+                            <constraint firstItem="vy6-tX-lCK" firstAttribute="bottom" secondItem="loc-k5-ZPS" secondAttribute="bottom" id="2vs-zU-tNd"/>
+                            <constraint firstItem="7m2-LF-Tnn" firstAttribute="top" secondItem="sUA-mb-fTf" secondAttribute="bottom" constant="32" id="6ht-Za-cW4"/>
+                            <constraint firstItem="ijc-cb-qyN" firstAttribute="centerX" secondItem="lZi-Io-64f" secondAttribute="centerX" id="7gy-Cc-uzs"/>
+                            <constraint firstItem="lZi-Io-64f" firstAttribute="top" secondItem="G70-7o-eQf" secondAttribute="top" id="Bym-2U-6Ca"/>
+                            <constraint firstItem="loc-k5-ZPS" firstAttribute="leading" secondItem="vy6-tX-lCK" secondAttribute="leading" id="GGQ-uT-EaF"/>
+                            <constraint firstItem="lZi-Io-64f" firstAttribute="trailing" secondItem="vy6-tX-lCK" secondAttribute="trailing" id="Jj7-h3-3LV"/>
+                            <constraint firstItem="lZi-Io-64f" firstAttribute="height" secondItem="G70-7o-eQf" secondAttribute="height" multiplier="0.32" id="Uco-9U-QbU"/>
+                            <constraint firstItem="7m2-LF-Tnn" firstAttribute="centerX" secondItem="af1-Zl-jsj" secondAttribute="centerX" id="ail-6U-G28"/>
+                            <constraint firstItem="vy6-tX-lCK" firstAttribute="trailing" secondItem="loc-k5-ZPS" secondAttribute="trailing" id="bud-4c-ekZ"/>
+                            <constraint firstItem="loc-k5-ZPS" firstAttribute="top" secondItem="7m2-LF-Tnn" secondAttribute="bottom" id="gw6-bb-9wY"/>
+                            <constraint firstItem="lZi-Io-64f" firstAttribute="leading" secondItem="vy6-tX-lCK" secondAttribute="leading" id="tFK-xN-kMk"/>
+                            <constraint firstItem="bxE-eV-o7T" firstAttribute="top" secondItem="vy6-tX-lCK" secondAttribute="top" constant="10" id="uk6-Ai-q25"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vy6-tX-lCK"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Vl-zj-B2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118.84057971014494" y="71.739130434782609"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cover-pic" width="346" height="193"/>
+        <image name="logo" width="103" height="41"/>
+        <image name="profile" width="134" height="134"/>
+        <image name="verified" width="19" height="18"/>
+    </resources>
+</document>
