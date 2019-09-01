@@ -106,3 +106,9 @@ extension SkyFloatingLabelTextField {
         titleFont = StuniiFont.regular(size: size)
     }
 }
+
+extension String {
+    func trimSpace() -> String {
+        return self.trimmingCharacters(in: CharacterSet(charactersIn: " "))
+    }
+}

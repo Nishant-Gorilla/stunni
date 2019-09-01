@@ -40,4 +40,19 @@ class APIHelper {
         }
     }
     
+    class func getAllProviders(completion: @escaping completionClosure<[Provider]>) {
+        let url = WebServicesURL.baseURL + WebServicesURL.providers
+        APIManager.getAPI(url: url) { (response, error) in
+            if let data = response as? [String: Any],
+                let dataArray = data["data"] as? [[String: Any]]{
+                let providers = Mapper<Provider>().mapArray(JSONArray: dataArray)
+                completion(providers, nil)
+            }
+            else {
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
 }

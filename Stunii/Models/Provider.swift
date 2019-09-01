@@ -38,7 +38,8 @@ class Provider: Mappable {
         desc  <- map["desc"]
         phones  <- map["phones"]
         coverPhotoURL  <- map["coverPhoto"]
-        photoURL  <- map["photoURL"]
+        photoURL  <- map["photo"]
+        photoURL = WebServicesURL.ImagesBase.provider + (id ?? "") + "/o/" + (photoURL ?? "")
     }
     
 }

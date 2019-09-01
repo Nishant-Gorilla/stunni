@@ -36,7 +36,6 @@ class SignUpFields: NSObject {
 }
 
 
-
 class SignupViewController: BaseViewController {
     
     //MARK: IBOutlets
@@ -59,6 +58,8 @@ class SignupViewController: BaseViewController {
     @IBOutlet var options4TitleLabel        : [UILabel]!
     @IBOutlet var options4Image             : [UIImageView]!
     @IBOutlet var options4View              : [UIView]!
+    
+    
     
     @IBOutlet weak var passwordView         : UIView!
     @IBOutlet weak var passwordTextField    : SkyFloatingLabelTextField!
@@ -159,6 +160,7 @@ class SignupViewController: BaseViewController {
     
     
     @IBAction func unwindToSignup(sender: UIStoryboardSegue) {
+        
     }
     
     //MARK: Private Functions
@@ -188,21 +190,41 @@ class SignupViewController: BaseViewController {
         if page < textPagesCount {
             let keys = fields.fieldsKeys[page]
             for i in 0 ..< keys.count {
-                fields.setValue(textFields[i].text, forKey: keys[i])
+                let value = textFields[i].text
+                let key = keys[i]
+                let error = SignUpUIModel.validate(value: value, key: key)
+                if let  error = error {
+                    showAlertWith(title: nil, message: error)
+                    return false
+                }
+                fields.setValue(value?.trimSpace(), forKey: key)
             }
         }
         else if page == PASSWORD_INDEX {
             let keys = fields.fieldsKeys[page]
+            let error = SignUpUIModel.validate(value: passwordTextField.text!, key: keys[0])
+            if let  error = error {
+                showAlertWith(title: nil, message: error)
+                return false
+            }
             fields.setValue(passwordTextField.text!, forKey: keys[0])
+            if !tncSwitch.isOn {
+                showAlertWith(title: nil, message: "Please accept terms and conditions")
+                return false
+            }
+            
             if let selected = selectedOptionIndex {
                 fields.setValue(String(selected), forKey: keys[1])
                 selectedOptionIndex = nil
+            } else {
+                showAlertWith(title: nil, message: "Please choose an option for subscription")
+                return false
             }
         }
         else {
             guard let selectedIndex = selectedOptionIndex else {
-                //                showAlertWith(title: "Please choose an option.", message: nil)
-                return true
+                    showAlertWith(title: nil, message: "Please choose an option")
+                return false
             }
             let key = fields.fieldsKeys[page]
             let selectedValue = uiModel[page].titles[selectedIndex]
@@ -306,7 +328,16 @@ class SignupViewController: BaseViewController {
             progressImageView.image = uiModel[currentPageIndex].progressImage
         }
         else {
-            performSegue(withIdentifier: homeSegue, sender: nil)
+            // Call Sign up api here
+            SignUpUIModel.signUp(fiedls: fields) { (error) in
+                guard let error = error else {
+                     performSegue(withIdentifier: homeSegue, sender: nil)
+                    return
+                }
+                showAlertWith(title: nil, message: error)
+            }
+            
+           
         }
     }
     
@@ -321,6 +352,12 @@ class SignupViewController: BaseViewController {
         else if currentPageIndex == PASSWORD_INDEX {
             let keys = fields.fieldsKeys[currentPageIndex]
             passwordTextField.text = fields.value(forKey: keys[0]) as? String
+            if let viewTag = fields.subscription {
+                if let intTag = Int(viewTag) {
+                subscriptionViews[intTag].backgroundColor = StuniiColor.orange
+                    selectedOptionIndex = intTag
+                }
+            }
         }
         else if currentPageIndex < option3EndIndex {
             let key = fields.fieldsKeys[currentPageIndex]
@@ -328,6 +365,7 @@ class SignupViewController: BaseViewController {
                 let selectedIndex = uiModel[currentPageIndex].titles
                     .firstIndex(of: value) {
                 options3View[Int(selectedIndex)].borderColor = StuniiColor.orange
+                selectedOptionIndex = selectedIndex
             }
         }
         else if currentPageIndex < MAX_PAGES {

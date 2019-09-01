@@ -17,6 +17,7 @@ struct SignUpUIModel {
     private(set) var scratchImage       : UIImage!
     private(set) var progressImage      : UIImage!
     private(set) var keyboardType       : [UIKeyboardType]!
+      private(set) var selectedOption      : Int!
     
     func get() -> [SignUpUIModel] {
         return populateData()
@@ -31,7 +32,8 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen1-bg"),
                 scratchImage: #imageLiteral(resourceName: "cracking"),
                 progressImage: #imageLiteral(resourceName: "progress1"),
-                keyboardType: [.default, .default, .numberPad]
+                keyboardType: [.default, .default, .numberPad],
+                 selectedOption: nil
             ),
             SignUpUIModel(
                 titles: ["Educational Email Address", "Personal Email Address", "Phone Number"],
@@ -40,7 +42,8 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen2-bg"),
                 scratchImage: #imageLiteral(resourceName: "cracking"),
                 progressImage: #imageLiteral(resourceName: "progress2"),
-                keyboardType: [.emailAddress, .emailAddress, .phonePad]
+                keyboardType: [.emailAddress, .emailAddress, .phonePad],
+                 selectedOption: nil
             ),
             SignUpUIModel(
                 titles: ["Educational Institute", "Course", "Graduation Date"],
@@ -49,7 +52,8 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen3-bg"),
                 scratchImage: #imageLiteral(resourceName: "cracking"),
                 progressImage: #imageLiteral(resourceName: "progress3"),
-                keyboardType: [.default, .default, .numberPad]
+                keyboardType: [.default, .default, .numberPad],
+                 selectedOption: nil
             ),
             
             SignUpUIModel(titles: [],
@@ -58,7 +62,8 @@ struct SignUpUIModel {
                           bgImage: #imageLiteral(resourceName: "bg-password"),
                           scratchImage: #imageLiteral(resourceName: "create-password"),
                           progressImage: #imageLiteral(resourceName: "progress4"),
-                          keyboardType: []
+                          keyboardType: [],
+                          selectedOption: nil
                 ),
                 
             SignUpUIModel(
@@ -68,7 +73,8 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen4-bg"),
                 scratchImage: #imageLiteral(resourceName: "nearly-there"),
                 progressImage: #imageLiteral(resourceName: "progress5"),
-                keyboardType: []
+                keyboardType: [],
+                 selectedOption: nil
 
             ),
             SignUpUIModel(
@@ -78,7 +84,8 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen5-bg"),
                 scratchImage: #imageLiteral(resourceName: "nearly-there"),
                 progressImage: #imageLiteral(resourceName: "progress6"),
-                keyboardType: []
+                keyboardType: [],
+                 selectedOption: nil
 
             ),
             SignUpUIModel(
@@ -88,8 +95,8 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen6-bg"),
                 scratchImage: #imageLiteral(resourceName: "nearly-there"),
                 progressImage: #imageLiteral(resourceName: "progress7"),
-                keyboardType: []
-
+                keyboardType: [],
+                 selectedOption: nil
             ),
             SignUpUIModel(
                 titles: ["At Gym", "At Library", "Gaming", "Outdoors"],
@@ -98,10 +105,44 @@ struct SignUpUIModel {
                 bgImage: #imageLiteral(resourceName: "screen7-bg"),
                 scratchImage: #imageLiteral(resourceName: "last-step"),
                 progressImage: #imageLiteral(resourceName: "progress8"),
-                keyboardType: []
-
+                keyboardType: [],
+                 selectedOption: nil
             )
         ]
         return array
+    }
+    
+   static func validate(value:String?, key: String) -> String? {
+        var error: String?
+        switch key {
+        case "firstName", "lastName":
+            let type = key == "firstName" ? "first name" : "last name"
+            error = FormValidator.checkValidName(value, type: type)
+        case "dob":
+            error = FormValidator.checkValidDOB(value)
+        case "phone":
+            error = FormValidator.checkValidPhone(value)
+        case "eduEmail", "personalEmail":
+            error = FormValidator.checkValidEmail(value)
+        case "institute":
+            error = FormValidator.checkValidInstitute(value)
+        case "course":
+            error = FormValidator.checkValidCourse(value)
+        case "graduationDate":
+            error = FormValidator.checkValidGraduationYear(value)
+        case "password":
+            error = FormValidator.checkValidPassword(value)
+        case  "subscription": break
+        case "gender": break
+        case "vegan": break
+        case "nightOut",  "hobby": break
+        default:
+            break
+        }
+        return error
+    }
+    
+   static func signUp(fiedls: SignUpFields, completion:(String?)->()) {
+        
     }
 }

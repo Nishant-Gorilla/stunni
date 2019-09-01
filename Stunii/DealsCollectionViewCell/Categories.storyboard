@@ -58,8 +58,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="272" height="208"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="Rqz-kp-T08">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rqz-kp-T08">
                                                     <rect key="frame" x="0.0" y="0.0" width="272" height="208"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KINGS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACD-lP-Isj">
                                                     <rect key="frame" x="0.0" y="0.0" width="272" height="208"/>
@@ -117,6 +118,5 @@
     </scenes>
     <resources>
         <image name="logo" width="103" height="41"/>
-        <image name="profile" width="134" height="134"/>
     </resources>
 </document>

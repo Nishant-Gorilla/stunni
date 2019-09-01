@@ -8,17 +8,16 @@
 
 import UIKit
 
-class DealsProfileViewController: UIViewController {
+class DealsProfileViewController:BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    var dealProfileViewModel: DealProfileViewModel!
     struct TVCellIdentifier {
         let collectionView = "cell_collView"
         let deal = "cell_deal"
     }
     struct CVCellIdentifier {
         let image = "cell_image"
-        let label = "cell_label"
     }
     
     let cellIdentifier      = TVCellIdentifier()
@@ -26,6 +25,8 @@ class DealsProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoader()
+        dealProfileViewModel = DealProfileViewModel(delegate: self)
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -40,11 +41,12 @@ extension DealsProfileViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row <= 1 {
+        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.collectionView, for: indexPath) as! HomeTableViewCell
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
             cell.collectionView.tag = indexPath.row
+            cell.collectionView.reloadData()
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.deal, for: indexPath)
@@ -52,17 +54,11 @@ extension DealsProfileViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 90
-        }
-        if indexPath.row == 1 {
-            return 50
-        }
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row > 1 {
+        if indexPath.row > 0 {
             ViewNavigator.navigateToDealFrom(viewController: self)
         }
     }
@@ -70,18 +66,15 @@ extension DealsProfileViewController: UITableViewDataSource, UITableViewDelegate
 
 extension DealsProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dealProfileViewModel.providersCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView.tag == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cvCellIdentifier.label, for: indexPath)
-            return cell
-        }
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cvCellIdentifier.image, for: indexPath) as! DealsImageCollectionViewCell
-       cell.imgView.cornerRadius = 0.0
+        let imgUrl = dealProfileViewModel.getProviderImageUrl(at: indexPath.row)
+        let name = dealProfileViewModel.getProviderName(at: indexPath.row)
+      cell.set(data: ["name":name, "imageUrl": imgUrl])
+    //   cell.imgView.cornerRadius = 0.0
         return cell
     }
 }
@@ -89,22 +82,21 @@ extension DealsProfileViewController: UICollectionViewDataSource {
 extension DealsProfileViewController: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.height
-        
-        if collectionView.tag == 0 {
-            return CGSize(width: height, height: height)
-        }
-        return CGSize(width: 100.0, height: height/1.5)
+            return CGSize(width: 100, height: height)
+    }
+}
+
+
+extension DealsProfileViewController: DealProfileViewModelDelegate {
+    func reloadData() {
+       tableView.reloadData()
+        hideLoader()
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if collectionView.tag == 0 {
-            let imgCell = cell as! DealsImageCollectionViewCell
-            imgCell.imgView.cornerRadius = 0.0
-            //imgCell.imgView.circular = true
-        }
-        else {
-            let lblCell = cell as! DealsLabelCollectionViewCell
-           lblCell.label.cornerRadius = lblCell.label.frame.height/2.0
-        }
+    func didReceive(error: Error) {
+        hideLoader()
+        showAlertWith(title: "Error!", message: error.localizedDescription)
     }
+    
+    
 }

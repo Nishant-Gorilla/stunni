@@ -15,6 +15,7 @@ class DealsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tvCellFactory = DealsTVCellFactory(tblView: tableView)
     }
     
