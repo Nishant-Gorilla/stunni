@@ -10,33 +10,41 @@ import Alamofire
 
 class APIManager: NSObject {
     
+    static let shared = APIManager()
+    
     override init() {
         super.init()
-        APIManager.setHeader(value: "Content-Type", forKey: "application/json")
+        setHeader(value: "Content-Type", forKey: "application/json")
+        setHeader(
+            value: "Authorization",
+            forKey: "YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz")
     }
     
     //MARK: Header
-    static private var headers: [String: String] = [:]
+    private var headers: [String: String] = [:]
     
-    class func setHeader(value: String, forKey key: String) {
+    func setHeader(value: String, forKey key: String) {
         headers[key] = value
     }
-    class func removeHeaderValueFor(key: String) {
+     func removeHeaderValueFor(key: String) {
         headers.removeValue(forKey: key)
     }
     
     //MARK: GET, POST
     typealias completionClosure = ((Any?, Error?)->())
     
-    class func getAPI(url: String, completion: @escaping completionClosure) {
+    func getAPI(url: String, completion: @escaping completionClosure) {
         Alamofire.request(url).responseJSON { (response) in
             completion(response.value, response.error)
         }
     }
-    class func postApI(url: String, parameters: [String: Any] = [:], completion: @escaping completionClosure) {
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+    
+    
+    func postApI(url: String, parameters: [String: Any] = [:], completion: @escaping completionClosure) {
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers)
+            .validate(statusCode: 0...999)
             .responseJSON { (response) in
-               
+            completion(response.value, response.error)
         }
     }
 }
@@ -46,7 +54,7 @@ class APIManager: NSObject {
 class APIClient {
     
     func initialize() {
-        APIManager.setHeader(value: "Content-Type", forKey: "application/json")
+        APIManager.shared.setHeader(value: "Content-Type", forKey: "application/json")
     }
     
 }

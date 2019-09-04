@@ -28,6 +28,7 @@ class OnboardingViewController: BaseViewController {
     ]
     
     private var player: AVPlayer!
+    private var timer: Timer!
     
     private func playVideo() {
         
@@ -51,19 +52,21 @@ class OnboardingViewController: BaseViewController {
             self?.player?.play()
         }
 
-        
         player.play()
-//        
-//        let playerController = AVPlayerViewController()
-//        playerController.player = player
-//        present(playerController, animated: true) {
-//            player.play()
-//        }
     }
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if player != nil && player.rate == 0 {
+            player.play()
+        }
+         playSlideShow()
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,6 +80,19 @@ class OnboardingViewController: BaseViewController {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self)
         player.pause()
+        timer.invalidate()
+    }
+    
+    private func playSlideShow() {
+        timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: {  [weak self] (_) in
+            let current = self!.pageControl.currentPage
+            let nextIndex = (current + 1)%self!.images.count
+            
+            DispatchQueue.main.async {
+                self?.collectionView.scrollToItem(at: IndexPath(row: nextIndex, section: 0), at: .left, animated: true)
+                self?.pageControl.currentPage = nextIndex
+            }
+        })
     }
     
     private func scalePageControl() {

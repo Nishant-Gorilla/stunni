@@ -25,8 +25,13 @@ class Deal: Mappable {
     required init?(map: Map) {}
     
     func mapping(map: Map) {
+        
         id      <- map["_id"]
         title   <- map["title"]
         desc    <- map["desc"]
+        photo <- map["photo"]
+        coverPhoto <- map["coverPhoto"]
+        photo = WebServicesURL.ImagesBase.home + id! + "/o/" + (photo ?? "")
+        coverPhoto  = WebServicesURL.ImagesBase.home + id! + "/o/" + (coverPhoto ?? "")
     }
 }

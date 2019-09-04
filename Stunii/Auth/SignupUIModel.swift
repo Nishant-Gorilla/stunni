@@ -17,7 +17,7 @@ struct SignUpUIModel {
     private(set) var scratchImage       : UIImage!
     private(set) var progressImage      : UIImage!
     private(set) var keyboardType       : [UIKeyboardType]!
-      private(set) var selectedOption      : Int!
+    private(set) var selectedOption      : Int!
     
     func get() -> [SignUpUIModel] {
         return populateData()
@@ -33,7 +33,7 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "cracking"),
                 progressImage: #imageLiteral(resourceName: "progress1"),
                 keyboardType: [.default, .default, .numberPad],
-                 selectedOption: nil
+                selectedOption: nil
             ),
             SignUpUIModel(
                 titles: ["Educational Email Address", "Personal Email Address", "Phone Number"],
@@ -43,7 +43,7 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "cracking"),
                 progressImage: #imageLiteral(resourceName: "progress2"),
                 keyboardType: [.emailAddress, .emailAddress, .phonePad],
-                 selectedOption: nil
+                selectedOption: nil
             ),
             SignUpUIModel(
                 titles: ["Educational Institute", "Course", "Graduation Date"],
@@ -53,7 +53,7 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "cracking"),
                 progressImage: #imageLiteral(resourceName: "progress3"),
                 keyboardType: [.default, .default, .numberPad],
-                 selectedOption: nil
+                selectedOption: nil
             ),
             
             SignUpUIModel(titles: [],
@@ -64,8 +64,8 @@ struct SignUpUIModel {
                           progressImage: #imageLiteral(resourceName: "progress4"),
                           keyboardType: [],
                           selectedOption: nil
-                ),
-                
+            ),
+            
             SignUpUIModel(
                 titles: ["Male", "Female", "Other", ""],
                 optionsHeading: "Gender",
@@ -74,8 +74,8 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "nearly-there"),
                 progressImage: #imageLiteral(resourceName: "progress5"),
                 keyboardType: [],
-                 selectedOption: nil
-
+                selectedOption: nil
+                
             ),
             SignUpUIModel(
                 titles: ["Vegan", "Veggie", "Meat Eater", ""],
@@ -85,8 +85,8 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "nearly-there"),
                 progressImage: #imageLiteral(resourceName: "progress6"),
                 keyboardType: [],
-                 selectedOption: nil
-
+                selectedOption: nil
+                
             ),
             SignUpUIModel(
                 titles: ["Nightlife", "Pub", "Meal", "Cozy"],
@@ -96,7 +96,7 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "nearly-there"),
                 progressImage: #imageLiteral(resourceName: "progress7"),
                 keyboardType: [],
-                 selectedOption: nil
+                selectedOption: nil
             ),
             SignUpUIModel(
                 titles: ["At Gym", "At Library", "Gaming", "Outdoors"],
@@ -106,13 +106,13 @@ struct SignUpUIModel {
                 scratchImage: #imageLiteral(resourceName: "last-step"),
                 progressImage: #imageLiteral(resourceName: "progress8"),
                 keyboardType: [],
-                 selectedOption: nil
+                selectedOption: nil
             )
         ]
         return array
     }
     
-   static func validate(value:String?, key: String) -> String? {
+    static func validate(value:String?, key: String) -> String? {
         var error: String?
         switch key {
         case "firstName", "lastName":
@@ -142,7 +142,92 @@ struct SignUpUIModel {
         return error
     }
     
-   static func signUp(fiedls: SignUpFields, completion:(String?)->()) {
+    static func signUp(fiedls: SignUpFields, completion:@escaping (String?)->()) {
+        var gender = 0
+        var string = (fiedls.gender ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        switch string {
+        case "male":
+            gender = 1
+        case "female":
+            gender = 2
+        case "other":
+            gender = 3
+        default:
+            break
+        }
+        var areYou = 0
+        string = (fiedls.vegan ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        switch string {
+        case "vegan":
+            areYou = 1
+        case "veggie":
+            areYou = 2
+        case "meateater":
+            areYou = 3
+        default:
+            break
+        }
         
+        var perfectNightOut = 0
+        string = (fiedls.nightOut ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        switch string {
+        case "nightlife":
+            perfectNightOut = 1
+        case "pub":
+            perfectNightOut = 2
+        case "meal":
+            perfectNightOut = 3
+        case "cozy":
+            perfectNightOut = 4
+        default:
+            break
+        }
+        
+        var findMe = 0
+        
+        string = (fiedls.hobby ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        switch string {
+        case "atgym":
+            findMe = 1
+        case "atlibrary":
+            findMe = 2
+        case "gaming":
+            findMe = 3
+        case "outdoors":
+            findMe = 4
+        default:
+            break
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        let date = dateFormatter.date(from: fiedls.dob!)!
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateStr = dateFormatter.string(from: date)
+        let param: [String:Any] = [
+            "lname": fiedls.lastName ?? "",
+            "fname": fiedls.firstName ?? "",
+            "email": fiedls.eduEmail ?? "",
+            "personal_email": fiedls.personalEmail ?? "",
+            "password": fiedls.password ?? "",
+            "institution": fiedls.institute ?? "",
+            "graduationDate":fiedls.graduationDate ?? "",
+            "emailNotification": fiedls.subscription ?? "0",
+            "areYou": String(areYou),
+            "findMe":String(findMe),
+            "perfectNightOut":String(perfectNightOut),
+            "gender":String(gender),
+            "type":"student",
+            "dob":dateStr
+        ]
+        
+        APIHelper().signUp(parameters: param) { (user, error) in
+            if error == nil && user != nil {
+                UserData.loggedInUser = user!
+                completion(nil)
+            } else {
+                completion(error?.localizedDescription ?? "Signup failed!")
+            }
+        }
     }
 }

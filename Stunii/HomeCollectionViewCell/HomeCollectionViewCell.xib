@@ -24,8 +24,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="399" height="264"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="food-img1" translatesAutoresizingMaskIntoConstraints="NO" id="vcU-dU-uMI">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcU-dU-uMI">
                         <rect key="frame" x="10" y="0.0" width="389" height="264"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="6"/>
@@ -35,9 +36,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSr-Cw-QZh">
                         <rect key="frame" x="0.0" y="219" width="399" height="45"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="client1" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-fk-0Ec">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-fk-0Ec">
                                 <rect key="frame" x="4" y="4" width="37" height="37"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6Km-fk-0Ec" secondAttribute="height" multiplier="1:1" id="NHq-GP-Bbi"/>
                                 </constraints>
@@ -48,16 +49,16 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="e25-qF-iMG">
-                                <rect key="frame" x="49" y="4" width="119" height="37"/>
+                                <rect key="frame" x="49" y="4" width="114.5" height="37"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work &amp; Go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfj-m9-iWh">
-                                        <rect key="frame" x="0.0" y="0.0" width="119" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="114.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50% off Everyday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agm-W4-sHe">
-                                        <rect key="frame" x="0.0" y="18.5" width="119" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="18.5" width="114.5" height="18.5"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -90,13 +91,12 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="399" height="264"/>
             <connections>
-                <outlet property="imgView" destination="vcU-dU-uMI" id="lOK-eq-WeC"/>
+                <outlet property="descriptionLabel" destination="agm-W4-sHe" id="tRh-Tb-djl"/>
+                <outlet property="imgView" destination="vcU-dU-uMI" id="rKu-mf-EAT"/>
+                <outlet property="photoImageView" destination="6Km-fk-0Ec" id="r7d-EY-i8w"/>
+                <outlet property="titleLabel" destination="Hfj-m9-iWh" id="bpC-mB-z8e"/>
             </connections>
             <point key="canvasLocation" x="310.86956521739131" y="126.5625"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="client1" width="24" height="16"/>
-        <image name="food-img1" width="149" height="103"/>
-    </resources>
 </document>

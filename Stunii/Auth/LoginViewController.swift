@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class LoginViewController: UIViewController {
+class LoginViewController:BaseViewController {
 
     
     @IBOutlet weak var emailTextField: SkyFloatingLabelTextField!
@@ -23,7 +23,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        MainScreenUtility.setHomeAsRoot()
+       showLoader()
+       APIHelper.login(email: emailTextField.text!,
+                        password: passwordTextField.text!) {[ weak self ] (user, error) in
+                            
+                            self?.hideLoader()
+                            if error == nil && user != nil {
+                                UserData.loggedInUser = user!
+                                MainScreenUtility.setHomeAsRoot()
+                            } else {
+                                DispatchQueue.main.async {
+                                self?.showAlertWith(title: nil, message: error?.localizedDescription ?? "Login failed!")
+                                }
+                            }
+        }
+
     }
     
     @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
@@ -50,4 +64,27 @@ extension LoginViewController: UITextFieldDelegate {
             owlImageView.image = #imageLiteral(resourceName: "owl-close")
         }
     }
+}
+
+
+extension Dictionary {
+    func percentEscaped() -> String {
+        return map { (key, value) in
+            let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
+            return escapedKey + "=" + escapedValue
+            }
+            .joined(separator: "&")
+    }
+}
+
+extension CharacterSet {
+    static let urlQueryValueAllowed: CharacterSet = {
+        let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
+        let subDelimitersToEncode = "!$&'()*+,;="
+        
+        var allowed = CharacterSet.urlQueryAllowed
+        allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+        return allowed
+    }()
 }

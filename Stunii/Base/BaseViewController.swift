@@ -21,6 +21,8 @@ class BaseViewController: UIViewController {
     }
     
     func hideLoader() {
-        RSLoadingView.hideFromKeyWindow()
+        DispatchQueue.main.async {
+            RSLoadingView.hideFromKeyWindow()
+        }
     }
 }

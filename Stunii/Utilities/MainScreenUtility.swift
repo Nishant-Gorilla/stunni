@@ -25,11 +25,13 @@ class MainScreenUtility {
     }
     
     class func setHomeAsRoot() {
+        DispatchQueue.main.async {
         let window = UIApplication.shared.keyWindow
         let tabBarVC = UIStoryboard(
             name: Storyboard.Name.main,
             bundle: nil).instantiateInitialViewController()
         window?.rootViewController = tabBarVC
+        }
     }
 }
 

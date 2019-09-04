@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="PSi-2R-YEh">
             <objects>
-                <viewController id="bHh-9k-o10" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="bHh-9k-o10" customClass="ProfileViewController" customModule="Stunii" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G70-7o-eQf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,6 +132,7 @@
                             <constraint firstItem="lZi-Io-64f" firstAttribute="top" secondItem="G70-7o-eQf" secondAttribute="top" id="Bym-2U-6Ca"/>
                             <constraint firstItem="loc-k5-ZPS" firstAttribute="leading" secondItem="vy6-tX-lCK" secondAttribute="leading" id="GGQ-uT-EaF"/>
                             <constraint firstItem="lZi-Io-64f" firstAttribute="trailing" secondItem="vy6-tX-lCK" secondAttribute="trailing" id="Jj7-h3-3LV"/>
+                            <constraint firstItem="vy6-tX-lCK" firstAttribute="trailing" secondItem="lZi-Io-64f" secondAttribute="trailing" id="SP3-zU-kY5"/>
                             <constraint firstItem="lZi-Io-64f" firstAttribute="height" secondItem="G70-7o-eQf" secondAttribute="height" multiplier="0.32" id="Uco-9U-QbU"/>
                             <constraint firstItem="7m2-LF-Tnn" firstAttribute="centerX" secondItem="af1-Zl-jsj" secondAttribute="centerX" id="ail-6U-G28"/>
                             <constraint firstItem="vy6-tX-lCK" firstAttribute="trailing" secondItem="loc-k5-ZPS" secondAttribute="trailing" id="bud-4c-ekZ"/>
@@ -143,6 +144,14 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="courseLabel" destination="c0p-DL-sg3" id="u2G-Ut-oZP"/>
+                        <outlet property="coverPicImageView" destination="lZi-Io-64f" id="EzQ-Zs-iiw"/>
+                        <outlet property="universityNameLabel" destination="v8r-bc-u1I" id="GLl-ee-GIi"/>
+                        <outlet property="userNameLabel" destination="7m2-LF-Tnn" id="h9u-h0-JB5"/>
+                        <outlet property="userProfileImageView" destination="af1-Zl-jsj" id="XC5-xk-Qil"/>
+                        <outlet property="verifiedUntilLabel" destination="gUn-l8-Bcz" id="8lK-gl-ne3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Vl-zj-B2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

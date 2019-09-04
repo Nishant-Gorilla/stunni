@@ -14,7 +14,6 @@ class Category : Mappable {
     var photoURL: String?
     var updatedAt: String?
     var createdAt: String?
-    
     required init?(map: Map) {}
     //Mapping
     func mapping(map: Map) {

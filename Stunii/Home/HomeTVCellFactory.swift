@@ -19,7 +19,7 @@ class HomeTVCellFactory: NSObject {
     
     func cellFor(indexPath: IndexPath, with data: HomeData, vc: UIViewController) -> UITableViewCell {
         let cell = tblView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! HomeTableViewCell
-        
+        cell.label.text = data.name ?? ""
         cell.collectionView.tag = indexPath.row
         cell.collectionView.dataSource  = vc as? UICollectionViewDataSource
         cell.collectionView.delegate    = vc as? UICollectionViewDelegate

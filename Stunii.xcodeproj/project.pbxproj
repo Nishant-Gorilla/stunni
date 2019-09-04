@@ -82,7 +82,14 @@
 		967FDBC32318525800BD473A /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FDBC22318525800BD473A /* Provider.swift */; };
 		967FDBC52318527F00BD473A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FDBC42318527F00BD473A /* Location.swift */; };
 		967FDBC7231852EA00BD473A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FDBC6231852EA00BD473A /* Address.swift */; };
+		96A2C54F2320192100B1FA57 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C54E2320192100B1FA57 /* Job.swift */; };
+		96A2C55123201D1A00B1FA57 /* JobViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C55023201D1A00B1FA57 /* JobViewModel.swift */; };
+		96A2C55323201EE700B1FA57 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */; };
+		96C6CA2F2320276E009093A7 /* JobDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6CA2E2320276E009093A7 /* JobDetailViewModel.swift */; };
+		96C6CA312320294E009093A7 /* JobDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6CA302320294E009093A7 /* JobDetailTableViewCell.swift */; };
 		96F9DD09231A4633003A0146 /* DealProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9DD08231A4633003A0146 /* DealProfileViewModel.swift */; };
+		96FE4809231D7B5E00E320B0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE4808231D7B5E00E320B0 /* User.swift */; };
+		96FE480B231D85BF00E320B0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FE480A231D85BF00E320B0 /* ProfileViewController.swift */; };
 		96FEA08D2315847B001A5491 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 96FEA08C23158334001A5491 /* video.mp4 */; };
 /* End PBXBuildFile section */
 
@@ -129,7 +136,7 @@
 		6B7AF73422DA249900CD5427 /* SearchTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewViewController.swift; sourceTree = "<group>"; };
 		6B7D0A9A22DCE9D600E708B6 /* Stunii.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stunii.entitlements; sourceTree = "<group>"; };
 		6B7D0A9B22DCEA9D00E708B6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		6B7D0A9D22DCF5F700E708B6 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
+		6B7D0A9D22DCF5F700E708B6 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeData.swift; path = ../Home/HomeData.swift; sourceTree = "<group>"; };
 		6B7D0A9F22DCF81100E708B6 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		6B7D0AA122DCFA6000E708B6 /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		6B7D0AA322DCFDBC00E708B6 /* HomeTVCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVCellFactory.swift; sourceTree = "<group>"; };
@@ -166,7 +173,14 @@
 		967FDBC22318525800BD473A /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		967FDBC42318527F00BD473A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		967FDBC6231852EA00BD473A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		96A2C54E2320192100B1FA57 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		96A2C55023201D1A00B1FA57 /* JobViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewModel.swift; sourceTree = "<group>"; };
+		96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		96C6CA2E2320276E009093A7 /* JobDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewModel.swift; sourceTree = "<group>"; };
+		96C6CA302320294E009093A7 /* JobDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailTableViewCell.swift; sourceTree = "<group>"; };
 		96F9DD08231A4633003A0146 /* DealProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealProfileViewModel.swift; sourceTree = "<group>"; };
+		96FE4808231D7B5E00E320B0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96FE480A231D85BF00E320B0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		96FEA08C23158334001A5491 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = video.mp4; sourceTree = "<group>"; };
 		FE21AA082E9FCDAF0966A588 /* Pods_Stunii.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stunii.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -340,7 +354,6 @@
 				6B7D0AA322DCFDBC00E708B6 /* HomeTVCellFactory.swift */,
 				6B7D0AA522DD019100E708B6 /* HomeCVCellFactory.swift */,
 				6B7D0A9B22DCEA9D00E708B6 /* HomeViewModel.swift */,
-				6B7D0A9D22DCF5F700E708B6 /* HomeData.swift */,
 				6B0ECB6F22C68AB1006F8C1C /* HomeTableViewCell.swift */,
 			);
 			path = Home;
@@ -393,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				6BAFA78922BFFC6500F2E914 /* Profile.storyboard */,
+				96FE480A231D85BF00E320B0 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -433,9 +447,12 @@
 		6BF3084A22D9233300BB2399 /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				96A2C5542320268700B1FA57 /* ViewModel */,
 				6BF3084822D9232900BB2399 /* Jobs.storyboard */,
+				96C6CA302320294E009093A7 /* JobDetailTableViewCell.swift */,
 				6B7AF73022DA155B00CD5427 /* JobsDetailViewController.swift */,
 				6BBBCAA522D9D18700AFEB77 /* JobsViewController.swift */,
+				96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */,
 			);
 			path = Jobs;
 			sourceTree = "<group>";
@@ -464,8 +481,11 @@
 				967FDBB72318285B00BD473A /* Category.swift */,
 				6B7D0AA122DCFA6000E708B6 /* Deal.swift */,
 				967FDBC22318525800BD473A /* Provider.swift */,
+				6B7D0A9D22DCF5F700E708B6 /* HomeData.swift */,
 				967FDBC42318527F00BD473A /* Location.swift */,
 				967FDBC6231852EA00BD473A /* Address.swift */,
+				96FE4808231D7B5E00E320B0 /* User.swift */,
+				96A2C54E2320192100B1FA57 /* Job.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -492,6 +512,15 @@
 				96F9DD08231A4633003A0146 /* DealProfileViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		96A2C5542320268700B1FA57 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				96A2C55023201D1A00B1FA57 /* JobViewModel.swift */,
+				96C6CA2E2320276E009093A7 /* JobDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CA952397F2BFABA67388057A /* Frameworks */ = {
@@ -658,13 +687,16 @@
 				6B724D9C22BFB1C500C25E6A /* Utilities.swift in Sources */,
 				967FDBBD2318346400BD473A /* ReloadDataAndErrorHandler.swift in Sources */,
 				6BE2DD1722C8778F00C0C34A /* TestViewController.swift in Sources */,
+				96A2C55323201EE700B1FA57 /* JobTableViewCell.swift in Sources */,
 				6BBBCAA622D9D18700AFEB77 /* JobsViewController.swift in Sources */,
 				6B7AF73522DA249900CD5427 /* SearchTableViewViewController.swift in Sources */,
 				6B0B959D22C54030002687D9 /* DealsCollectionViewCell.swift in Sources */,
 				6B39DDD422CA693E00B64C9B /* CategoryCollectionViewCell.swift in Sources */,
 				6B0D23BA22BF9D7B007908F1 /* AppDelegate.swift in Sources */,
 				967FDBC52318527F00BD473A /* Location.swift in Sources */,
+				96FE480B231D85BF00E320B0 /* ProfileViewController.swift in Sources */,
 				9617D1D2231B7B76002B1CD4 /* FormValidator.swift in Sources */,
+				96C6CA2F2320276E009093A7 /* JobDetailViewModel.swift in Sources */,
 				6B706EE622C1C7A20001A8B9 /* SignupViewController.swift in Sources */,
 				6BA9E7FC22C5BC0300A81A6C /* HomeCollectionViewCell.swift in Sources */,
 				6B5B95E922DE4AF700B6394F /* HomeCategories.swift in Sources */,
@@ -675,11 +707,13 @@
 				6B724D9222BFB00600C25E6A /* BaseViewController.swift in Sources */,
 				6B0ECB7322C691A9006F8C1C /* CustomImageView.swift in Sources */,
 				967FDBC32318525800BD473A /* Provider.swift in Sources */,
+				96C6CA312320294E009093A7 /* JobDetailTableViewCell.swift in Sources */,
 				6BF9A17722C079F100C984FC /* OnboardingViewController.swift in Sources */,
 				6B39DDDD22CA9ECD00B64C9B /* CategoriesViewController.swift in Sources */,
 				6B0ECB7422C691A9006F8C1C /* CircularLoaderView.swift in Sources */,
 				2EB59EE422DC7BE200CC5152 /* NotificationManager.swift in Sources */,
 				6B7D0AA422DCFDBC00E708B6 /* HomeTVCellFactory.swift in Sources */,
+				96A2C54F2320192100B1FA57 /* Job.swift in Sources */,
 				6BCE40A322C28A560057B9D6 /* DemandViewController.swift in Sources */,
 				6B7D0AA022DCF81100E708B6 /* APIHelper.swift in Sources */,
 				967FDBBA2318330100BD473A /* CategoryViewModel.swift in Sources */,
@@ -690,11 +724,13 @@
 				6B7D0A9C22DCEA9D00E708B6 /* HomeViewModel.swift in Sources */,
 				6B724D9E22BFB4C200C25E6A /* HomeViewController.swift in Sources */,
 				967FDBC0231839FD00BD473A /* CategoryDetailCollectionViewCell.swift in Sources */,
+				96A2C55123201D1A00B1FA57 /* JobViewModel.swift in Sources */,
 				6B7D0AA622DD019100E708B6 /* HomeCVCellFactory.swift in Sources */,
 				6B3C94C022C14BD700FDD68E /* OnboardingCollectionViewCell.swift in Sources */,
 				6B39DDD622CA78EF00B64C9B /* DealsLabelCollectionViewCell.swift in Sources */,
 				6B3C94B722C1223700FDD68E /* MainScreenUtility.swift in Sources */,
 				6B7AF73122DA155B00CD5427 /* JobsDetailViewController.swift in Sources */,
+				96FE4809231D7B5E00E320B0 /* User.swift in Sources */,
 				6B93AC5B22C7153800100660 /* SignupUIModel.swift in Sources */,
 				6B39DDD822CA7B3A00B64C9B /* DealsImageCollectionViewCell.swift in Sources */,
 				96F9DD09231A4633003A0146 /* DealProfileViewModel.swift in Sources */,

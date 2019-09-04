@@ -26,7 +26,7 @@ class HomeViewController: BaseViewController {
     //MARK:- VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    //    showLoader()
+        showLoader()
         
         sideMenuController?.isLeftViewSwipeGestureEnabled   = false
         sideMenuController?.isRightViewSwipeGestureEnabled  = false

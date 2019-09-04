@@ -19,13 +19,21 @@ struct WebServicesURL {
     static let home    : String = "home/hero"
     static let category: String = "categories"
     static let providers = "allProvider"
+    static let jobs = "allJobs"
+    static let jobDetail = "jobDetail"
+    
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"
         static let category: String = baseURL + "fs/categories/"
         static let gallary: String = baseURL + "fs/galleries/"
         static let provider: String = baseURL + "fs/providers/"
         static let students: String = baseURL + "fs/students/"
+        static let jobs: String = baseURL + "images/"
     }
+}
+
+class UserData {
+    static var loggedInUser: User?
 }
 
 //MARK:- Storyboard ID

@@ -92,6 +92,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="252" height="226"/>
+            <connections>
+                <outlet property="coverImageView" destination="x4u-3V-THR" id="3cr-Z2-xJu"/>
+                <outlet property="descLabel" destination="r99-c8-4Xn" id="NrS-Tz-Xzz"/>
+                <outlet property="photoImageView" destination="5a3-VQ-vuf" id="10x-wc-oFi"/>
+                <outlet property="titleLabel" destination="2Qo-ts-qFF" id="zgd-ZF-fqU"/>
+            </connections>
             <point key="canvasLocation" x="145" y="44"/>
         </collectionViewCell>
     </objects>

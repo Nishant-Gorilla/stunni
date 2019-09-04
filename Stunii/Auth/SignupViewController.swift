@@ -107,6 +107,7 @@ class SignupViewController: BaseViewController {
     
     @IBAction func backButtonClicked(_sender: Any) {
         guard currentPageIndex != 0 else {
+            navigationController?.popViewController(animated: true)
             return
         }
         currentPageIndex -= 1
@@ -260,7 +261,6 @@ class SignupViewController: BaseViewController {
                 = uiModel[currentPageIndex].scratchImage
             progressImageView.image
                 = uiModel[currentPageIndex].progressImage
-            backButton.isHidden = (currentPageIndex == 0)
         }
         else if currentPageIndex == PASSWORD_INDEX {
             optionsWithThree.isHidden   = true
@@ -329,12 +329,21 @@ class SignupViewController: BaseViewController {
         }
         else {
             // Call Sign up api here
-            SignUpUIModel.signUp(fiedls: fields) { (error) in
+            showLoader()
+            SignUpUIModel.signUp(fiedls: fields) { [weak self] (error) in
+                DispatchQueue.main.async {
+                    self?.hideLoader()
+                }
                 guard let error = error else {
-                     performSegue(withIdentifier: homeSegue, sender: nil)
+                    guard let _self = self else { return }
+                    DispatchQueue.main.async {
+                    _self.performSegue(withIdentifier: _self.homeSegue, sender: nil)
+                    }
                     return
                 }
-                showAlertWith(title: nil, message: error)
+                DispatchQueue.main.async {
+                self?.showAlertWith(title: nil, message: error)
+                }
             }
             
            
@@ -405,14 +414,16 @@ extension SignupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 6
+        return 10
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "Year \(row+1)"
+        let year = Calendar.current.component(.year, from: Date()) + row
+        return "\(year)"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textFields.last!.text = "Year \(row+1)"
+           let year = Calendar.current.component(.year, from: Date()) + row
+        textFields.last!.text = "\(year)"
     }
 }

@@ -17,6 +17,7 @@ class HomeCVCellFactory: NSObject {
         if data.isFeatured {
             return cellForFeatured(collectionView: collectionView,
                             indexPath: indexPath, with: data.deals[indexPath.row])
+            
         }
         else {
             return cellForDeals(collectionView: collectionView,
@@ -26,13 +27,15 @@ class HomeCVCellFactory: NSObject {
     
     private func cellForDeals(collectionView: UICollectionView,
                  indexPath: IndexPath, with data: Deal) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.Identifier.deal, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.Identifier.deal, for: indexPath) as! DealsCollectionViewCell
+        cell.set(deal: data)
         return cell
     }
     
     private func cellForFeatured(collectionView: UICollectionView,
                          indexPath: IndexPath, with data: Deal) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.Identifier.home, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.Identifier.home, for: indexPath) as! HomeCollectionViewCell
+        cell.set(deal: data)
         return cell
     }
     
