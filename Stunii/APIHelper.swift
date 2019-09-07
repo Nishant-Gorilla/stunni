@@ -146,7 +146,6 @@ class APIHelper {
             } else {
                 completion(user,  error)
             }
-            
         }
         mData.resume()
     }
@@ -224,7 +223,6 @@ class APIHelper {
             } else {
                 completion(job,  error)
             }
-            
         }
         mData.resume()
     }

@@ -23,6 +23,7 @@ struct WebServicesURL {
     static let jobDetail = "jobDetail"
     static let dealDetail = "dealDetail"
     static let isVipUser = "isVip"
+    
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"
         static let category: String = baseURL + "fs/categories/"
@@ -166,4 +167,8 @@ struct CVCell {
 //MARK:- UserDefault Constants
 struct UserDefaultKey {
     static let deviceToken = "deviceToken"
+}
+
+struct APIKeys {
+    static let stripe = "pk_test_Qhkxp3lPza9CaAkvLKYh4WpM"
 }
