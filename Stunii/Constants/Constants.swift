@@ -21,7 +21,8 @@ struct WebServicesURL {
     static let providers = "allProvider"
     static let jobs = "allJobs"
     static let jobDetail = "jobDetail"
-    
+    static let dealDetail = "dealDetail"
+    static let isVipUser = "isVip"
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"
         static let category: String = baseURL + "fs/categories/"

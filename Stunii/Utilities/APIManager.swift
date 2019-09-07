@@ -33,8 +33,19 @@ class APIManager: NSObject {
     //MARK: GET, POST
     typealias completionClosure = ((Any?, Error?)->())
     
-    func getAPI(url: String, completion: @escaping completionClosure) {
-        Alamofire.request(url).responseJSON { (response) in
+    func getAPI(url: String, parameters:[String: String]? = nil, completion: @escaping completionClosure) {
+        var urlComponent = URLComponents(string: url)
+        if let parameters = parameters {
+            var queryItems: [URLQueryItem] = []
+            let keys = parameters.keys
+            keys.forEach { (key) in
+                let value = parameters[key]
+                queryItems.append(URLQueryItem(name: key, value: value ?? ""))
+            }
+            urlComponent?.queryItems = queryItems
+        }
+        
+        Alamofire.request(urlComponent!.url!).responseJSON { (response) in
             completion(response.value, response.error)
         }
     }

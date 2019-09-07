@@ -32,6 +32,15 @@ class DealsProfileViewController:BaseViewController {
     @IBAction func backButtonClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProviderDealsSegue" {
+            if let providerDealVC = segue.destination as? ProviderDealsViewController {
+                providerDealVC.provider = sender as! Provider
+            }
+        }
+    }
+    
 }
 
 //MARK:- UITableViewDataSource
@@ -83,6 +92,9 @@ extension DealsProfileViewController: UICollectionViewDelegateFlowLayout,UIColle
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.height
             return CGSize(width: 100, height: height)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ProviderDealsSegue", sender: dealProfileViewModel.getProvider(at: indexPath.row))
     }
 }
 

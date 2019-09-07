@@ -29,8 +29,11 @@ class LoginViewController:BaseViewController {
                             
                             self?.hideLoader()
                             if error == nil && user != nil {
-                                UserData.loggedInUser = user!
-                                MainScreenUtility.setHomeAsRoot()
+                                APIHelper.isVipUser(userId: user!._id, completion: { (isVip, error) in
+                                    user!.isVIP = isVip
+                                    UserData.loggedInUser = user!
+                                    MainScreenUtility.setHomeAsRoot()
+                                })
                             } else {
                                 DispatchQueue.main.async {
                                 self?.showAlertWith(title: nil, message: error?.localizedDescription ?? "Login failed!")

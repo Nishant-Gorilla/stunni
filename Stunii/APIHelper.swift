@@ -54,6 +54,24 @@ class APIHelper {
             }
         }
     }
+
+    class func isVipUser(userId:String, completion: @escaping completionClosure<Bool>) {
+        let url = WebServicesURL.baseURL + WebServicesURL.isVipUser
+        let param : [String: String] = ["userid":userId]
+        APIManager.shared.getAPI(url: url,parameters: param) { (response, error) in
+            var isVip: Bool = false
+            if let data = response as? [String: Any] {
+                if let isPremium = data["isPremium"] as? String {
+                    isVip = isPremium == "No" ? false : true
+                }
+                completion(isVip, nil)
+            }
+            else {
+                completion(false, error)
+            }
+        }
+    }
+    
     
     class func getAllProviders(completion: @escaping completionClosure<[Provider]>) {
         let url = WebServicesURL.baseURL + WebServicesURL.providers
@@ -69,8 +87,28 @@ class APIHelper {
         }
     }
     
+    class func getDealDetail(id:String, completion: @escaping completionClosure<Deal>) {
+        let url = WebServicesURL.baseURL + WebServicesURL.dealDetail + "/" + id
+        APIManager.shared.getAPI(url: url) { (response, error) in
+            if let data = response as? [String: Any],
+                let dataObject = data["data"] as? [String: Any] {
+                let deal = Mapper<Deal>().map(JSONObject: dataObject)
+                if let similarDealsArray = data["category"] as? [[String: Any]] {
+                let similarDeals = Mapper<Deal>().mapArray(JSONArray:  similarDealsArray)
+                    deal?.similarDeals  = similarDeals
+                }
+                completion(deal, nil)
+            }
+            else {
+                completion(nil, error)
+            }
+        }
+    }
     
-    class func login(email: String, password: String, completion: @escaping completionClosure<User?>) {
+    
+    
+    
+    class func login(email: String, password: String, completion: @escaping completionClosure<User>) {
         let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.signin)
         let request = NSMutableURLRequest(url: url! as URL)
         request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**

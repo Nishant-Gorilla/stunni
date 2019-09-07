@@ -15,6 +15,9 @@ class PremiumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    @IBAction func backButtonAction(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 //MARK:- UITableView Datasource
@@ -26,7 +29,8 @@ extension PremiumViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_offers", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_offers", for: indexPath) as! OfferCell
+            cell.collectionView.reloadData()
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_details", for: indexPath)

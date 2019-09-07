@@ -13,6 +13,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var redeemButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

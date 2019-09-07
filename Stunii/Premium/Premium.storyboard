@@ -21,7 +21,7 @@
         <!--Premium View Controller-->
         <scene sceneID="fs8-wk-eqr">
             <objects>
-                <viewController id="jXO-eH-OqC" customClass="PremiumViewController" customModule="Stunii" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PremiumViewController" id="jXO-eH-OqC" customClass="PremiumViewController" customModule="Stunii" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zn8-90-Vur">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,7 +107,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_offers" rowHeight="250" id="Hds-oK-vSC">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_offers" rowHeight="250" id="Hds-oK-vSC" customClass="OfferCell" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="418" width="500" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hds-oK-vSC" id="wPj-kz-6MI">
@@ -115,12 +115,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIP Ofefrs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-7Z-1SI">
-                                                    <rect key="frame" x="8" y="8" width="609" height="19.5"/>
+                                                    <rect key="frame" x="8" y="8" width="484" height="79"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sKT-5h-1lN">
-                                                    <rect key="frame" x="8" y="35.5" width="609" height="150"/>
+                                                    <rect key="frame" x="8" y="95" width="484" height="150"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="7YG-dH-3ja"/>
@@ -148,11 +148,15 @@
                                                 <constraint firstItem="TRM-7Z-1SI" firstAttribute="leading" secondItem="wPj-kz-6MI" secondAttribute="leading" constant="8" id="FEb-Xe-snv"/>
                                                 <constraint firstItem="sKT-5h-1lN" firstAttribute="top" secondItem="TRM-7Z-1SI" secondAttribute="bottom" constant="8" id="IOZ-gY-41U"/>
                                                 <constraint firstAttribute="trailing" secondItem="sKT-5h-1lN" secondAttribute="trailing" constant="8" id="SV5-5I-yTh"/>
+                                                <constraint firstAttribute="bottom" secondItem="sKT-5h-1lN" secondAttribute="bottom" constant="5" id="URJ-qD-DPv"/>
                                                 <constraint firstItem="TRM-7Z-1SI" firstAttribute="top" secondItem="wPj-kz-6MI" secondAttribute="top" constant="8" id="cTd-SU-s6D"/>
                                                 <constraint firstItem="sKT-5h-1lN" firstAttribute="leading" secondItem="wPj-kz-6MI" secondAttribute="leading" constant="8" id="eZK-ZY-sLN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="collectionView" destination="sKT-5h-1lN" id="17u-XO-6Ep"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_price" rowHeight="150" id="Nlh-69-ex2">
                                         <rect key="frame" x="0.0" y="668" width="500" height="150"/>
@@ -247,7 +251,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzo-eh-oO4">
-                                <rect key="frame" x="0.0" y="12" width="500" height="48"/>
+                                <rect key="frame" x="0.0" y="20" width="500" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aro-cX-HPn">
                                         <rect key="frame" x="193" y="13" width="114" height="22"/>
@@ -262,6 +266,9 @@
                                             <constraint firstAttribute="height" constant="30" id="Lvi-No-iHA"/>
                                         </constraints>
                                         <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="jXO-eH-OqC" eventType="touchUpInside" id="yQj-WG-k68"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -277,12 +284,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jzo-eh-oO4" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" id="BFI-Tj-ATY"/>
-                            <constraint firstItem="0kg-Kf-4h8" firstAttribute="top" secondItem="Zn8-90-Vur" secondAttribute="top" id="PCc-FJ-1PL"/>
+                            <constraint firstItem="0kg-Kf-4h8" firstAttribute="top" secondItem="Zn8-90-Vur" secondAttribute="top" id="XSX-ZQ-Cyg"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="trailing" secondItem="lIq-3E-UPr" secondAttribute="trailing" id="Y27-8K-9gI"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" id="dFv-zd-OaY"/>
                             <constraint firstItem="lIq-3E-UPr" firstAttribute="trailing" secondItem="Jzo-eh-oO4" secondAttribute="trailing" id="hE4-Dw-CRw"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="bottom" secondItem="Zn8-90-Vur" secondAttribute="bottom" id="hQQ-CG-Gwb"/>
-                            <constraint firstItem="Jzo-eh-oO4" firstAttribute="top" secondItem="Zn8-90-Vur" secondAttribute="top" constant="12" id="qxb-Ro-8US"/>
+                            <constraint firstItem="Jzo-eh-oO4" firstAttribute="top" secondItem="lIq-3E-UPr" secondAttribute="top" id="i7g-dk-8Yw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lIq-3E-UPr"/>
                     </view>

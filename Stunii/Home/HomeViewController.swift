@@ -38,6 +38,14 @@ class HomeViewController: BaseViewController {
         collectionView.delegate     = headerCollectionViewDataSource
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dealViewControllerSegue" {
+            if let deal = sender as? Deal {
+                (segue.destination as? DealsViewController)?.deal = deal
+            }
+        }
+    }
+    
     //MARK:- IBActions
     @IBAction func unwindFromSearch(_ sender: UIStoryboardSegue) {
     }
@@ -92,6 +100,30 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       let obj = viewModel.modelObjectAt(index: collectionView.tag)
+        let deal = obj?.deals[indexPath.row]
+        let isUserVip = UserData.loggedInUser?.isVIP ?? false
+        let isDealVip = deal?.isVIP ?? false
+        if isUserVip {
+            // show deals
+            performSegue(withIdentifier: "dealViewControllerSegue", sender: deal)
+        } else {
+            if isDealVip {
+                //open subscription
+                 performSegue(withIdentifier: "premiumViewControllerSegue", sender: deal)
+            } else {
+                //showDeals
+                performSegue(withIdentifier: "dealViewControllerSegue", sender: deal)
+            }
+        }
+        
+        
+        
+        
+    }
+    
 }
 
 //MARK:- ViewModel Delegate

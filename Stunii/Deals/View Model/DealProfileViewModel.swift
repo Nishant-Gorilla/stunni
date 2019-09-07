@@ -25,6 +25,9 @@ class DealProfileViewModel: NSObject {
     func getProviderName(at index: Int) -> String {
         return providers[index].name ?? ""
     }
+    func getProvider(at:Int) -> Provider {
+        return providers[at]
+    }
     
     func getProviderImageUrl(at index: Int) -> String {
         return providers[index].photoURL ?? ""
