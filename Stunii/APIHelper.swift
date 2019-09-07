@@ -87,6 +87,80 @@ class APIHelper {
         }
     }
     
+    class func getQrData(userId:String, qrCode:String, completion: @escaping completionClosure<[String:Any]>) {
+        let url = WebServicesURL.baseURL + WebServicesURL.checkQr
+        let parameters: [String: String] = [
+            "mUserid":userId,
+            "qrcodeid":qrCode
+        ]
+        APIManager.shared.getAPI(url: url, parameters: parameters) { (response, error) in
+            if let data = response as? [String: Any] {
+                completion(data, nil)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+    
+    class func redeemDeal(parameters:[String : String], completion: @escaping completionClosure<[String:Any]>) {
+        let url = WebServicesURL.baseURL + WebServicesURL.redeemDeal
+        APIManager.shared.getAPI(url: url, parameters: parameters) { (response, error) in
+            if let data = response as? [String: Any] {
+                completion(data, nil)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    class func countDealLimit(id:String, completion: @escaping completionClosure<[String:Any]>) {
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.countDealLimit)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "dealId": id
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            var _error: String?
+            var resultData: [String: Any]?
+            if (response as? HTTPURLResponse) != nil {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    resultData = json as? [String : Any]
+                }
+                catch {
+                    _error = error.localizedDescription
+                }
+            }else{
+                _error = String(describing: error)
+            }
+            if resultData == nil {
+                completion(nil,  error)
+            } else {
+                completion(resultData,  nil)
+            }
+        }
+        mData.resume()
+        }
+    
+    
+    
     class func getDealDetail(id:String, completion: @escaping completionClosure<Deal>) {
         let url = WebServicesURL.baseURL + WebServicesURL.dealDetail + "/" + id
         APIManager.shared.getAPI(url: url) { (response, error) in

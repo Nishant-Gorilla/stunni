@@ -27,12 +27,12 @@ class PaymentViewController: UIViewController {
         cardParams.cvc = textField_cvv.text!
         
         STPAPIClient.shared().createToken(withCard: cardParams) { (token, error) in
-            if let err = error {
-                showAlertWith(title: "Error", message: err.localizedDescription)
-            }
-            else if let to {
-                
-            }
+//            if let err = error {
+//                showAlertWith(title: "Error", message: err.localizedDescription)
+//            }
+//            else if let to {
+//                
+//            }
         }
     }
    

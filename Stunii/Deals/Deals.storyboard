@@ -283,8 +283,8 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tn-1f-MO2">
                                                     <rect key="frame" x="235" y="307" width="120" height="20"/>
                                                     <subviews>
-                                                        <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdY-CL-nYT" customClass="CosmosView" customModule="Cosmos">
-                                                            <rect key="frame" x="0.0" y="2.5" width="94" height="15"/>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xdY-CL-nYT" customClass="CosmosView" customModule="Cosmos">
+                                                            <rect key="frame" x="0.0" y="2.5" width="75" height="15"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -305,7 +305,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(20)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sed-Qu-UCK">
-                                                            <rect key="frame" x="96" y="0.0" width="24" height="20"/>
+                                                            <rect key="frame" x="77" y="0.0" width="43" height="20"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -877,6 +877,7 @@ Lifestyle</string>
                         <outlet property="subTitleLabel" destination="LSJ-k7-AnR" id="LnU-Ig-FEJ"/>
                         <outlet property="tableView" destination="U7k-c4-fZf" id="poD-gQ-dDO"/>
                         <outlet property="titleLabel" destination="1gw-1x-NFk" id="oNI-s9-vcB"/>
+                        <segue destination="wqs-kP-y8B" kind="show" identifier="QRScannerView" id="dks-dC-Ojg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xkz-Cd-gLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1095,8 +1096,8 @@ Lifestyle</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zTU-YU-C3M">
                                                     <rect key="frame" x="235" y="307" width="120" height="20"/>
                                                     <subviews>
-                                                        <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-TZ-XPj" customClass="CosmosView" customModule="Cosmos">
-                                                            <rect key="frame" x="0.0" y="2.5" width="94" height="15"/>
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-TZ-XPj" customClass="CosmosView" customModule="Cosmos">
+                                                            <rect key="frame" x="0.0" y="2.5" width="75" height="15"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -1117,7 +1118,7 @@ Lifestyle</string>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(20)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19x-HM-Zxs">
-                                                            <rect key="frame" x="96" y="0.0" width="24" height="20"/>
+                                                            <rect key="frame" x="77" y="0.0" width="43" height="20"/>
                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1190,6 +1191,36 @@ Lifestyle</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESq-ZL-dgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-274" y="1022"/>
+        </scene>
+        <!--Scanner View Controller-->
+        <scene sceneID="PKr-V7-qKP">
+            <objects>
+                <viewController storyboardIdentifier="QRScannerViewController" id="wqs-kP-y8B" customClass="QRScannerViewController" customModule="GroceryList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2uZ-Ju-Zh2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsT-Zw-qp2" customClass="CodeScannerView" customModule="Stunii" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rsT-Zw-qp2" firstAttribute="leading" secondItem="Jon-kz-16Y" secondAttribute="leading" id="Csn-Pb-4c2"/>
+                            <constraint firstItem="Jon-kz-16Y" firstAttribute="trailing" secondItem="rsT-Zw-qp2" secondAttribute="trailing" id="uon-Ca-rLl"/>
+                            <constraint firstItem="rsT-Zw-qp2" firstAttribute="top" secondItem="Jon-kz-16Y" secondAttribute="top" id="xN5-dy-phl"/>
+                            <constraint firstItem="Jon-kz-16Y" firstAttribute="bottom" secondItem="rsT-Zw-qp2" secondAttribute="bottom" id="ynJ-Yl-NoM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Jon-kz-16Y"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="rsT-Zw-qp2" id="RPZ-bv-pWt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6m-bQ-qzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="183"/>
         </scene>
     </scenes>
     <resources>

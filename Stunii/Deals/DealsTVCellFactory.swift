@@ -44,7 +44,7 @@ class DealsTVCellFactory: NSObject {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.similarDeals, for: indexPath) as! HomeTableViewCell
             let nib = UINib(nibName: CVCell.Name.deals, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
-            
+            cell.redeemButton.
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
             cell.collectionView.reloadData()

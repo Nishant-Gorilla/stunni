@@ -33,6 +33,14 @@ class DealsViewController: BaseViewController {
         tvCellFactory = DealsTVCellFactory(tblView: tableView)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "QRScannerView" {
+            // 0 for camera and 1 for  selected image
+            (segue.destination as? QRScannerViewController)?.type = 0
+        }
+    }
+    
+    
     @IBAction func backButtonClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -52,7 +60,16 @@ class DealsViewController: BaseViewController {
         coverImageView.kf.setImage(with: URL(string:deal?.coverPhoto ?? ""))
         tableView.reloadData()
     }
+  
     
+    @objc func redeemButtonAction(_ sender: UIButton) {
+        if deal?.scanForRedeem ?? false {
+            //Open scanner
+            performSegue(withIdentifier: "QRScannerView", sender: nil)
+        } else {
+            //Hit redeem api
+        }
+    }
     
 }
 
@@ -63,8 +80,12 @@ extension DealsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tvCellFactory.cellForRowAt(indexPath: indexPath, deal:dealsViewModel?.deal)
+        let cell = tvCellFactory.cellForRowAt(indexPath: indexPath, deal:dealsViewModel?.deal)
+        (cell as? HomeTableViewCell)?.redeemButton.addTarget(self, action: #selector(redeemButtonAction(_:)), for: .touchUpInside)
+        return cell
     }
+    
+  
 }
 
 extension DealsViewController: UITableViewDelegate {
