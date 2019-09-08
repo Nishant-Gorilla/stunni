@@ -12,12 +12,14 @@ class DealsProfileViewController:BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var dealProfileViewModel: DealProfileViewModel!
+    var category: Category?
     struct TVCellIdentifier {
         let collectionView = "cell_collView"
         let deal = "cell_deal"
     }
     struct CVCellIdentifier {
         let image = "cell_image"
+        let subCategory = "SubCategoryLabelCollectionViewCell"
     }
     
     let cellIdentifier      = TVCellIdentifier()
@@ -26,7 +28,7 @@ class DealsProfileViewController:BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoader()
-        dealProfileViewModel = DealProfileViewModel(delegate: self)
+        dealProfileViewModel = DealProfileViewModel(delegate: self, category: category!)
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -38,6 +40,10 @@ class DealsProfileViewController:BaseViewController {
             if let providerDealVC = segue.destination as? ProviderDealsViewController {
                 providerDealVC.provider = sender as! Provider
             }
+        } else if segue.identifier == "SubCategoryDealsViewControllerSegue" {
+            if let subCatVC = segue.destination as? SubCategoryDealsViewController {
+                subCatVC.subCategory = sender as! SubCategory
+            }
         }
     }
     
@@ -46,19 +52,22 @@ class DealsProfileViewController:BaseViewController {
 //MARK:- UITableViewDataSource
 extension DealsProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dealProfileViewModel.deals.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        if indexPath.row == 0 || indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.collectionView, for: indexPath) as! HomeTableViewCell
+            cell.collectionViewHeightConstraint.constant = indexPath.row == 0 ? 100 : 30
+            cell.collectionView.tag = indexPath.row
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
             cell.collectionView.tag = indexPath.row
             cell.collectionView.reloadData()
             return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.deal, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.deal, for: indexPath) as! DealTableViewCell
+        cell.set(deal: dealProfileViewModel.deals[indexPath.row])
         return cell
     }
     
@@ -67,34 +76,54 @@ extension DealsProfileViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row > 0 {
-            ViewNavigator.navigateToDealFrom(viewController: self)
+        if indexPath.row > 1 {
+            let deal = dealProfileViewModel.deals[indexPath.row - 2]
+            ViewNavigator.navigateToDealFrom(viewController: self, deal: deal)
         }
     }
 }
 
 extension DealsProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dealProfileViewModel.providersCount
+        if collectionView.tag == 0 {
+            return dealProfileViewModel.providersCount
+        } else {
+        return dealProfileViewModel.subCategories.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView.tag == 0 {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cvCellIdentifier.image, for: indexPath) as! DealsImageCollectionViewCell
         let imgUrl = dealProfileViewModel.getProviderImageUrl(at: indexPath.row)
         let name = dealProfileViewModel.getProviderName(at: indexPath.row)
       cell.set(data: ["name":name, "imageUrl": imgUrl])
     //   cell.imgView.cornerRadius = 0.0
         return cell
+    } else {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cvCellIdentifier.subCategory, for: indexPath) as! SubCategoryLabelCollectionViewCell
+        let subCategory = dealProfileViewModel.subCategories[indexPath.row]
+            cell.set(subCategory:subCategory)
+            return cell
+    }
     }
 }
 
 extension DealsProfileViewController: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.frame.height
+         let height = collectionView.frame.height
+        if collectionView.tag == 0 {
             return CGSize(width: 100, height: height)
+        }
+        return CGSize(width: 100, height: height)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 0 {
         performSegue(withIdentifier: "ProviderDealsSegue", sender: dealProfileViewModel.getProvider(at: indexPath.row))
+        } else {
+            let category = dealProfileViewModel.getCategory(at: indexPath.item)
+            performSegue(withIdentifier: "SubCategoryDealsViewControllerSegue", sender:category)
+        }
     }
 }
 

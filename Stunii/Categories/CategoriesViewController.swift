@@ -24,7 +24,7 @@ class CategoriesViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DealsProfileViewControllerSegue" {
             let vc = segue.destination as! DealsProfileViewController
-            
+            vc.category = sender as? Category
         }
     }
 }

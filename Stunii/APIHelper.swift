@@ -54,7 +54,7 @@ class APIHelper {
             }
         }
     }
-
+    
     class func isVipUser(userId:String, completion: @escaping completionClosure<Bool>) {
         let url = WebServicesURL.baseURL + WebServicesURL.isVipUser
         let param : [String: String] = ["userid":userId]
@@ -152,7 +152,7 @@ class APIHelper {
             }
         }
         mData.resume()
-        }
+    }
     
     
     
@@ -163,7 +163,7 @@ class APIHelper {
                 let dataObject = data["data"] as? [String: Any] {
                 let deal = Mapper<Deal>().map(JSONObject: dataObject)
                 if let similarDealsArray = data["category"] as? [[String: Any]] {
-                let similarDeals = Mapper<Deal>().mapArray(JSONArray:  similarDealsArray)
+                    let similarDeals = Mapper<Deal>().mapArray(JSONArray:  similarDealsArray)
                     deal?.similarDeals  = similarDeals
                 }
                 completion(deal, nil)
@@ -298,46 +298,151 @@ class APIHelper {
     
     
     
-   func getCategoryDetail(id:String, completion: @escaping completionClosure<[Deal]>) {
-    let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.categoryDetail)
-    let request = NSMutableURLRequest(url: url! as URL)
-    request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
-    request.httpMethod = "POST"
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    let parameters: [String: Any] = [
-    "categoryId": id
-    ]
-    do {
-    request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
-    } catch let error {
-    print(error.localizedDescription)
+    func getCategoryDetail(id:String, completion: @escaping completionClosure<[String: Any]>) {
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.categoryDetail)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "categoryId": id
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            var _error: String?
+            var dict: [String:Any] = [:]
+            var deals:[Deal] = []
+            var subCat: [SubCategory] = []
+            if let res = response as? HTTPURLResponse {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    if let jsonArray = (json as? [String:Any])?["deals"] as? [[String:Any]] {
+                        deals =  Mapper<Deal>().mapArray(JSONArray: jsonArray)
+                    }
+                    
+                    if let jsonArray = (json as? [String:Any])?["subCategory"] as? [[String:Any]] {
+                        subCat =  Mapper<SubCategory>().mapArray(JSONArray: jsonArray)
+                    }
+                    dict = ["deals":deals,"subCat":subCat]
+                }
+                catch {
+                    _error = error.localizedDescription
+                }
+            }else{
+                _error = String(describing: error)
+            }
+            DispatchQueue.main.async {
+                if error == nil {
+                    completion(dict,  nil)
+                } else {
+                    completion(nil,  error)
+                }
+            }
+        }
+        mData.resume()
     }
     
-    let session = URLSession.shared
     
-    let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
-    var _error: String?
-    var deals:[Deal]
-    if let res = response as? HTTPURLResponse {
-    do {
-    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
-    job =  Mapper<Deals>().mapArray(JSON: (json as! [String : Any])["data"] as! [String : Any])
+    func getSubCategoryDetail(id:String, completion: @escaping completionClosure<[Deal]>){
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.subCategoryDetail)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "subcategoryId": id
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            var _error: String?
+            
+            var deals:[Deal] = []
+            if let res = response as? HTTPURLResponse {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    if let jsonArray = (json as? [String:Any])?["data"] as? [[String:Any]] {
+                        deals =  Mapper<Deal>().mapArray(JSONArray: jsonArray)
+                    }
+                }
+                catch {
+                    _error = error.localizedDescription
+                }
+            }else{
+                _error = String(describing: error)
+            }
+            DispatchQueue.main.async {
+                if error == nil {
+                    completion(deals,  nil)
+                } else {
+                    completion(nil,  error)
+                }
+            }
+        }
+        mData.resume()
     }
-    catch {
-    _error = error.localizedDescription
+    
+    func getProviderDetail(id:String, completion: @escaping completionClosure<[Deal]>) {
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.providerDetail)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "providerId": id
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            var _error: String?
+            
+            var deals:[Deal] = []
+            if let res = response as? HTTPURLResponse {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    if let jsonArray = (json as? [String:Any])?["data"] as? [[String:Any]] {
+                        deals =  Mapper<Deal>().mapArray(JSONArray: jsonArray)
+                    }
+                }
+                catch {
+                    _error = error.localizedDescription
+                }
+            }else{
+                _error = String(describing: error)
+            }
+            DispatchQueue.main.async {
+                if error == nil {
+                    completion(deals,  nil)
+                } else {
+                    completion(nil,  error)
+                }
+            }
+        }
+        mData.resume()
     }
-    }else{
-    _error = String(describing: error)
-    }
-    if job?.id == nil {
-    completion(nil,  error)
-    } else {
-    completion(job,  error)
-    }
-    }
-    mData.resume()
-    }
+    
     
     
 }

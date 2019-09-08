@@ -8,21 +8,20 @@
 
 import Foundation
 class DealProfileViewModel: NSObject {
-    var providers: [Provider] = [] {
-        didSet {
-            delegate?.reloadData()
-        }
-    }
+    var category: Category?
+    var providers: [Provider] = []
     
-    var categories: [Category] = [] {
+    var subCategories: [SubCategory] = [] {
         didSet {
             delegate?.reloadData()
         }
     }
+    var deals:[Deal] = [] 
     
     var delegate: DealProfileViewModelDelegate?
-    init(delegate: DealProfileViewModelDelegate?) {
+    init(delegate: DealProfileViewModelDelegate?, category: Category) {
         super.init()
+        self.category = category
         self.delegate = delegate
         getData()
     }
@@ -36,6 +35,10 @@ class DealProfileViewModel: NSObject {
         return providers[at]
     }
     
+    func getCategory(at: Int) -> SubCategory {
+        return subCategories[at]
+    }
+    
     func getProviderImageUrl(at index: Int) -> String {
         return providers[index].photoURL ?? ""
     }
@@ -47,10 +50,13 @@ class DealProfileViewModel: NSObject {
             else if let providers = data {
                 self?.providers = providers
             }
-            
             // Get deals of Category
-            APIHelper.getAllCategories(completion: <#T##APIHelper.completionClosure<[Category]>##APIHelper.completionClosure<[Category]>##([Category]?, Error?) -> ()#>)
-            
+            if let id = self?.category?.id {
+                APIHelper().getCategoryDetail(id: id, completion: { [weak self] (dict, error) in
+                    self?.deals = dict?["deals"] as? [Deal] ?? []
+                    self?.subCategories = dict?["subCat"] as? [SubCategory] ?? []
+                })
+        }
         }
     }
 }

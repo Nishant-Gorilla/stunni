@@ -10,11 +10,12 @@ import UIKit
 
 class ViewNavigator {
     
-    class func navigateToDealFrom(viewController: UIViewController) {
+    class func navigateToDealFrom(viewController: UIViewController, deal:Deal?) {
         
         let dealsStoryboard = UIStoryboard(name: Storyboard.Name.deals, bundle: nil)
         let dealsVC = dealsStoryboard
-            .instantiateViewController(withIdentifier: Storyboard.Identifier.deal)
+            .instantiateViewController(withIdentifier: Storyboard.Identifier.deal) as! DealsViewController
+       dealsVC.deal = deal
         viewController.navigationController?.pushViewController(dealsVC, animated: true)
     }
     
