@@ -9,7 +9,11 @@
 import UIKit
 class OfferCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
-    var deals:[Deal] = []
+    var deals:[Deal] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +30,7 @@ class OfferCell: UITableViewCell {
 
 extension OfferCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return deals.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

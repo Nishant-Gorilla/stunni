@@ -229,5 +229,52 @@ class APIHelper {
     
     
     
+    class func sendStripeToken(_ token: String,
+                               completion: @escaping (Bool, String?)->(())) {
+        let url = "http://108.61.175.63:40117/api/"//WebServicesURL.baseURL + WebServicesURL.stripeToken
+        let params: [String: String] = [
+            "emailuser": "zazazaud@gmail.com",//UserData.loggedInUser?.email ?? "",
+            "userid": UserData.loggedInUser?._id ?? "",
+            "name": UserData.loggedInUser?.fname ?? "",
+            "mobile": UserData.loggedInUser?.phone_number ?? "",
+            "lastname": UserData.loggedInUser?.lname ?? "",
+            "type": "I",
+            "stripetoken": token
+        ]
+        
+        APIManager.shared.getAPI(url: url, parameters: params) { (response, error) in
+            if let err = error {
+                completion(false, err.localizedDescription)
+            }
+            else if let json = response as? [String: Any] {
+                print(json)
+                if let status = json["status"] as? String {
+                    if status == "0" {
+                        let message = json["message"] as? String
+                        completion(false, message ?? "")
+                    }
+                    else {
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    class func getPremiumOffers(completion: @escaping (([Deal]?, Error?)->())) {
+        let url = WebServicesURL.baseURL + WebServicesURL.premiumOffers
+        APIManager.shared.getAPI(url: url) { (response, error) in
+            if let err = error {
+                completion(nil, err)
+            }
+            else if let json = response as? [String: Any] {
+                if let dealsArray = json["premium"] as? [[String: Any]] {
+                    let deals = Mapper<Deal>().mapArray(JSONArray: dealsArray)
+                    completion(deals, nil)
+                }
+            }
+        }
+    }
     
 }

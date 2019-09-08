@@ -41,6 +41,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="paymentButtonAction:" destination="zfO-jm-yov" eventType="touchUpInside" id="VJ6-yq-BnP"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5Z-lM-Vvu">
                                 <rect key="frame" x="12" y="502" width="351" height="63"/>
@@ -86,7 +89,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="50"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                 <color key="value" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -143,7 +146,7 @@
                                                 <rect key="frame" x="183" y="0.0" width="168" height="50"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                         <color key="value" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,6 +257,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Aab-wZ-yN0"/>
                     </view>
+                    <connections>
+                        <outlet property="textField_cardNo" destination="JzO-aJ-W7D" id="fqt-Id-YhG"/>
+                        <outlet property="textField_cvv" destination="fT9-vY-vz9" id="xnN-Sn-ZmW"/>
+                        <outlet property="textField_year" destination="Nf7-AF-rMK" id="zL5-Fv-kze"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="shS-x6-a0G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

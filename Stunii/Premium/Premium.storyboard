@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kg-Kf-4h8">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="880"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="dJB-7k-ZEl">
@@ -288,11 +288,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jzo-eh-oO4" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" id="BFI-Tj-ATY"/>
+                            <constraint firstItem="lIq-3E-UPr" firstAttribute="bottom" secondItem="0kg-Kf-4h8" secondAttribute="bottom" constant="20" id="TSl-LR-p2H"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="top" secondItem="Zn8-90-Vur" secondAttribute="top" id="XSX-ZQ-Cyg"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="trailing" secondItem="lIq-3E-UPr" secondAttribute="trailing" id="Y27-8K-9gI"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" id="dFv-zd-OaY"/>
                             <constraint firstItem="lIq-3E-UPr" firstAttribute="trailing" secondItem="Jzo-eh-oO4" secondAttribute="trailing" id="hE4-Dw-CRw"/>
-                            <constraint firstItem="0kg-Kf-4h8" firstAttribute="bottom" secondItem="Zn8-90-Vur" secondAttribute="bottom" id="hQQ-CG-Gwb"/>
                             <constraint firstItem="Jzo-eh-oO4" firstAttribute="top" secondItem="lIq-3E-UPr" secondAttribute="top" id="i7g-dk-8Yw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lIq-3E-UPr"/>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ebZ-Ca-wJ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ebZ-Ca-wJ7">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1144,13 +1144,13 @@
                                 <rect key="frame" x="10" y="314" width="394" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-IX-xdd">
-                                        <rect key="frame" x="157" y="15" width="80" height="37.5"/>
+                                        <rect key="frame" x="157" y="15" width="80" height="39"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGR-Pf-cdR" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="10" y="82.5" width="374" height="40"/>
+                                        <rect key="frame" x="10" y="84" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="vGy-0K-Htv"/>
                                         </constraints>
@@ -1177,13 +1177,14 @@
                                                 <color key="value" red="0.89696687459945679" green="0.32045713067054749" blue="0.20003235340118408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="udbhateja@gmail.com"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Y3b-Rd-xbR" id="pNg-OM-oaM"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkU-Rz-FKX" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                        <rect key="frame" x="10" y="152.5" width="374" height="40"/>
+                                        <rect key="frame" x="10" y="154" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Qyt-Xx-2tp"/>
                                         </constraints>
@@ -1210,19 +1211,20 @@
                                                 <color key="value" red="0.89696687460000002" green="0.32045713069999998" blue="0.2000323534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="12345"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Y3b-Rd-xbR" id="VOm-Sr-Bpc"/>
                                         </connections>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye-close" translatesAutoresizingMaskIntoConstraints="NO" id="SuY-hM-7qy">
-                                        <rect key="frame" x="349" y="157.5" width="30" height="30"/>
+                                        <rect key="frame" x="349" y="159" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="SuY-hM-7qy" secondAttribute="height" multiplier="1:1" id="Gk3-GU-Yp0"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKU-tO-Wz5">
-                                        <rect key="frame" x="344" y="152.5" width="40" height="40"/>
+                                        <rect key="frame" x="344" y="154" width="40" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CKU-tO-Wz5" secondAttribute="height" multiplier="1:1" id="dzC-9F-fzc"/>
@@ -1232,7 +1234,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZN-Jm-t1x">
-                                        <rect key="frame" x="245" y="196.5" width="139" height="32"/>
+                                        <rect key="frame" x="250" y="198" width="134" height="33"/>
                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
                                         <state key="normal" title="Forgot Password?">
                                             <color key="titleColor" red="0.89696687460000002" green="0.32045713069999998" blue="0.2000323534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1242,7 +1244,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHc-tU-oWQ">
-                                        <rect key="frame" x="10" y="248.5" width="374" height="50"/>
+                                        <rect key="frame" x="10" y="251" width="374" height="50"/>
                                         <color key="backgroundColor" red="0.89697247739999997" green="0.3203901649" blue="0.19823873040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="V4F-ah-BjD"/>

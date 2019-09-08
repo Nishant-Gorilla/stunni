@@ -23,6 +23,8 @@ struct WebServicesURL {
     static let jobDetail = "jobDetail"
     static let dealDetail = "dealDetail"
     static let isVipUser = "isVip"
+    static let stripeToken = "vipsubscription"
+    static let premiumOffers = "premiumOffers"
     
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"

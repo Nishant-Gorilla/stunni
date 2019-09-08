@@ -10,10 +10,20 @@ import UIKit
 
 class PremiumViewController: UIViewController {
 
+    private var deals: [Deal] = []  {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        APIHelper.getPremiumOffers(completion: {
+            [weak self] (data, error) in
+            self?.deals = data ?? []
+        })
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {
@@ -35,7 +45,7 @@ extension PremiumViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_offers", for: indexPath) as! OfferCell
-            cell.collectionView.reloadData()
+            cell.deals = deals
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_details", for: indexPath)
