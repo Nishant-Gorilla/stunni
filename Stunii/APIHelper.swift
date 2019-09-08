@@ -526,4 +526,46 @@ class APIHelper {
         }
         mData.resume()
     }
+    
+    func postDemand(parameters:[String: Any], completion: @escaping completionClosure<[String:Any]>) {
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.demandDeal )
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            var _error: String?
+            var dict: [String:Any] = [:]
+            if let res = response as? HTTPURLResponse {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    if let  data = json as? [String:Any] {
+                        dict = data
+                    }
+                }
+                catch {
+                    _error = error.localizedDescription
+                }
+            }else{
+                _error = String(describing: error)
+            }
+            DispatchQueue.main.async {
+                if error == nil {
+                    completion(dict,  nil)
+                } else {
+                    completion(nil,  error)
+                }
+            }
+        }
+        mData.resume()
+    }
+    
 }

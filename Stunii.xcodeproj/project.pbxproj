@@ -995,7 +995,7 @@
 				CODE_SIGN_ENTITLEMENTS = Stunii/Stunii.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4RGGU9DS65;
+				DEVELOPMENT_TEAM = ET5U3VXV98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1022,7 +1022,7 @@
 				CODE_SIGN_ENTITLEMENTS = Stunii/Stunii.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4RGGU9DS65;
+				DEVELOPMENT_TEAM = ET5U3VXV98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -171,7 +171,7 @@ class DealsViewController: BaseViewController {
             } else {
                 showAlertWith(title: nil, message: "OOPS YOU HAVE JUST MISSED THIS ONE. KEEP A LOOK FOR NEXT ONE.")
             }
-        } else if deal?.redeemType == "unlimited"  { //
+        } else  { //
             showStuId()
             //redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
         }

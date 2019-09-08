@@ -33,6 +33,7 @@ struct WebServicesURL {
     static let categoryDetail = "categoryDetail"
     static let subCategoryDetail = "subcategoryDetail"
     static let providerDetail = "providerDetail"
+    static let demandDeal = "demandDeal"
     
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"

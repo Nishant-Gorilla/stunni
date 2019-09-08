@@ -26,7 +26,7 @@
                   moduleName = "Stunii"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Auth/SignupUIModel.swift"
-                  timestampString = "589648023.199038"
+                  timestampString = "589663415.739995"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "224"
@@ -41,7 +41,7 @@
                   moduleName = "Stunii"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Auth/SignupUIModel.swift"
-                  timestampString = "589648023.201889"
+                  timestampString = "589663415.742797"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "225"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/APIHelper.swift"
-            timestampString = "589648022.663023"
+            timestampString = "589664209.673465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/APIHelper.swift"
-            timestampString = "589648022.663177"
+            timestampString = "589664209.673725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663269"
+            timestampString = "589664209.673839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.6633281"
+            timestampString = "589664209.67392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.66342"
+            timestampString = "589664209.6740119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -234,13 +234,105 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663473"
+            timestampString = "589664209.674078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "239"
             endingLineNumber = "239"
             landmarkName = "CellSelling"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stunii.CellSelling.sellingFastLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/DealsViewController.swift"
+                  timestampString = "589663415.801903"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "239"
+                  endingLineNumber = "239"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stunii.CellSelling.sellingFastLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/DealsViewController.swift"
+                  timestampString = "589663415.804081"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "239"
+                  endingLineNumber = "239"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stunii.CellSelling.sellingFastLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/DealsViewController.swift"
+                  timestampString = "589663415.806264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stunii.CellSelling.sellingFastLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/DealsViewController.swift"
+                  timestampString = "589663415.808533"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "239"
+                  endingLineNumber = "239"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stunii.CellSelling.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Stunii.CellSelling"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/DealsViewController.swift"
+                  timestampString = "589663415.810743"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "239"
+                  endingLineNumber = "239"
+                  offsetFromSymbolStart = "321">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stunii.CellSelling.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Stunii.CellSelling&gt;"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/DealsViewController.swift"
+                  timestampString = "589663415.812764"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "239"
+                  endingLineNumber = "239"
+                  offsetFromSymbolStart = "241">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -250,7 +342,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663524"
+            timestampString = "589664209.674141"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
@@ -282,7 +374,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663619"
+            timestampString = "589664209.67423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
@@ -298,7 +390,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663712"
+            timestampString = "589664209.674296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
@@ -314,7 +406,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663799"
+            timestampString = "589664209.674365"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "181"
@@ -330,7 +422,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/Deals/DealsViewController.swift"
-            timestampString = "589648022.663883"
+            timestampString = "589664209.674433"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -362,12 +454,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/APIHelper.swift"
-            timestampString = "589648022.664168"
+            timestampString = "589664209.67453"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "361"
             endingLineNumber = "361"
-            landmarkName = "getSubCategoryDetail(id:completion:)"
+            landmarkName = "stuId(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -378,12 +470,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/APIHelper.swift"
-            timestampString = "589648022.664326"
+            timestampString = "589664209.674597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "380"
             endingLineNumber = "380"
-            landmarkName = "getSubCategoryDetail(id:completion:)"
+            landmarkName = "stuId(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -394,13 +486,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/APIHelper.swift"
-            timestampString = "589648022.664439"
+            timestampString = "589664209.674661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "426"
             endingLineNumber = "426"
-            landmarkName = "getProviderDetail(id:completion:)"
+            landmarkName = "getCategoryDetail(id:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Stunii.APIHelper.getCategoryDetail(id: Swift.String, completion: (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/APIHelper.swift"
+                  timestampString = "589663415.857517"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "426"
+                  endingLineNumber = "426"
+                  offsetFromSymbolStart = "3475">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[2] = Value Promoted from Box&gt; of closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Stunii.APIHelper.getCategoryDetail(id: Swift.String, completion: (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Stunii"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/APIHelper.swift"
+                  timestampString = "589663415.859697"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "427"
+                  endingLineNumber = "427"
+                  offsetFromSymbolStart = "147">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -426,7 +550,7 @@
                   moduleName = "Stunii"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/View%20Model/ProviderDealsViewModel.swift"
-                  timestampString = "589648023.364463"
+                  timestampString = "589663415.864682"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
@@ -441,7 +565,7 @@
                   moduleName = "Stunii"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/inderjeet/Desktop/Stunii/Stunii/Deals/View%20Model/ProviderDealsViewModel.swift"
-                  timestampString = "589648023.3677959"
+                  timestampString = "589663415.866714"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
@@ -474,12 +598,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stunii/APIHelper.swift"
-            timestampString = "589648022.66462"
+            timestampString = "589664209.674771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "410"
             endingLineNumber = "410"
-            landmarkName = "getProviderDetail(id:completion:)"
+            landmarkName = "getCategoryDetail(id:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -496,6 +620,38 @@
             startingLineNumber = "79"
             endingLineNumber = "79"
             landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stunii/Demand/DemandViewController.swift"
+            timestampString = "589664209.674863"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "setTextFieldTitleFormatter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stunii/Deals/DealsViewController.swift"
+            timestampString = "589664209.6749769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "redeemButtonAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
