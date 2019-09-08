@@ -298,5 +298,46 @@ class APIHelper {
     
     
     
+   func getCategoryDetail(id:String, completion: @escaping completionClosure<[Deal]>) {
+    let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.categoryDetail)
+    let request = NSMutableURLRequest(url: url! as URL)
+    request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+    request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    let parameters: [String: Any] = [
+    "categoryId": id
+    ]
+    do {
+    request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+    } catch let error {
+    print(error.localizedDescription)
+    }
+    
+    let session = URLSession.shared
+    
+    let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+    var _error: String?
+    var deals:[Deal]
+    if let res = response as? HTTPURLResponse {
+    do {
+    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+    job =  Mapper<Deals>().mapArray(JSON: (json as! [String : Any])["data"] as! [String : Any])
+    }
+    catch {
+    _error = error.localizedDescription
+    }
+    }else{
+    _error = String(describing: error)
+    }
+    if job?.id == nil {
+    completion(nil,  error)
+    } else {
+    completion(job,  error)
+    }
+    }
+    mData.resume()
+    }
+    
     
 }

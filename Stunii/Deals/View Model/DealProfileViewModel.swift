@@ -13,6 +13,13 @@ class DealProfileViewModel: NSObject {
             delegate?.reloadData()
         }
     }
+    
+    var categories: [Category] = [] {
+        didSet {
+            delegate?.reloadData()
+        }
+    }
+    
     var delegate: DealProfileViewModelDelegate?
     init(delegate: DealProfileViewModelDelegate?) {
         super.init()
@@ -40,6 +47,10 @@ class DealProfileViewModel: NSObject {
             else if let providers = data {
                 self?.providers = providers
             }
+            
+            // Get deals of Category
+            APIHelper.getAllCategories(completion: <#T##APIHelper.completionClosure<[Category]>##APIHelper.completionClosure<[Category]>##([Category]?, Error?) -> ()#>)
+            
         }
     }
 }

@@ -45,6 +45,10 @@ class CategoryViewModel: NSObject {
         return categories[row].photoURL ?? ""
     }
     
+    func getCategory(at: Int) -> Category {
+        return categories[at]
+    }
+    
     
     
 }

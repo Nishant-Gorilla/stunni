@@ -23,9 +23,13 @@ struct WebServicesURL {
     static let jobDetail = "jobDetail"
     static let dealDetail = "dealDetail"
     static let isVipUser = "isVip"
+<<<<<<< Updated upstream
     static let checkQr = "checkQr"
     static let countDealLimit = "countDealLimit"
     static let redeemDeal = "redeemed"
+=======
+    static let categoryDetail = "categoryDetail"
+>>>>>>> Stashed changes
     
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"
