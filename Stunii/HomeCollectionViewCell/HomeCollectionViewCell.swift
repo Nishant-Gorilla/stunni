@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 class HomeCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var imgView: VIPImageView!
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -26,6 +26,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         imgView.kf.setImage(with:  URL(string: deal.coverPhoto ?? ""))
         titleLabel.text = deal.title ?? ""
         descriptionLabel.text = deal.desc ?? ""
+        
+        imgView.setVIPImage(deal: deal)
     }
 
 }

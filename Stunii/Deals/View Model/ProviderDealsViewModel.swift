@@ -13,11 +13,17 @@ class ProviderDealsViewModel: NSObject {
             delegate?.reloadData()
         }
     }
-    var deals:[Deal] = []
+    var deals:[Deal] = [] {
+        didSet {
+            delegate?.reloadData()
+        }
+    }
     var delegate: ProviderDealsViewModelDelegate?
-    init(delegate: ProviderDealsViewModelDelegate?) {
+    init(delegate: ProviderDealsViewModelDelegate?, provider: Provider?) {
         super.init()
+        self.provider = provider
         self.delegate = delegate
+        
         getData()
     }
     var providerDealsCount: Int {
@@ -28,14 +34,15 @@ class ProviderDealsViewModel: NSObject {
     }
   
     private func getData() {
-//        APIHelper.getAllProviders{ [weak self] (data, error) in
-//            if let err = error {
-//                self?.delegate?.didReceive(error: err)
-//            }
-//            else if let providers = data {
-//                self?.providers = providers
-//            }
-//        }
+        APIHelper().getProviderDetail(id: provider?.id ?? ""){ [weak self] (data, error) in
+            if let err = error {
+                self?.delegate?.didReceive(error: err)
+            }
+            else if let deals = data {
+                self?.deals = deals
+            }
+        }
+
     }
 }
 

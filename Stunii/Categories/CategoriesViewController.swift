@@ -20,6 +20,13 @@ class CategoriesViewController: BaseViewController {
         showLoader()
         categoryViewModel = CategoryViewModel(delegate: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DealsProfileViewControllerSegue" {
+            let vc = segue.destination as! DealsProfileViewController
+            vc.category = sender as? Category
+        }
+    }
 }
 
 extension CategoriesViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -39,6 +46,12 @@ extension CategoriesViewController: UICollectionViewDataSource, UICollectionView
         let width = (collectionView.frame.width/2.0) - 1.0
         return CGSize(width: width, height: width)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let category = categoryViewModel.getCategory(at: indexPath.item)
+        performSegue(withIdentifier: "DealsProfileViewControllerSegue", sender: category)
+    }
+    
 }
 
 //MARK:- ViewModel Delegate

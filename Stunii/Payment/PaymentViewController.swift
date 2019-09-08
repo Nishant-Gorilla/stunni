@@ -14,6 +14,10 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var textField_cardNo: UITextField!
     @IBOutlet weak var textField_year: UITextField!
     @IBOutlet weak var textField_cvv: UITextField!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    
+    var price: String = "\(POUNDS_STRING) 9.99"
     
     private var datePicker: DatePickerView!
     private var stripeToken: String? {
@@ -28,6 +32,8 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
         datePicker = DatePickerView()
         textField_year.inputView = datePicker
         textField_year.delegate = self
+        
+        priceLabel.text = "ANNUAL DEAL PACKAGE \(price) YEARLY"
     }
     
     @IBAction func paymentButtonAction(_ sender: Any) {

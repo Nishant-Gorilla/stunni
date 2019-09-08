@@ -27,8 +27,11 @@ class ProviderDealsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // showLoader()
-        viewModel = ProviderDealsViewModel(delegate: self)
+        providerImageView.kf.indicatorType = .activity
+        providerImageView.kf.setImage(with: URL(string: provider?.photoURL ?? ""))
+        offerFromLabel.text = "Offer From " + (provider?.name ?? "")
+        showLoader()
+        viewModel = ProviderDealsViewModel(delegate: self, provider: provider)
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -39,11 +42,12 @@ class ProviderDealsViewController: BaseViewController {
 //MARK:- UITableViewDataSource
 extension ProviderDealsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.deals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.deal, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.deal, for: indexPath) as! DealTableViewCell
+        cell.set(deal: viewModel.deals[indexPath.item])
         return cell
     }
     
@@ -52,9 +56,8 @@ extension ProviderDealsViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row > 0 {
-            //ViewNavigator.navigateToDealFrom(viewController: self)
-        }
+        let deal = viewModel.deals[indexPath.row]
+        ViewNavigator.navigateToDealFrom(viewController: self, deal: deal)
     }
 }
 

@@ -30,7 +30,7 @@ class LoginViewController:BaseViewController {
                             self?.hideLoader()
                             if error == nil && user != nil {
                                 APIHelper.isVipUser(userId: user!._id, completion: { (isVip, error) in
-                                    user!.isVIP = false//isVip
+                                    user!.isVIP = isVip
                                     UserData.loggedInUser = user!
                                     MainScreenUtility.setHomeAsRoot()
                                 })

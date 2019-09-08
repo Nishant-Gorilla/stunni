@@ -11,7 +11,7 @@ class DealsCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var coverImageView: VIPImageView!
     @IBOutlet weak var photoImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +24,8 @@ class DealsCollectionViewCell: UICollectionViewCell {
         coverImageView.kf.setImage(with:  URL(string: deal.coverPhoto ?? ""))
         titleLabel.text = deal.title ?? ""
         descLabel.text = deal.desc ?? ""
+        
+        coverImageView.setVIPImage(deal: deal)
     }
 
 }

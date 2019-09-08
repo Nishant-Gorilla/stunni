@@ -45,28 +45,28 @@
                                     <action selector="paymentButtonAction:" destination="zfO-jm-yov" eventType="touchUpInside" id="VJ6-yq-BnP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5Z-lM-Vvu">
-                                <rect key="frame" x="12" y="502" width="351" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="M5Z-lM-Vvu">
+                                <rect key="frame" x="12" y="482" width="351" height="103"/>
                                 <attributedString key="attributedText">
                                     <fragment content="You are about to unlock a vault of insane offers, discounts and freebies. By confirming payment you are agreeing to our ">
                                         <attributes>
                                             <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" metaFont="system" size="14"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="terms of service. ">
                                         <attributes>
                                             <color key="NSColor" red="0.87169486284255981" green="0.3188575804233551" blue="0.19317471981048584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" metaFont="system" size="14"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="This is an annual rolling subscription, you will be charged on a yearly basis unless cancelled.">
                                         <attributes>
                                             <color key="NSColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" metaFont="system" size="14"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -245,19 +245,20 @@
                             <constraint firstItem="Oow-3Z-p5u" firstAttribute="top" secondItem="GJe-A6-DMd" secondAttribute="bottom" constant="-16" id="M78-hW-eEY"/>
                             <constraint firstItem="d3i-59-Vpc" firstAttribute="top" secondItem="Oow-3Z-p5u" secondAttribute="bottom" constant="50" id="MXf-Z9-vlF"/>
                             <constraint firstItem="Oow-3Z-p5u" firstAttribute="leading" secondItem="GJe-A6-DMd" secondAttribute="trailing" constant="-77" id="OtC-1g-KLl"/>
-                            <constraint firstItem="DFw-VX-TvG" firstAttribute="top" secondItem="M5Z-lM-Vvu" secondAttribute="bottom" constant="40" id="QV9-LT-bX4"/>
+                            <constraint firstItem="DFw-VX-TvG" firstAttribute="top" secondItem="M5Z-lM-Vvu" secondAttribute="bottom" constant="20" id="QV9-LT-bX4"/>
                             <constraint firstItem="EdF-KC-HNu" firstAttribute="top" secondItem="Aab-wZ-yN0" secondAttribute="top" constant="24" id="S0M-Pw-c7X"/>
                             <constraint firstItem="DFw-VX-TvG" firstAttribute="leading" secondItem="xXM-ri-RTr" secondAttribute="leading" constant="12" id="Y1J-cu-ooh"/>
                             <constraint firstItem="Aab-wZ-yN0" firstAttribute="trailing" secondItem="d3i-59-Vpc" secondAttribute="trailing" constant="12" id="bNx-Vd-hrJ"/>
                             <constraint firstItem="Aab-wZ-yN0" firstAttribute="trailing" secondItem="DFw-VX-TvG" secondAttribute="trailing" constant="12" id="eav-rA-c4p"/>
                             <constraint firstItem="Oow-3Z-p5u" firstAttribute="centerX" secondItem="xXM-ri-RTr" secondAttribute="centerX" id="fgJ-gQ-O2P"/>
-                            <constraint firstItem="M5Z-lM-Vvu" firstAttribute="top" secondItem="tT6-T7-DyZ" secondAttribute="bottom" constant="40" id="hCp-zs-MqB"/>
-                            <constraint firstItem="tT6-T7-DyZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="d3i-59-Vpc" secondAttribute="bottom" constant="40" id="hda-wW-9tM"/>
+                            <constraint firstItem="M5Z-lM-Vvu" firstAttribute="top" secondItem="tT6-T7-DyZ" secondAttribute="bottom" constant="20" id="hCp-zs-MqB"/>
+                            <constraint firstItem="tT6-T7-DyZ" firstAttribute="top" secondItem="d3i-59-Vpc" secondAttribute="bottom" constant="40" id="hda-wW-9tM"/>
                             <constraint firstItem="Aab-wZ-yN0" firstAttribute="bottom" secondItem="DFw-VX-TvG" secondAttribute="bottom" constant="12" id="uBq-FK-mXW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Aab-wZ-yN0"/>
                     </view>
                     <connections>
+                        <outlet property="priceLabel" destination="tT6-T7-DyZ" id="PuL-5y-m2v"/>
                         <outlet property="textField_cardNo" destination="JzO-aJ-W7D" id="fqt-Id-YhG"/>
                         <outlet property="textField_cvv" destination="fT9-vY-vz9" id="xnN-Sn-ZmW"/>
                         <outlet property="textField_year" destination="Nf7-AF-rMK" id="zL5-Fv-kze"/>

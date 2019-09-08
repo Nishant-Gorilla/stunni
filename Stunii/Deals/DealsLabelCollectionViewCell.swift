@@ -8,6 +8,10 @@
 
 import UIKit
 
-class DealsLabelCollectionViewCell: UICollectionViewCell {
+class SubCategoryLabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
+    
+    func set(subCategory: SubCategory) {
+        label.text = subCategory.subCategoryName ?? ""
+    }
 }

@@ -60,7 +60,7 @@ extension PremiumViewController: UITableViewDataSource {
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_price", for: indexPath) as! PriceCell
-            cell.lbl_price.text = POUNDS_STRING + price + "/year"
+            cell.lbl_price.text =  price + "/year"
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifiers.similarDeals", for: indexPath) as UITableViewCell
