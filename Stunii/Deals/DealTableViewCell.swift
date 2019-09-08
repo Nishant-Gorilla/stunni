@@ -29,10 +29,12 @@ class DealTableViewCell: UITableViewCell {
         providerImageView.kf.setImage(with: URL(string: deal.photo ?? ""))
         ratingCountLabel.text = String(deal.ratings ?? 0)
         
-        var openDay = ""
+        var openDay = "Everyday"
         let startDay = deal.startDay ?? ""
         let endDay = deal.endDay ?? ""
+        if (startDay+endDay).trimSpace() != "" {
         openDay = startDay + " to " + endDay
+        }
         openingDayLabel.text = openDay
         distanceLabel.text = "\(deal.distance ?? 0)mi"
         providerTitle.text = deal.provider?.name ?? "Provider"

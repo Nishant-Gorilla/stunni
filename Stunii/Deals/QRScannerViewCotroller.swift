@@ -35,13 +35,6 @@ class QRScannerViewController: UIViewController {
                                       AVMetadataObject.ObjectType.qr]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // ----THIS IS FOR TESTING REMOVE THIS CODE ON REAL DEVICE TESTING
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.qrCodeCompletion?("8pE4rubnObhP4u35xZxaoqawRDoML04T")
-            self.dismiss(animated: true, completion: nil) //-------
-        }
-     
-        
         type == 0 ? scanFromCamera() : scannFromImage()
     }
     
