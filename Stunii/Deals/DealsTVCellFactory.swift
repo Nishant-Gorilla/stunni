@@ -11,6 +11,8 @@ import UIKit
 class DealsTVCellFactory: NSObject {
     
     private var tableView: UITableView!
+    typealias _actionHanlder = (Deal) -> ()
+    var rowActionHandler: _actionHanlder?
     private var deal: Deal?
     private struct CellIdentifiers {
         let text = "cell_text"
@@ -24,36 +26,69 @@ class DealsTVCellFactory: NSObject {
         tableView = tblView
     }
     
-    func cellForRowAt(indexPath: IndexPath, deal:Deal? = nil) -> UITableViewCell {
+    func cellForRowAt(indexPath: IndexPath, deal:Deal? = nil, rowAction:_actionHanlder? = nil) -> UITableViewCell {
+        self.rowActionHandler = rowAction
+        let isUnlimitedDeals = deal?.redeemType == "unlimited"
         self.deal = deal
         let cellIdentifiers = CellIdentifiers()
+        if isUnlimitedDeals {
+            switch indexPath.row {
+                case 0:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.text, for: indexPath) as! CellText
+                    cell.dealDescriptionLabel.text = deal?.desc ?? ""
+                return cell
+                case 1:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.map, for: indexPath) as! CellMap
+                    //mapView
+                    if let location = deal?.location {
+                        cell.set(location: location, address: deal?.address)
+                    }
+                    return cell
+                case 2:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.similarDeals, for: indexPath) as! HomeTableViewCell
+                let nib = UINib(nibName: CVCell.Name.deals, bundle: nil)
+                cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
+                let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
+                cell.redeemButton.setTitle(buttonTitle, for: .normal)
+                cell.collectionView.dataSource = self
+                cell.collectionView.delegate = self
+                cell.collectionView.reloadData()
+                cell.label.text = "Similar Deals"
+                return cell
+                default:
+                return UITableViewCell()
+            }
+        } else {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.sellingFast, for: indexPath) as! CellSelling
-        
-//fireHotImageView
-//sellingFastLabel
-//leftLabel
-//cell.leftCountLabel.text = deal.
+cell.leftCountLabel.text = String(deal?.limitTotal ?? 0 )
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.text, for: indexPath) as! CellText
                cell.dealDescriptionLabel.text = deal?.desc ?? ""
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.map, for: indexPath) as! CellMap
+            if let location = deal?.location {
+                cell.set(location: location, address: deal?.address)
+            }
+            //mapView
+            return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.similarDeals, for: indexPath) as! HomeTableViewCell
             let nib = UINib(nibName: CVCell.Name.deals, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
-            cell.redeemButton.
+              let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
+            cell.redeemButton.setTitle(buttonTitle, for: .normal)
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
             cell.collectionView.reloadData()
             cell.label.text = "Similar Deals"
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.map, for: indexPath) as! CellMap
-            //mapView
-            return cell
+            return UITableViewCell()
+        }
         }
     }
     
@@ -78,5 +113,8 @@ extension DealsTVCellFactory: UICollectionViewDataSource, UICollectionViewDelega
         let height = collectionView.frame.size.height
         let width = collectionView.frame.size.width/2.25
         return CGSize(width: width, height: height)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        rowActionHandler?(deal!.similarDeals[indexPath.row])
     }
 }

@@ -11,6 +11,8 @@ import AVFoundation
 
 class QRScannerViewController: UIViewController {
     @IBOutlet weak var containerView: CodeScannerView!
+    typealias qrCodeResponse = (String?) -> ()
+    var qrCodeCompletion: qrCodeResponse?
     var type: Int = 0
     
     var captureSession = AVCaptureSession()
@@ -33,6 +35,13 @@ class QRScannerViewController: UIViewController {
                                       AVMetadataObject.ObjectType.qr]
     override func viewDidLoad() {
         super.viewDidLoad()
+        // ----THIS IS FOR TESTING REMOVE THIS CODE ON REAL DEVICE TESTING
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.qrCodeCompletion?("8pE4rubnObhP4u35xZxaoqawRDoML04T")
+            self.dismiss(animated: true, completion: nil) //-------
+        }
+     
+        
         type == 0 ? scanFromCamera() : scannFromImage()
     }
     
@@ -67,6 +76,9 @@ class QRScannerViewController: UIViewController {
         present(alertPrompt, animated: true, completion: nil)
     }
     
+    @IBAction func canceButtonAction(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         videoPreviewLayer?.frame = CGRect(x: 0, y: 0, width: containerView.layer.frame.width, height: containerView.layer.frame.height)
@@ -150,7 +162,8 @@ class QRScannerViewController: UIViewController {
         if qrCodeLink=="" {
             showAlert(message: "No information found")
         }else{
-            showAlert(message: qrCodeLink)
+            qrCodeCompletion?(qrCodeLink)
+            dismiss(animated: true, completion: nil)
         }
     }
     
@@ -160,7 +173,6 @@ class QRScannerViewController: UIViewController {
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-    
     
 }
 

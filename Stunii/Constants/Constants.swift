@@ -38,7 +38,7 @@ struct WebServicesURL {
 }
 
 class UserData {
-    static var loggedInUser: User?
+    static var loggedInUser: User? 
 }
 
 //MARK:- Storyboard ID

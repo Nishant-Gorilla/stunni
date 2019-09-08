@@ -22,7 +22,7 @@ class DealsViewModel: NSObject {
         getData(id: dealId)
     }
    
-    private func getData(id:String) {
+    func getData(id:String) {
         APIHelper.getDealDetail(id: id){ [weak self] (data, error) in
             if let err = error {
                 self?.delegate?.didReceive(error: err)

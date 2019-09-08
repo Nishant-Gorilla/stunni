@@ -17,7 +17,9 @@ class BaseViewController: UIViewController {
     }
     
     func showLoader() {
-        loader.showOnKeyWindow()
+        DispatchQueue.main.async {
+            self.loader.showOnKeyWindow()
+        }
     }
     
     func hideLoader() {

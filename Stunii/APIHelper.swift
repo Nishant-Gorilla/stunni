@@ -114,17 +114,12 @@ class APIHelper {
     }
     
     
-    
-    
-    
-    
     class func countDealLimit(id:String, completion: @escaping completionClosure<[String:Any]>) {
         let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.countDealLimit)
         let request = NSMutableURLRequest(url: url! as URL)
         request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let parameters: [String: Any] = [
             "dealId": id
         ]
