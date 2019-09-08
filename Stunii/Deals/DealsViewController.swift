@@ -134,15 +134,17 @@ class DealsViewController: BaseViewController {
     }
     
     @objc func catchACab() {
-        let cabAppUrl = URL(string:"https://apps.apple.com/gb/app/abbey-taxis-chester/id1314307916")
         let number = "01244318318"
+        if let url = URL(string: "tel://\(number)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+    }
+    
+    @objc func downloadApp() {
+         let cabAppUrl = URL(string:"https://apps.apple.com/gb/app/abbey-taxis-chester/id1314307916")
         if UIApplication.shared.canOpenURL(cabAppUrl!)
         {
             UIApplication.shared.open(cabAppUrl!, options: [:], completionHandler: nil)
-        } else {
-            if let url = URL(string: "tel://\(number)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
         }
     }
     
@@ -152,25 +154,34 @@ class DealsViewController: BaseViewController {
             performSegue(withIdentifier: "QRScannerView", sender: nil)
         } else {
             APIHelper.countDealLimit(id: (self.deal?.id ?? ""), completion: {[weak self] (data, error) in
-                self?.showAlertWith(title: "Success", message: "Saved Successfully")
+                //self?.showAlertWith(title: "Success", message: "Saved Successfully")
                 self?.dealsViewModel?.getData(id:self?.deal?.id ?? "")
             })
+            showStuId()
         }
     }
     
     
     @objc func redeemButtonAction(_ sender: UIButton) {
         // check limit
+       
         if deal?.redeemType == "limited"  {
             if (deal?.limitTotal ?? 0) > 0 {
                 redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
             } else {
-                showAlertWith(title: nil, message: "Deal limit crossed, not available for redemption")
+                showAlertWith(title: nil, message: "OOPS YOU HAVE JUST MISSED THIS ONE. KEEP A LOOK FOR NEXT ONE.")
             }
         } else if deal?.redeemType == "unlimited"  { //
-            redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
+            showStuId()
+            //redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
         }
       
+    }
+    
+    private func showStuId() {
+        let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
+        vc.willPop = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -197,6 +208,7 @@ extension DealsViewController: UITableViewDataSource {
         (cell as? HomeTableViewCell)?.redeemButton.addTarget(self, action: #selector(redeemButtonAction(_:)), for: .touchUpInside)
         (cell as? CellMap)?.getMeThereButton.addTarget(self, action: #selector(openMapForPlace), for: .touchUpInside)
           (cell as? CellMap)?.catchACabButton.addTarget(self, action: #selector(catchACab), for: .touchUpInside)
+        (cell as? CellMap)?.downloadAppButton.addTarget(self, action: #selector(downloadApp), for: .touchUpInside)
         return cell
     }
     
@@ -235,6 +247,7 @@ class CellMap: UITableViewCell {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var getMeThereButton: UIButton!
     @IBOutlet weak var catchACabButton: UIButton!
+    @IBOutlet weak var downloadAppButton: UIButton!
     
     func set(location:Location, address:Address?) {
         let lat = location.latitude ?? 0

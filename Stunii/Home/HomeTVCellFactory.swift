@@ -27,7 +27,7 @@ class HomeTVCellFactory: NSObject {
         if data.isFeatured {
             let nib = UINib(nibName: CVCell.Name.home, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.home)
-            cell.label.isHidden = false
+            cell.label.isHidden = true
             cell.layoutIfNeeded()
         }
         

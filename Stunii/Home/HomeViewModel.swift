@@ -48,7 +48,7 @@ class HomeViewModel: NSObject {
     
     func itemWidthWithCollectionView(width: CGFloat, for index: Int) -> CGFloat {
         if modelObjectAt(index: index)?.isFeatured ?? false {
-            return width/1.15
+            return (width - 10.0)
         }
         return (width - 30)/2.10
         

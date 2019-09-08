@@ -33,17 +33,23 @@ struct StuId {
 }
 
 class ProfileViewController: BaseViewController {
-    @IBOutlet weak var coverPicImageView: UIImageView!
     
+    @IBOutlet weak var coverPicImageView: UIImageView!
     @IBOutlet weak var verifiedUntilLabel: UILabel!
     @IBOutlet weak var courseLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var universityNameLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
     
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
+    
+    var willPop: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
+        
         APIHelper.stuId(completion: {
             data in
             DispatchQueue.main.async {
@@ -66,6 +72,11 @@ class ProfileViewController: BaseViewController {
         let name = (user.fname ?? "") + " " + (user.lname ?? "")
         userNameLabel.text = name
         universityNameLabel.text = user.institution ?? ""
+        
+        if willPop {
+            backButton.isHidden = false
+            doneButton.isHidden = false
+        }
     }
 
     @IBAction func imageTapped(_ sender: Any) {
@@ -73,6 +84,10 @@ class ProfileViewController: BaseViewController {
         imageController.delegate = self
         imageController.sourceType = .photoLibrary
         present(imageController, animated: true, completion: nil)
+    }
+    
+    @IBAction func backTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
 }

@@ -690,7 +690,7 @@
                                             <outlet property="sellingFastLabel" destination="0vc-mw-tIw" id="K4F-2O-hsr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_map" rowHeight="645" id="cw9-oZ-akL" customClass="CellMap" customModule="Stunii" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_map" rowHeight="645" id="cw9-oZ-akL" customClass="CellMap" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="797" width="500" height="645"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cw9-oZ-akL" id="rKq-v4-5OK">
@@ -698,7 +698,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2G-Au-x0w">
-                                                    <rect key="frame" x="30" y="285" width="565" height="60"/>
+                                                    <rect key="frame" x="30" y="285" width="440" height="60"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="direction" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-2K-ON0">
                                                             <rect key="frame" x="16" y="12" width="36" height="36"/>
@@ -724,10 +724,10 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-jz-9Xz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="565" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="440" height="60"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UD2-S2-Z3U">
-                                                            <rect key="frame" x="0.0" y="0.0" width="565" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="440" height="60"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -749,46 +749,73 @@
                                                         <constraint firstItem="JhI-jz-9Xz" firstAttribute="leading" secondItem="V2G-Au-x0w" secondAttribute="leading" id="uCX-83-UkZ"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sja-Yg-Srx">
-                                                    <rect key="frame" x="237.5" y="365" width="150" height="40"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rNz-Mj-Aqp">
+                                                    <rect key="frame" x="27" y="375" width="446" height="50"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qra-9r-iUW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="20"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="cmX-JL-68b">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="1MQ-rc-mny"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="TO8-1i-lXU"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kHR-7X-5Tm">
+                                                                    <rect key="frame" x="25" y="0.0" width="193" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="18"/>
+                                                                    <state key="normal" title="Catch a Cab"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QT7-td-UHg">
+                                                            <rect key="frame" x="228" y="0.0" width="218" height="20"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taxi" translatesAutoresizingMaskIntoConstraints="NO" id="UJf-QO-NSv">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="20" id="VF7-W1-Q0n"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="qes-CG-UoP"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sja-Yg-Srx">
+                                                                    <rect key="frame" x="25" y="0.0" width="193" height="20"/>
+                                                                    <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="18"/>
+                                                                    <state key="normal" title="Download the App"/>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="2dj-ZY-2I0"/>
-                                                        <constraint firstAttribute="height" constant="40" id="6rK-s2-QPN"/>
+                                                        <constraint firstAttribute="height" constant="50" id="1f7-mh-Mdn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="25"/>
-                                                    <state key="normal" title="Catch a Cab"/>
-                                                </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="UJf-QO-NSv">
-                                                    <rect key="frame" x="202.5" y="372.5" width="25" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="25" id="VF7-W1-Q0n"/>
-                                                        <constraint firstAttribute="height" constant="25" id="qes-CG-UoP"/>
-                                                    </constraints>
-                                                </imageView>
+                                                </stackView>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rEw-NQ-VBO">
-                                                    <rect key="frame" x="0.0" y="15" width="625" height="240"/>
+                                                    <rect key="frame" x="0.0" y="15" width="500" height="240"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="240" id="kQ9-0P-bfB"/>
                                                     </constraints>
                                                 </mapView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="rNz-Mj-Aqp" firstAttribute="leading" secondItem="rKq-v4-5OK" secondAttribute="leadingMargin" constant="12" id="5HM-hR-Hfk"/>
                                                 <constraint firstAttribute="trailing" secondItem="rEw-NQ-VBO" secondAttribute="trailing" id="7EO-ZU-hJC"/>
                                                 <constraint firstItem="rEw-NQ-VBO" firstAttribute="leading" secondItem="rKq-v4-5OK" secondAttribute="leading" id="C1F-VI-2jg"/>
                                                 <constraint firstAttribute="trailing" secondItem="V2G-Au-x0w" secondAttribute="trailing" constant="30" id="EV7-ie-Y0i"/>
                                                 <constraint firstItem="V2G-Au-x0w" firstAttribute="leading" secondItem="rKq-v4-5OK" secondAttribute="leading" constant="30" id="LoY-WY-MhG"/>
                                                 <constraint firstItem="rEw-NQ-VBO" firstAttribute="top" secondItem="rKq-v4-5OK" secondAttribute="top" constant="15" id="O4B-fs-YNL"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sja-Yg-Srx" secondAttribute="bottom" constant="12" id="Uaw-F5-FKm"/>
-                                                <constraint firstItem="Sja-Yg-Srx" firstAttribute="top" secondItem="V2G-Au-x0w" secondAttribute="bottom" constant="20" id="Zv9-WB-3al"/>
-                                                <constraint firstItem="Sja-Yg-Srx" firstAttribute="leading" secondItem="UJf-QO-NSv" secondAttribute="trailing" constant="10" id="cPx-fW-y5U"/>
-                                                <constraint firstItem="UJf-QO-NSv" firstAttribute="centerY" secondItem="Sja-Yg-Srx" secondAttribute="centerY" id="f2T-9b-B3c"/>
-                                                <constraint firstItem="Sja-Yg-Srx" firstAttribute="centerX" secondItem="rKq-v4-5OK" secondAttribute="centerX" id="nJ2-OU-IaB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rNz-Mj-Aqp" secondAttribute="trailing" constant="12" id="WqT-vm-925"/>
+                                                <constraint firstItem="rNz-Mj-Aqp" firstAttribute="centerX" secondItem="rKq-v4-5OK" secondAttribute="centerX" id="akM-Yd-eqE"/>
+                                                <constraint firstItem="rNz-Mj-Aqp" firstAttribute="top" secondItem="V2G-Au-x0w" secondAttribute="bottom" constant="30" id="gYF-M7-5KU"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rNz-Mj-Aqp" secondAttribute="bottom" constant="20" id="kUF-H7-R6x"/>
                                                 <constraint firstItem="V2G-Au-x0w" firstAttribute="top" secondItem="rEw-NQ-VBO" secondAttribute="bottom" constant="30" id="rKm-Xj-dYV"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="catchACabButton" destination="Sja-Yg-Srx" id="xZI-Zi-cvW"/>
+                                            <outlet property="catchACabButton" destination="kHR-7X-5Tm" id="liz-sn-YNk"/>
+                                            <outlet property="downloadAppButton" destination="Sja-Yg-Srx" id="xmh-3H-RAF"/>
                                             <outlet property="getMeThereButton" destination="UD2-S2-Z3U" id="gv6-fr-TAQ"/>
                                             <outlet property="mapView" destination="rEw-NQ-VBO" id="oXc-RM-F3u"/>
                                         </connections>
@@ -1227,6 +1254,7 @@
         <image name="location" width="58" height="59"/>
         <image name="rating" width="55" height="53"/>
         <image name="share" width="54" height="58"/>
+        <image name="taxi" width="62" height="56"/>
         <image name="timer" width="102" height="115"/>
     </resources>
 </document>

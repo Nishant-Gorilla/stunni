@@ -29,6 +29,8 @@ class HomeCVCellFactory: NSObject {
                  indexPath: IndexPath, with data: Deal) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CVCell.Identifier.deal, for: indexPath) as! DealsCollectionViewCell
         cell.set(deal: data)
+        cell.titleLabel.text = data.provider?.name
+        cell.descLabel.text = data.meta_title ?? ""
         return cell
     }
     
