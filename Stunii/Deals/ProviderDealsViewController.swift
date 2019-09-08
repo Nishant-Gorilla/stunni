@@ -53,7 +53,7 @@ extension ProviderDealsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row > 0 {
-            ViewNavigator.navigateToDealFrom(viewController: self)
+            //ViewNavigator.navigateToDealFrom(viewController: self)
         }
     }
 }
