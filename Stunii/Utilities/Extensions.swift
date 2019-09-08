@@ -23,8 +23,9 @@ extension UIViewController {
             let action = UIAlertAction(title: _title, style: .default, handler: { (_) in
                 clickHandler?()
             })
-            alertController.addAction(action)
             alertController.addAction(cancelAction)
+            alertController.addAction(action)
+
             alertController.preferredAction = action
         }
         else {

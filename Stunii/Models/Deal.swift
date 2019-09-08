@@ -49,7 +49,8 @@ class Deal: Mappable {
     var similarDeals:[Deal] = []
     var metaTtitle: String?
     var metaDescription: String?
-    
+    var startDay: String?
+    var endDay: String?
     
     
 
@@ -60,7 +61,7 @@ class Deal: Mappable {
         provider <- map["_provider"]
         title  <- map["title"]
         desc  <- map["desc"]
-        location <- map[""]
+        location <- map["location"]
         address  <- map["address"]
         accommodation_email <- map["accommodation_email "]
         scanForRedeem <- map["scanForRedeem"]
@@ -93,6 +94,8 @@ class Deal: Mappable {
         type <- map["type"]
         legal <- map["legal"]
         similarDeals <- map["category"]
+        startDay <- map["startDay"]
+        endDay <- map["endDay"]
         photo = WebServicesURL.ImagesBase.home + id! + "/o/" + (photo ?? "")
         coverPhoto  = WebServicesURL.ImagesBase.home + id! + "/o/" + (coverPhoto ?? "")
     }

@@ -25,6 +25,9 @@ struct WebServicesURL {
     static let isVipUser = "isVip"
     static let stripeToken = "vipsubscription"
     static let premiumOffers = "premiumOffers"
+    static let checkQr = "checkQr"
+    static let countDealLimit = "countDealLimit"
+    static let redeemDeal = "redeemed"
     
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"
@@ -37,7 +40,7 @@ struct WebServicesURL {
 }
 
 class UserData {
-    static var loggedInUser: User?
+    static var loggedInUser: User? 
 }
 
 //MARK:- Storyboard ID

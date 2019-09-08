@@ -89,6 +89,8 @@
 		96A2C54F2320192100B1FA57 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C54E2320192100B1FA57 /* Job.swift */; };
 		96A2C55123201D1A00B1FA57 /* JobViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C55023201D1A00B1FA57 /* JobViewModel.swift */; };
 		96A2C55323201EE700B1FA57 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */; };
+		96A875E92324382D009251A4 /* QRScannerViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A875E82324382D009251A4 /* QRScannerViewCotroller.swift */; };
+		96A875EC232439E3009251A4 /* CodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A875EB232439E3009251A4 /* CodeScannerView.swift */; };
 		96A94BA82323E31900758850 /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A94BA72323E31900758850 /* OfferCell.swift */; };
 		96C6CA2F2320276E009093A7 /* JobDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6CA2E2320276E009093A7 /* JobDetailViewModel.swift */; };
 		96C6CA312320294E009093A7 /* JobDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6CA302320294E009093A7 /* JobDetailTableViewCell.swift */; };
@@ -200,6 +202,8 @@
 		96A2C54E2320192100B1FA57 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		96A2C55023201D1A00B1FA57 /* JobViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewModel.swift; sourceTree = "<group>"; };
 		96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		96A875E82324382D009251A4 /* QRScannerViewCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewCotroller.swift; sourceTree = "<group>"; };
+		96A875EB232439E3009251A4 /* CodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScannerView.swift; sourceTree = "<group>"; };
 		96A94BA72323E31900758850 /* OfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
 		96C6CA2E2320276E009093A7 /* JobDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailViewModel.swift; sourceTree = "<group>"; };
 		96C6CA302320294E009093A7 /* JobDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -228,6 +232,7 @@
 		6B0B959122C52CEE002687D9 /* Deals */ = {
 			isa = PBXGroup;
 			children = (
+				96A875EA232439CF009251A4 /* CustomView */,
 				967FDBC12318523C00BD473A /* View Model */,
 				6B0B958B22C516E1002687D9 /* DealsViewController.swift */,
 				96FB41F9232188AD00A31DC6 /* ProviderDealsViewController.swift */,
@@ -236,6 +241,7 @@
 				6B0B958D22C51709002687D9 /* Deals.storyboard */,
 				6B39DDD522CA78EF00B64C9B /* DealsLabelCollectionViewCell.swift */,
 				6B39DDD722CA7B3A00B64C9B /* DealsImageCollectionViewCell.swift */,
+				96A875E82324382D009251A4 /* QRScannerViewCotroller.swift */,
 			);
 			path = Deals;
 			sourceTree = "<group>";
@@ -557,6 +563,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		96A875EA232439CF009251A4 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				96A875EB232439E3009251A4 /* CodeScannerView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		96A94BA62323E2E900758850 /* CellClassed */ = {
 			isa = PBXGroup;
 			children = (
@@ -752,6 +766,7 @@
 				96A2C55323201EE700B1FA57 /* JobTableViewCell.swift in Sources */,
 				6BBBCAA622D9D18700AFEB77 /* JobsViewController.swift in Sources */,
 				6B7AF73522DA249900CD5427 /* SearchTableViewViewController.swift in Sources */,
+				96A875EC232439E3009251A4 /* CodeScannerView.swift in Sources */,
 				6B0B959D22C54030002687D9 /* DealsCollectionViewCell.swift in Sources */,
 				6B39DDD422CA693E00B64C9B /* CategoryCollectionViewCell.swift in Sources */,
 				6B0D23BA22BF9D7B007908F1 /* AppDelegate.swift in Sources */,
@@ -766,6 +781,7 @@
 				96FB41FC2321897C00A31DC6 /* ProviderDealsViewModel.swift in Sources */,
 				6B0ECB7022C68AB1006F8C1C /* HomeTableViewCell.swift in Sources */,
 				6B7D0AA222DCFA6000E708B6 /* Deal.swift in Sources */,
+				96A875E92324382D009251A4 /* QRScannerViewCotroller.swift in Sources */,
 				6BCE1A3022C8B9E30062C69C /* DealsProfileViewController.swift in Sources */,
 				6B0B959822C53CC6002687D9 /* PremiumViewController.swift in Sources */,
 				6B724D9222BFB00600C25E6A /* BaseViewController.swift in Sources */,
