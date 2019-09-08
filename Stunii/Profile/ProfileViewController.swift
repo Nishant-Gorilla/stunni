@@ -7,8 +7,32 @@
 //
 
 import UIKit
+import SDWebImage
+struct StuId {
+    
+    init(date: String) {
+        _createdAt = date
+        setFormat()
+    }
+    
+    var _createdAt: String?
+    var verifiedUntil: String?
+    var photo: String?
+    
+    mutating func setFormat() {
+        //2019-06-24T04:32:41.430Z
+        let array = _createdAt?.split(separator: "T")
+        if (array?.count)! >= 1 {
+            verifiedUntil = String((array?[0])!)
+        }
+        else {
+            verifiedUntil = _createdAt
+        }
+        
+    }
+}
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
     @IBOutlet weak var coverPicImageView: UIImageView!
     
     @IBOutlet weak var verifiedUntilLabel: UILabel!
@@ -16,10 +40,25 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var universityNameLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
-        // Do any additional setup after loading the view.
+        APIHelper.stuId(completion: {
+            data in
+            DispatchQueue.main.async {
+                self.verifiedUntilLabel.text = "Verfied until: " + (data?.verifiedUntil ?? "")
+                if let _photo = data?.photo {
+                    let url = WebServicesURL.ImagesBase.students + UserData.loggedInUser!._id + "/o/" + _photo
+                    self.setImage(url: url)
+                }
+            }
+        })
+    }
+    
+    func setImage(url: String) {
+        guard let _url = URL(string: url) else {return}
+        userProfileImageView.sd_setImage(with: _url, completed: nil)
     }
     
     func setData() {
@@ -29,4 +68,35 @@ class ProfileViewController: UIViewController {
         universityNameLabel.text = user.institution ?? ""
     }
 
+    @IBAction func imageTapped(_ sender: Any) {
+        let imageController = UIImagePickerController()
+        imageController.delegate = self
+        imageController.sourceType = .photoLibrary
+        present(imageController, animated: true, completion: nil)
+    }
+    
 }
+
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            showLoader()
+            APIManager.shared.multipart(image: image, completion: { success in
+                self.hideLoader()
+                if let _success = success, _success == true {
+                    DispatchQueue.main.async {
+                        self.userProfileImageView.image = image
+                    }
+                }
+            })
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+

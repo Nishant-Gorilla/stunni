@@ -190,7 +190,7 @@ extension DealsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvCellFactory.cellForRowAt(indexPath: indexPath, deal:dealsViewModel?.deal, rowAction:{ deal in
             if let dealId =  deal.id {
-                showLoader()
+                self.showLoader()
                 self.dealsViewModel?.getData(id: dealId)
             }
             })

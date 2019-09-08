@@ -28,6 +28,8 @@ struct WebServicesURL {
     static let checkQr = "checkQr"
     static let countDealLimit = "countDealLimit"
     static let redeemDeal = "redeemed"
+    static let stuId = "students/" + (UserData.loggedInUser?._id)!
+    static let uploadImage = "studentSqid?studentId=" + (UserData.loggedInUser?._id)!
     
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"

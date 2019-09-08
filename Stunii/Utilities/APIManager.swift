@@ -58,6 +58,46 @@ class APIManager: NSObject {
             completion(response.value, response.error)
         }
     }
+    
+    func multipart(image: UIImage, completion: @escaping ((Bool?)->())) {
+        let imgData = image.jpegData(compressionQuality: 0.40)
+        
+//        let parameters = ["studentId": UserData.loggedInUser!._id] //Optional for extra parameter
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(imgData!, withName: "photo",fileName: "file.jpg", mimeType: "image/jpg")
+//            for (key, value) in parameters {
+//                multipartFormData.append(value!.data(using: String.Encoding.utf8)!,
+//                                         withName: key)
+//            } //Optional for extra parameters
+        },
+                         to: WebServicesURL.baseURL+WebServicesURL.uploadImage)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    print("Upload Progress: \(progress.fractionCompleted)")
+                })
+                
+                upload.responseJSON { response in
+                    if let json = response.result.value as? [String: Any] {
+                        if let status = json["status"] as? Int {
+                            if status == 200 {
+                                completion(true)
+                                return
+                            }
+                        }
+                    }
+                    completion(false)
+                }
+                
+            case .failure(let encodingError):
+                print(encodingError)
+                completion(false)
+            }
+        }
+    }
 }
 
 

@@ -13,14 +13,12 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
     let dataArray: [(title: String, image: UIImage)] = [
-        ("Near Me", #imageLiteral(resourceName: "near")),
-        ("My Deals", #imageLiteral(resourceName: "my-deals")),
-        ("Hot Deals", #imageLiteral(resourceName: "hot-deals")),
         ("Facebook", #imageLiteral(resourceName: "facebook")),
         ("Twitter", #imageLiteral(resourceName: "twitter")),
         ("Instagram", #imageLiteral(resourceName: "intagram")),
         ("Terms of Service", #imageLiteral(resourceName: "terms-of-service")),
         ("Privacy Policy", #imageLiteral(resourceName: "privacy")),
+        ("Cancel Premium", #imageLiteral(resourceName: "terms-of-service")),
         ("Logout", #imageLiteral(resourceName: "logout"))
     ]
     
@@ -47,24 +45,30 @@ extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let homeVC = (sideMenuController?.rootViewController as! UINavigationController).viewControllers[0]
         
-        if indexPath.row <= 2 {
-            ViewNavigator.navigateToDealsProfile(from: homeVC)
-        }
-        else if indexPath.row == 3 {
+        if indexPath.row == 0 {
             let fbUrl = "https://www.facebook.com/STUNiiAPP/"
             Utilities.openUrlInSafari(string: fbUrl)
         }
-        else if indexPath.row == 4 {
+        else if indexPath.row == 1 {
             let twitterUrl
                 = "https://twitter.com/stuniiapp?lang=en"
             Utilities.openUrlInSafari(string: twitterUrl)
         }
-        else if indexPath.row == 5 {
+        else if indexPath.row == 2 {
             let instaUrl
                 = "https://www.instagram.com/stuniiapp/?hl=en"
             Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 8 {
+        else if indexPath.row == 3 {
+            
+        }
+        else if indexPath.row == 4 {
+            
+        }
+        else if indexPath.row == 5 {
+            
+        }
+        else if indexPath.row == 6 {
             MainScreenUtility.setSignupAsRoot()
         }
         sideMenuController?.toggleLeftView()

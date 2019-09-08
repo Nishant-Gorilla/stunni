@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PremiumViewController: UIViewController {
+class PremiumViewController: BaseViewController {
 
     private var deals: [Deal] = []  {
         didSet {
@@ -16,13 +16,21 @@ class PremiumViewController: UIViewController {
         }
     }
     
+    private var price: String = "9.99"
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showLoader()
         APIHelper.getPremiumOffers(completion: {
             [weak self] (data, error) in
-            self?.deals = data ?? []
+            self?.hideLoader()
+            if let (_deals, _price) = data as? ([Deal]?, String?) {
+                self?.price = _price ?? "\(POUNDS_STRING)9.99"
+                self?.deals = _deals ?? []
+            }
         })
     }
     
@@ -51,7 +59,8 @@ extension PremiumViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell_details", for: indexPath)
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_price", for: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell_price", for: indexPath) as! PriceCell
+            cell.lbl_price.text = POUNDS_STRING + price + "/year"
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifiers.similarDeals", for: indexPath) as UITableViewCell

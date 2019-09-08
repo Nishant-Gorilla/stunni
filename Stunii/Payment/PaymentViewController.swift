@@ -9,7 +9,7 @@
 import UIKit
 import Stripe
 
-class PaymentViewController: UIViewController, UITextFieldDelegate {
+class PaymentViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField_cardNo: UITextField!
     @IBOutlet weak var textField_year: UITextField!
@@ -36,16 +36,20 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
             showAlertWith(title: "Error!", message: "Please enter all card details.")
             return}
         
+        showLoader()
+        
+        
         let calendar = Calendar.current
         let cardParams = STPCardParams()
-        cardParams.number = "4242424242424242"//textField_cardNo.text!
-        cardParams.expMonth = 12//UInt(calendar.component(.month, from: datePicker.date))
-        cardParams.expYear = 2021//UInt(calendar.component(.year, from: datePicker.date))
-        cardParams.cvc = "3456"//textField_cvv.text!
+        cardParams.number = textField_cardNo.text!
+        cardParams.expMonth = UInt(calendar.component(.month, from: datePicker.date))
+        cardParams.expYear = UInt(calendar.component(.year, from: datePicker.date))
+        cardParams.cvc = textField_cvv.text!
         
         STPAPIClient.shared().createToken(withCard: cardParams) {
             [weak self] (token, error) in
             if let err = error {
+                self?.hideLoader()
                 self?.showAlertWith(title: "Error", message: err.localizedDescription)
             }
             else if let _token = token {
@@ -57,6 +61,18 @@ class PaymentViewController: UIViewController, UITextFieldDelegate {
     private func hitStripeAPI() {
         APIHelper.sendStripeToken(stripeToken!, completion: {
             [weak self] (success, errorMessage) in
+            self?.hideLoader()
+            if success {
+                UserData.loggedInUser?.isVIP = true
+                let alert = UIAlertController(title: "Success", message: errorMessage ?? "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    MainScreenUtility.setHomeAsRoot()
+                }))
+                self?.present(alert, animated: true, completion: nil)
+            }
+            else if let msg = errorMessage {
+                self?.showAlertWith(title: "Error!", message: msg)
+            }
         })
     }
    

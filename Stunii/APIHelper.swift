@@ -300,7 +300,7 @@ class APIHelper {
     
     class func sendStripeToken(_ token: String,
                                completion: @escaping (Bool, String?)->(())) {
-        let url = "http://108.61.175.63:40117/api/"//WebServicesURL.baseURL + WebServicesURL.stripeToken
+        let url = "http://108.61.175.63:40117/api/vipsubscription"//WebServicesURL.baseURL + WebServicesURL.stripeToken
         let params: [String: String] = [
             "emailuser": "zazazaud@gmail.com",//UserData.loggedInUser?.email ?? "",
             "userid": UserData.loggedInUser?._id ?? "",
@@ -323,7 +323,7 @@ class APIHelper {
                         completion(false, message ?? "")
                     }
                     else {
-                        
+                        completion(true, "Payment Successfull!")
                     }
                 }
             }
@@ -331,19 +331,64 @@ class APIHelper {
     }
     
     
-    class func getPremiumOffers(completion: @escaping (([Deal]?, Error?)->())) {
+    class func getPremiumOffers(completion: @escaping ((Any?, Error?)->())) {
         let url = WebServicesURL.baseURL + WebServicesURL.premiumOffers
         APIManager.shared.getAPI(url: url) { (response, error) in
             if let err = error {
                 completion(nil, err)
             }
             else if let json = response as? [String: Any] {
+                var result: ([Deal]?, String?) = (nil, nil)
                 if let dealsArray = json["premium"] as? [[String: Any]] {
                     let deals = Mapper<Deal>().mapArray(JSONArray: dealsArray)
-                    completion(deals, nil)
+                    result.0 = deals
                 }
+                else if let price = json["premiumPrice"] as? String {
+                    result.1 = price
+                }
+                completion(result, nil)
+            }
+            completion(nil, nil)
+        }
+    }
+    
+    
+    class func stuId(completion: @escaping (StuId?)->()) {
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.stuId)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(UserData.loggedInUser!.access_token!,
+                         forHTTPHeaderField: "access_token")
+        
+//        do {
+//            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            if let _ = response as? HTTPURLResponse {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    if let _json = json as? [String: Any],
+                        let createAt = _json["created_at"] as? String {
+                        var stuId = StuId(date: createAt)
+                        stuId.photo = _json["photo"] as? String
+                        completion(stuId)
+                    }
+                }
+                catch {
+                    completion(nil)
+                }
+            }else{
+                completion(nil)
             }
         }
+        mData.resume()
     }
     
 }

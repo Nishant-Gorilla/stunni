@@ -35,6 +35,10 @@ extension OfferCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell_deals", for: indexPath) as! DealsCollectionViewCell
+        cell.set(deal: deals[indexPath.row])
+        cell.descLabel.text = deals[indexPath.row].meta_title
+        cell.descLabel.textColor = .black
+        cell.titleLabel.textColor = .black
         return cell
     }
     
@@ -47,5 +51,10 @@ extension OfferCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLay
 }
 
 extension OfferCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = UIApplication.shared.keyWindow?.rootViewController {
+             ViewNavigator.navigateToDealFrom(viewController: vc, deal: deals[indexPath.row])
+        }
+       
+    }
 }
