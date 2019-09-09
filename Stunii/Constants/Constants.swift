@@ -16,6 +16,7 @@ struct WebServicesURL {
     
     static let signup  : String = "students/signup"
     static let signin  : String = "students/signin"
+    static let forgotPassword: String = "students/forgot"
     static let home    : String = "home/hero"
     static let category: String = "categories"
     static let providers = "allProvider"

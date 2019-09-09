@@ -175,7 +175,49 @@ class APIHelper {
     }
     
     
-    
+    class func forgotPassword(email: String,
+                              completion: @escaping ((Bool, String?)->())) {
+        let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.forgotPassword)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters: [String: Any] = [
+            "email": email
+        ]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        let session = URLSession.shared
+        
+        let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            if let __ = response as? HTTPURLResponse {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
+                    if let _json = json as? [String: Any] {
+                        if let status = _json["success"] as? Int {
+                            if status == 0 {
+                                completion(false, _json["message"] as? String)
+                            }
+                        }
+                        else if let _ = _json["token"] {
+                            completion(true, "Password reset successfully.")
+                        }
+                    }
+                }
+                catch {
+                   completion(false, error.localizedDescription)
+                }
+            }else{
+               completion(false, error?.localizedDescription)
+            }
+        }
+        mData.resume()
+    }
     
     class func login(email: String, password: String, completion: @escaping completionClosure<User>) {
         let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.signin)
