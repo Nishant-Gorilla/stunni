@@ -20,15 +20,14 @@ class JobsDetailViewController: BaseViewController {
     @IBOutlet weak var companyImageView: UIImageView!
     
     @IBOutlet weak var applyButton: UIButton!
-    
+    var isLoadingData = true
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.hideExtraRows()
         showLoader()
         jobDetailViewModel = JobDeailViewModel(jobId:job.id ?? "", delegate: self)
-
-        
     }
     
     private func setData() {
@@ -73,7 +72,7 @@ class JobsDetailViewController: BaseViewController {
 //MARK:- UITableViewDataSource
 extension JobsDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return isLoadingData ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,6 +85,7 @@ extension JobsDetailViewController: UITableViewDataSource {
 //MARK:- ViewModel Delegate
 extension JobsDetailViewController: JobDetailViewModelDelegate {
     func reloadData() {
+        isLoadingData = false
         DispatchQueue.main.async {
             self.setData()
             self.tableView.reloadData()
@@ -95,6 +95,7 @@ extension JobsDetailViewController: JobDetailViewModelDelegate {
     }
     
     func didReceive(error: Error) {
+        isLoadingData = false
         hideLoader()
         showAlertWith(title: "Error!", message: error.localizedDescription)
     }

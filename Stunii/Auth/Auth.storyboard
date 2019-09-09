@@ -1177,6 +1177,7 @@
                                                 <color key="value" red="0.89696687459945679" green="0.32045713067054749" blue="0.20003235340118408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email Address"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="inderjeet@gmail.com"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Y3b-Rd-xbR" id="pNg-OM-oaM"/>
@@ -1210,6 +1211,7 @@
                                                 <color key="value" red="0.89696687460000002" green="0.32045713069999998" blue="0.2000323534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Password"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="12345678"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="Y3b-Rd-xbR" id="VOm-Sr-Bpc"/>

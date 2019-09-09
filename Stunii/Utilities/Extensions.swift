@@ -36,7 +36,12 @@ extension UIViewController {
     }
 }
 
-
+//MARK:- Table view extension
+extension UITableView {
+    func hideExtraRows() {
+        self.tableFooterView = UIView()
+    }
+}
 
 //MARK:- UIView
 extension UIView {

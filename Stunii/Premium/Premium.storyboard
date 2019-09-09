@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXO-eH-OqC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXO-eH-OqC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0kg-Kf-4h8">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="880"/>
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="843"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="dJB-7k-ZEl">
@@ -55,33 +55,8 @@
                                         <constraint firstItem="Nsw-8I-muy" firstAttribute="centerY" secondItem="dJB-7k-ZEl" secondAttribute="centerY" id="wva-L0-bDN"/>
                                     </constraints>
                                 </view>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="fhB-oL-P7e">
-                                    <rect key="frame" x="0.0" y="818" width="500" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSI-UJ-dGV">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
-                                            <color key="backgroundColor" red="0.89362686869999997" green="0.32522648570000001" blue="0.1978814602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="19"/>
-                                            <state key="normal" title="HELL YEAH! UPGRADE ME">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="upgradeButtonAction:" destination="jXO-eH-OqC" eventType="touchUpInside" id="icw-qb-EMR"/>
-                                                <segue destination="VeK-5w-b9v" kind="show" id="SZs-xc-eGZ"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="VSI-UJ-dGV" secondAttribute="trailing" id="OtR-x2-3HL"/>
-                                        <constraint firstItem="VSI-UJ-dGV" firstAttribute="top" secondItem="fhB-oL-P7e" secondAttribute="top" id="dBs-4X-m2r"/>
-                                        <constraint firstAttribute="bottom" secondItem="VSI-UJ-dGV" secondAttribute="bottom" id="e5R-w8-X89"/>
-                                        <constraint firstItem="VSI-UJ-dGV" firstAttribute="leading" secondItem="fhB-oL-P7e" secondAttribute="leading" id="tJk-GX-YIs"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_details" rowHeight="150" id="TzI-yd-Rbu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_details" rowHeight="150" id="TzI-yd-Rbu">
                                         <rect key="frame" x="0.0" y="268" width="500" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TzI-yd-Rbu" id="mYw-wq-X0X">
@@ -89,12 +64,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ah7-A9-ZI7">
-                                                    <rect key="frame" x="8" y="8" width="609" height="19.5"/>
+                                                    <rect key="frame" x="8" y="8" width="484" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Save upto #300 every month " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYZ-Ht-Gqu">
-                                                    <rect key="frame" x="8" y="42.5" width="609" height="92.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Save up to £300 every month by simply upgrading" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYZ-Ht-Gqu">
+                                                    <rect key="frame" x="8" y="42.5" width="484" height="92.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -118,7 +93,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIP Ofefrs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-7Z-1SI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIP Offers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-7Z-1SI">
                                                     <rect key="frame" x="8" y="8" width="484" height="79"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
@@ -162,7 +137,7 @@
                                             <outlet property="collectionView" destination="sKT-5h-1lN" id="17u-XO-6Ep"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_price" rowHeight="150" id="Nlh-69-ex2" customClass="PriceCell" customModule="Stunii" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_price" rowHeight="150" id="Nlh-69-ex2" customClass="PriceCell" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="668" width="500" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nlh-69-ex2" id="HDp-Hs-0Yw">
@@ -177,7 +152,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTd-9q-7rj">
-                                                    <rect key="frame" x="15" y="40" width="470" height="98"/>
+                                                    <rect key="frame" x="15" y="40" width="595" height="98"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Yearly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs3-98-nnZ">
                                                             <rect key="frame" x="8" y="8" width="50" height="22"/>
@@ -287,16 +262,39 @@
                                     <constraint firstItem="aro-cX-HPn" firstAttribute="centerY" secondItem="Jzo-eh-oO4" secondAttribute="centerY" id="pdg-9s-XMd"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2w-Q3-xFH">
+                                <rect key="frame" x="5" y="845" width="490" height="50"/>
+                                <color key="backgroundColor" red="0.89362686869999997" green="0.32522648570000001" blue="0.1978814602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="s0x-cp-2wu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="19"/>
+                                <state key="normal" title="HELL YEAH! UPGRADE ME">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="upgradeButtonAction:" destination="jXO-eH-OqC" eventType="touchUpInside" id="90k-1G-hMC"/>
+                                    <segue destination="VeK-5w-b9v" kind="show" id="huF-s5-86Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="lIq-3E-UPr" firstAttribute="bottom" secondItem="t2w-Q3-xFH" secondAttribute="bottom" constant="5" id="5a5-gu-tEM"/>
                             <constraint firstItem="Jzo-eh-oO4" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" id="BFI-Tj-ATY"/>
-                            <constraint firstItem="lIq-3E-UPr" firstAttribute="bottom" secondItem="0kg-Kf-4h8" secondAttribute="bottom" constant="20" id="TSl-LR-p2H"/>
+                            <constraint firstAttribute="trailing" secondItem="t2w-Q3-xFH" secondAttribute="trailing" constant="5" id="IrC-Oj-rRz"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="top" secondItem="Zn8-90-Vur" secondAttribute="top" id="XSX-ZQ-Cyg"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="trailing" secondItem="lIq-3E-UPr" secondAttribute="trailing" id="Y27-8K-9gI"/>
                             <constraint firstItem="0kg-Kf-4h8" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" id="dFv-zd-OaY"/>
                             <constraint firstItem="lIq-3E-UPr" firstAttribute="trailing" secondItem="Jzo-eh-oO4" secondAttribute="trailing" id="hE4-Dw-CRw"/>
+                            <constraint firstItem="t2w-Q3-xFH" firstAttribute="top" secondItem="0kg-Kf-4h8" secondAttribute="bottom" constant="2" id="hhh-ju-V9o"/>
                             <constraint firstItem="Jzo-eh-oO4" firstAttribute="top" secondItem="lIq-3E-UPr" secondAttribute="top" id="i7g-dk-8Yw"/>
+                            <constraint firstItem="t2w-Q3-xFH" firstAttribute="leading" secondItem="lIq-3E-UPr" secondAttribute="leading" constant="5" id="u5r-lN-LcV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lIq-3E-UPr"/>
                     </view>

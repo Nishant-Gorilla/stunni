@@ -36,6 +36,9 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
         priceLabel.text = "ANNUAL DEAL PACKAGE \(price) YEARLY"
     }
     
+    @IBAction func cancelButtonAction(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     @IBAction func paymentButtonAction(_ sender: Any) {
         
         guard validate() else {

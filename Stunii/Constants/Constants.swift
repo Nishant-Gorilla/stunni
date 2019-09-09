@@ -67,7 +67,7 @@ struct Storyboard {
 struct Regx {
     static let email = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-+]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$"
     static let name = "\\w{7,18}"
-    static let phone = "[0-9]{10}$"
+    static let phone = "[0-9]{11}$"
 }
 
 struct InputLengthConstraints {
