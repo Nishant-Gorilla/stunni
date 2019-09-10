@@ -15,5 +15,6 @@ target 'Stunii' do
   pod 'LGSideMenuController', '2.1'
   pod 'RSLoadingView', '1.1.3'
   pod 'Cosmos', '19.0.3'
-  
-end
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+  end
