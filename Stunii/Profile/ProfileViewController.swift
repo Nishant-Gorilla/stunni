@@ -23,7 +23,9 @@ struct StuId {
         //2019-06-24T04:32:41.430Z
         let array = _createdAt?.split(separator: "T")
         if (array?.count)! >= 1 {
-            verifiedUntil = String((array?[0])!)
+            let dateString = String((array?[0])!)
+            let dateArray = dateString.split(separator: "-")
+            verifiedUntil = dateArray.reversed().joined(separator: "/")
         }
         else {
             verifiedUntil = _createdAt
@@ -34,6 +36,7 @@ struct StuId {
 
 class ProfileViewController: BaseViewController {
     
+    @IBOutlet var imgViewVerified: UIImageView!
     @IBOutlet weak var coverPicImageView: UIImageView!
     @IBOutlet weak var verifiedUntilLabel: UILabel!
     @IBOutlet weak var courseLabel: UILabel!
@@ -56,7 +59,7 @@ class ProfileViewController: BaseViewController {
                 self.verifiedUntilLabel.text = "Verfied until: " + (data?.verifiedUntil ?? "")
                 if let _photo = data?.photo {
                     let url = WebServicesURL.ImagesBase.students + UserData.loggedInUser!._id + "/o/" + _photo
-                    self.setImage(url: url)
+                    //self.setImage(url: url)
                 }
             }
         })
@@ -72,6 +75,10 @@ class ProfileViewController: BaseViewController {
         let name = (user.fname ?? "") + " " + (user.lname ?? "")
         userNameLabel.text = name
         universityNameLabel.text = user.institution ?? ""
+        userProfileImageView.image = UIImage(named: "AppIcon40x40")
+        
+        imgViewVerified.image = imgViewVerified.image!.withRenderingMode(.alwaysTemplate)
+        imgViewVerified.tintColor = .white
         
         if willPop {
             backButton.isHidden = false
