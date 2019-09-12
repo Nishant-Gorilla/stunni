@@ -148,16 +148,23 @@ class SignupViewController: BaseViewController {
     }
     
     @IBAction func textFieldDidBeginEditing(_ sender: SkyFloatingLabelTextField) {
-        guard currentPageIndex == 2,
-            sender == textFields.first! else {
-            return
+        if currentPageIndex == 2 &&
+            sender == textFields.first! {
+            let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchTVVC") as! SearchTableViewViewController
+            present(searchVC, animated: false, completion: nil)
+            searchVC.selectionBlock = { value in
+                sender.text = value
+            }
+        }else if currentPageIndex == 2 && sender == textFields[1] {
+            let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchTVVC") as! SearchTableViewViewController
+            searchVC.isSchool = false
+            present(searchVC, animated: false, completion: nil)
+            searchVC.selectionBlock = { value in
+                sender.text = value
+            }
+            }
+        return
         }
-        let searchVC = storyboard?.instantiateViewController(withIdentifier: "SearchTVVC") as! SearchTableViewViewController
-        present(searchVC, animated: false, completion: nil)
-        searchVC.selectionBlock = { value in
-            sender.text = value
-        }
-    }
     
     
     @IBAction func unwindToSignup(sender: UIStoryboardSegue) {
@@ -330,7 +337,7 @@ class SignupViewController: BaseViewController {
         else {
             // Call Sign up api here
             showLoader()
-            SignUpUIModel.signUp(fiedls: fields) { [weak self] (error) in
+            SignUpUIModel.signUp(fields: fields) { [weak self] (error) in
                 DispatchQueue.main.async {
                     self?.hideLoader()
                 }

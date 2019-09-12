@@ -10,31 +10,25 @@ import UIKit
 import SDWebImage
 struct StuId {
     
-    init(date: String) {
+    init(date: String, graduationDate: String) {
         _createdAt = date
+        self.graduationDate = graduationDate
         setFormat()
     }
     
     var _createdAt: String?
+    var graduationDate: String?
     var verifiedUntil: String?
     var photo: String?
     
     mutating func setFormat() {
-        //2019-06-24T04:32:41.430Z
-        let array = _createdAt?.split(separator: "T")
-        if (array?.count)! >= 1 {
-            let dateString = String((array?[0])!)
-            let dateArray = dateString.split(separator: "-")
-            verifiedUntil = dateArray.reversed().joined(separator: "/")
+            verifiedUntil = graduationDate
         }
-        else {
-            verifiedUntil = _createdAt
-        }
-        
-    }
 }
 
 class ProfileViewController: BaseViewController {
+    typealias doneActionClouser = () -> ()
+    var actionClouser: doneActionClouser?
     
     @IBOutlet var imgViewVerified: UIImageView!
     @IBOutlet weak var coverPicImageView: UIImageView!
@@ -75,7 +69,7 @@ class ProfileViewController: BaseViewController {
         let name = (user.fname ?? "") + " " + (user.lname ?? "")
         userNameLabel.text = name
         universityNameLabel.text = user.institution ?? ""
-        userProfileImageView.image = UIImage(named: "AppIcon40x40")
+        userProfileImageView.image = #imageLiteral(resourceName: "app_icon")
         
         imgViewVerified.image = imgViewVerified.image!.withRenderingMode(.alwaysTemplate)
         imgViewVerified.tintColor = .white
@@ -94,6 +88,11 @@ class ProfileViewController: BaseViewController {
     }
     
     @IBAction func backTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func doneTapped(_ sender: Any) {
+        actionClouser?()
         navigationController?.popViewController(animated: true)
     }
     

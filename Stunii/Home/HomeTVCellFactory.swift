@@ -28,7 +28,7 @@ class HomeTVCellFactory: NSObject {
             let nib = UINib(nibName: CVCell.Name.home, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.home)
             cell.label.isHidden = true
-            cell.layoutIfNeeded()
+          
         }
         
         else {
@@ -36,7 +36,8 @@ class HomeTVCellFactory: NSObject {
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
             cell.label.isHidden = false
         }
-        
+        cell.collectionView.reloadData()
+         cell.layoutIfNeeded()
         return cell
     }
     

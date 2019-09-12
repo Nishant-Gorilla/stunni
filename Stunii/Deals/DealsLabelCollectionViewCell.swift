@@ -10,6 +10,11 @@ import UIKit
 
 class SubCategoryLabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        label.layer.cornerRadius = 12.5
+        label.layer.masksToBounds = true
+    }
     
     func set(subCategory: SubCategory) {
         label.text = subCategory.subCategoryName ?? ""

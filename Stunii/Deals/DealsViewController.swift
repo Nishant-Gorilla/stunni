@@ -76,7 +76,7 @@ class DealsViewController: BaseViewController {
     }
   
     private func getDeailOf(qr: String) {
-        APIHelper.getQrData(userId: UserData.loggedInUser?._id ?? "5d737e7b0fe3673b183bf1e1", qrCode: qr) { [weak self] (data, err) in
+        APIHelper.getQrData(userId: UserData.loggedInUser!._id, qrCode: qr) { [weak self] (data, err) in
             let message = data?["message"] as? String ?? ""
             let status =  (data?["status"] as? String ?? "" ) == "1"
             self?.showAlertWith(title: status ? "Success" : "Failed", message:  message, buttonTitle: "Ok", clickHandler: {
@@ -153,10 +153,6 @@ class DealsViewController: BaseViewController {
         if isScan {
             performSegue(withIdentifier: "QRScannerView", sender: nil)
         } else {
-            APIHelper.countDealLimit(id: (self.deal?.id ?? ""), completion: {[weak self] (data, error) in
-                //self?.showAlertWith(title: "Success", message: "Saved Successfully")
-                self?.dealsViewModel?.getData(id:self?.deal?.id ?? "")
-            })
             showStuId()
         }
     }
@@ -164,23 +160,38 @@ class DealsViewController: BaseViewController {
     
     @objc func redeemButtonAction(_ sender: UIButton) {
         // check limit
-       
-        if deal?.redeemType == "limited"  {
-            if (deal?.limitTotal ?? 0) > 0 {
-                redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
-            } else {
-                showAlertWith(title: nil, message: "OOPS YOU HAVE JUST MISSED THIS ONE. KEEP A LOOK FOR NEXT ONE.")
+        if deal?.redeemType == "limited" &&  (deal?.limitTotal ?? 0) < 1 {
+            showAlertWith(title: nil, message: "OOPS YOU HAVE JUST MISSED THIS ONE. KEEP A LOOK FOR NEXT ONE.")
+            return
+        } else { //
+            if deal?.scanForRedeem ?? false { //open qr
+                 redeemDealFlow(isScan: true)
+            } else { //
+                redeemDealFlow(isScan: false)
             }
-        } else  { //
-            showStuId()
-            //redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
         }
+
+//            if  {
+//                redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
+//            } else {
+//                            }
+//        } else  { //
+//            showStuId()
+//            //redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
+//        }
       
     }
     
     private func showStuId() {
         let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
         vc.willPop = true
+        vc.actionClouser = {
+            self.showLoader()
+            APIHelper.countDealLimit(id: (self.deal?.id ?? ""), completion: {[weak self] (data, error) in
+                self?.hideLoader()
+                self?.dealsViewModel?.getData(id:self?.deal?.id ?? "")
+            })
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -281,7 +292,6 @@ extension DealsViewController: DealsViewModelDelegate {
     func didReceive(error: Error) {
         isLoading = false
         hideLoader()
-        
         showAlertWith(title: "Error!", message: error.localizedDescription)
     }
     

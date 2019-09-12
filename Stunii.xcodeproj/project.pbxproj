@@ -92,6 +92,9 @@
 		96A2C54F2320192100B1FA57 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C54E2320192100B1FA57 /* Job.swift */; };
 		96A2C55123201D1A00B1FA57 /* JobViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C55023201D1A00B1FA57 /* JobViewModel.swift */; };
 		96A2C55323201EE700B1FA57 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */; };
+		96A61A74232813FD00824607 /* course.csv in Resources */ = {isa = PBXBuildFile; fileRef = 96A61A73232813FC00824607 /* course.csv */; };
+		96A61A7623281A5900824607 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96A61A7523281A5900824607 /* GoogleService-Info.plist */; };
+		96A61A782328234E00824607 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A61A772328234E00824607 /* WebViewController.swift */; };
 		96A875E92324382D009251A4 /* QRScannerViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A875E82324382D009251A4 /* QRScannerViewCotroller.swift */; };
 		96A875EC232439E3009251A4 /* CodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A875EB232439E3009251A4 /* CodeScannerView.swift */; };
 		96A94BA82323E31900758850 /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A94BA72323E31900758850 /* OfferCell.swift */; };
@@ -212,6 +215,9 @@
 		96A2C54E2320192100B1FA57 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		96A2C55023201D1A00B1FA57 /* JobViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewModel.swift; sourceTree = "<group>"; };
 		96A2C55223201EE700B1FA57 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
+		96A61A73232813FC00824607 /* course.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = course.csv; sourceTree = "<group>"; };
+		96A61A7523281A5900824607 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96A61A772328234E00824607 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		96A875E82324382D009251A4 /* QRScannerViewCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerViewCotroller.swift; sourceTree = "<group>"; };
 		96A875EB232439E3009251A4 /* CodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScannerView.swift; sourceTree = "<group>"; };
 		96A94BA72323E31900758850 /* OfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
@@ -307,6 +313,7 @@
 				967FDBB62318283C00BD473A /* Models */,
 				6B7D0A9A22DCE9D600E708B6 /* Stunii.entitlements */,
 				6B7D0A9F22DCF81100E708B6 /* APIHelper.swift */,
+				96A61A7523281A5900824607 /* GoogleService-Info.plist */,
 				6B724D8622BFA57100C25E6A /* App Files */,
 				6B39DDDB22CA9EAB00B64C9B /* Categories */,
 				6BA9E7FF22C5BE0000A81A6C /* DealsCollectionViewCell */,
@@ -376,6 +383,7 @@
 		6B724D8722BFA57C00C25E6A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				96A61A73232813FC00824607 /* course.csv */,
 				6B7AF73222DA1ED600CD5427 /* school.csv */,
 				6BCE40A122C281730057B9D6 /* Fonts */,
 				6B0D23C022BF9D7D007908F1 /* Assets.xcassets */,
@@ -496,6 +504,7 @@
 			children = (
 				6BCE40A422C2A48C0057B9D6 /* MenuViewController.swift */,
 				6BCE40A622C2A87E0057B9D6 /* Menu.storyboard */,
+				96A61A772328234E00824607 /* WebViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -695,7 +704,9 @@
 				6B0B959C22C54030002687D9 /* DealsCollectionViewCell.xib in Resources */,
 				6BCE409C22C2815F0057B9D6 /* Proxima Nova Thin.otf in Resources */,
 				6B0B959622C53058002687D9 /* Premium.storyboard in Resources */,
+				96A61A74232813FD00824607 /* course.csv in Resources */,
 				6B39DDDA22CA9D3E00B64C9B /* Categories.storyboard in Resources */,
+				96A61A7623281A5900824607 /* GoogleService-Info.plist in Resources */,
 				6B706EE322C1C06C0001A8B9 /* Auth.storyboard in Resources */,
 				6BF3084922D9232900BB2399 /* Jobs.storyboard in Resources */,
 				6B0D23C422BF9D7D007908F1 /* LaunchScreen.storyboard in Resources */,
@@ -834,6 +845,7 @@
 				967FDBC0231839FD00BD473A /* CategoryDetailCollectionViewCell.swift in Sources */,
 				96A2C55123201D1A00B1FA57 /* JobViewModel.swift in Sources */,
 				6B7D0AA622DD019100E708B6 /* HomeCVCellFactory.swift in Sources */,
+				96A61A782328234E00824607 /* WebViewController.swift in Sources */,
 				6B3C94C022C14BD700FDD68E /* OnboardingCollectionViewCell.swift in Sources */,
 				6B39DDD622CA78EF00B64C9B /* DealsLabelCollectionViewCell.swift in Sources */,
 				6B3C94B722C1223700FDD68E /* MainScreenUtility.swift in Sources */,
@@ -997,8 +1009,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Stunii/Stunii.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ET5U3VXV98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,7 +1024,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stunii.stunii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS App Store Dist";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1024,8 +1036,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Stunii/Stunii.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = ET5U3VXV98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1039,7 +1051,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stunii.stunii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS App Store Dist";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -123,7 +123,7 @@
                                             <outlet property="delegate" destination="Gmz-0c-xj7" id="AFL-yf-2LN"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-W8-xfH">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGB-W8-xfH">
                                         <rect key="frame" x="293" y="30.666666666666671" width="70" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="zEA-m6-JUV"/>

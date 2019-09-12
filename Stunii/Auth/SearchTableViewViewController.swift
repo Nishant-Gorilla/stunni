@@ -14,13 +14,15 @@ class SearchTableViewViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    private let csvData: [String] = Utilities.readFile("school", ofType: "csv")
+    private var csvData: [String] = []
     private var data: [String]!
+    var isSchool = true
     
     var selectionBlock: ((String?)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        csvData = isSchool ? Utilities.readFile("school", ofType: "csv") :  Utilities.readFile("course", ofType: "csv")
         textField.becomeFirstResponder()
         data = csvData
     }

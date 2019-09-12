@@ -59,16 +59,23 @@ extension MenuViewController: UITableViewDelegate {
                 = "https://www.instagram.com/stuniiapp/?hl=en"
             Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 3 {
+        else if indexPath.row == 3 { //service
+            let instaUrl = "https://stunii.com/terms"
             
+            Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 4 {
-            
+        else if indexPath.row == 4 { //privacy
+            let instaUrl = "https://stunii.com/privacy"
+            Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 5 {
-            
+        else if indexPath.row == 5 { // cancel
+            let message = "We don’t want you to miss out on our amazing package deals, but we understand if you need to go. You can cancel your deal package by visiting www.stunii.com/cancelpackage and proceeding to ‘Cancel Package'"
+            showAlertWith(title: "Cancel Premium", message: message, buttonTitle: "Cancel Premium", clickHandler: {
+                     Utilities.openUrlInSafari(string:"https://stunii.com")
+            })
         }
         else if indexPath.row == 6 {
+            UserData.loggedInUser = nil
             MainScreenUtility.setSignupAsRoot()
         }
         sideMenuController?.toggleLeftView()

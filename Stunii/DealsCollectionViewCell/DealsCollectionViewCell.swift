@@ -22,8 +22,8 @@ class DealsCollectionViewCell: UICollectionViewCell {
         coverImageView.kf.indicatorType = .activity
         photoImageView.kf.setImage(with: URL(string: deal.photo ?? ""))
         coverImageView.kf.setImage(with:  URL(string: deal.coverPhoto ?? ""))
-        titleLabel.text = deal.title ?? ""
-        descLabel.text = deal.desc ?? ""
+        titleLabel.text = deal.provider?.name ?? ""
+        descLabel.text = deal.title ?? ""
         
         coverImageView.setVIPImage(deal: deal)
     }

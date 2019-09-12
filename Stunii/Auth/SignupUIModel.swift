@@ -142,9 +142,9 @@ struct SignUpUIModel {
         return error
     }
     
-    static func signUp(fiedls: SignUpFields, completion:@escaping (String?)->()) {
+    static func signUp(fields: SignUpFields, completion:@escaping (String?)->()) {
         var gender = 0
-        var string = (fiedls.gender ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        var string = (fields.gender ?? "").replacingOccurrences(of: " ", with: "").lowercased()
         switch string {
         case "male":
             gender = 1
@@ -156,7 +156,7 @@ struct SignUpUIModel {
             break
         }
         var areYou = 0
-        string = (fiedls.vegan ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        string = (fields.vegan ?? "").replacingOccurrences(of: " ", with: "").lowercased()
         switch string {
         case "vegan":
             areYou = 1
@@ -169,7 +169,7 @@ struct SignUpUIModel {
         }
         
         var perfectNightOut = 0
-        string = (fiedls.nightOut ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        string = (fields.nightOut ?? "").replacingOccurrences(of: " ", with: "").lowercased()
         switch string {
         case "nightlife":
             perfectNightOut = 1
@@ -185,7 +185,7 @@ struct SignUpUIModel {
         
         var findMe = 0
         
-        string = (fiedls.hobby ?? "").replacingOccurrences(of: " ", with: "").lowercased()
+        string = (fields.hobby ?? "").replacingOccurrences(of: " ", with: "").lowercased()
         switch string {
         case "atgym":
             findMe = 1
@@ -198,27 +198,30 @@ struct SignUpUIModel {
         default:
             break
         }
-        
+        let fcmToken =   UserDefaults.standard.string(forKey: UserDefaultKey.deviceToken) ?? ""
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd, yyyy"
-        let date = dateFormatter.date(from: fiedls.dob!)!
+        let date = dateFormatter.date(from: fields.dob!)!
         dateFormatter.dateFormat = "MM/dd/yyyy"
         let dateStr = dateFormatter.string(from: date)
         let param: [String:Any] = [
-            "lname": fiedls.lastName ?? "",
-            "fname": fiedls.firstName ?? "",
-            "email": fiedls.eduEmail ?? "",
-            "personal_email": fiedls.personalEmail ?? "",
-            "password": fiedls.password ?? "",
-            "institution": fiedls.institute ?? "",
-            "graduationDate":fiedls.graduationDate ?? "",
-            "emailNotification": fiedls.subscription ?? "0",
+            "lname": fields.lastName ?? "",
+            "fname": fields.firstName ?? "",
+            "email": fields.eduEmail ?? "",
+            "personal_email": fields.personalEmail ?? "",
+            "password": fields.password ?? "",
+            "institution": fields.institute ?? "",
+            "graduationDate":fields.graduationDate ?? "",
+            "emailNotification": fields.subscription ?? "0",
             "areYou": String(areYou),
             "findMe":String(findMe),
             "perfectNightOut":String(perfectNightOut),
             "gender":String(gender),
             "type":"student",
-            "dob":dateStr
+            "dob":dateStr,
+            "phone_number": fields.phone ?? "",
+            "course": fields.course ?? "",
+            "device_token": fcmToken
         ]
         
         APIHelper().signUp(parameters: param) { (user, error) in

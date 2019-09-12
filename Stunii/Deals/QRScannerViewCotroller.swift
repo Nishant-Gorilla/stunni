@@ -36,6 +36,9 @@ class QRScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         type == 0 ? scanFromCamera() : scannFromImage()
+       
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,27 +49,13 @@ class QRScannerViewController: UIViewController {
     // MARK: - Helper methods
     
     func launchApp(decodedURL: String) {
-        
-        if presentedViewController != nil {
-            return
+        if decodedURL == "" {
+            showAlert(message: "No information found")
+        }else{
+            qrCodeCompletion?(decodedURL)
+            dismiss(animated: true, completion: nil)
         }
         
-        let alertPrompt = UIAlertController(title: "Open App", message: "You're going to open \(decodedURL)", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { (action) -> Void in
-            
-            if let url = URL(string: decodedURL) {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-        
-        alertPrompt.addAction(confirmAction)
-        alertPrompt.addAction(cancelAction)
-        
-        present(alertPrompt, animated: true, completion: nil)
     }
     
     @IBAction func canceButtonAction(_ sender: UIButton) {

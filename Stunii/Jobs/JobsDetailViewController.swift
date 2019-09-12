@@ -49,13 +49,13 @@ class JobsDetailViewController: BaseViewController {
         let cc = ["jobs@stunii.com"]
         let mc: MFMailComposeViewController = MFMailComposeViewController()
         mc.mailComposeDelegate = self
-        mc.setSubject("")
+        mc.setSubject("Subject")
         mc.setMessageBody("", isHTML: false)
         mc.setToRecipients(toRecipents)
         mc.setCcRecipients(cc)
         self.present(mc, animated: true, completion: nil)
     } else {
-        showAlertWith(title: nil, message: "This device not able to send email")
+        showAlertWith(title: nil, message: "This device not able to send email.")
     }
     }
     

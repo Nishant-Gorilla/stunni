@@ -18,12 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if let user = User.get() {
+            UserData.loggedInUser = user
+            MainScreenUtility.setHomeAsRoot()
+        } else {
+            MainScreenUtility.setRootViewController(window: window)
+        }
         IQKeyboardManager.shared.enable = true
         let _ = NotificationManager.init()
         Stripe.setDefaultPublishableKey(APIKeys.stripe)
-        MainScreenUtility.setRootViewController(window: window)
-        
-        //Firebase setup
+      
+       // Firebase setup
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         notificationSetup(application: application)
@@ -57,18 +62,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
-        
+
         // With swizzling disabled you must let Messaging know about the message, for Analytics
         // Messaging.messaging().appDidReceiveMessage(userInfo)
-        
+
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
-            Logger.log("Message ID: \(messageID)")
+            print("Message ID: \(messageID)")
         }
-        
+
         // Print full message.
-        Logger.log(userInfo)
-        
+        print(userInfo)
+
         completionHandler(UIBackgroundFetchResult.newData)
     }
 
@@ -89,58 +94,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        
+
         application.registerForRemoteNotifications()
     }
     
 }
-}
 
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
-    
+
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         let userInfo = notification.request.content.userInfo
-        let reminderId = notification.request.identifier
-        if let reminder = Reminder.get(id: reminderId) {
-            reminder.updateStatus()
-            NotificationCenter.default.post(name: Constants.NotificationUtil.updatedReminderScreen, object: nil, userInfo: nil)
-        }
-        
+     print(userInfo)
+
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
-            Logger.log("Message ID: \(messageID)")
+            print("Message ID: \(messageID)")
         }
         completionHandler([.alert,.badge,.sound])
     }
-    
+
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        let reminderId = response.notification.request.identifier
-        if let reminder = Reminder.get(id: reminderId) {
-            reminder.updateStatus()
-            NotificationCenter.default.post(name: Constants.NotificationUtil.updatedReminderScreen, object: nil, userInfo: nil)
-        }
+       
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
-            Logger.log("Message ID: \(messageID)")
+            print("Message ID: \(messageID)")
         }
-        
+
         // Print full message.
-        Logger.log(userInfo)
-        
+        print(userInfo)
+
         completionHandler()
     }
 }
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        UserDefaultManager().setFCMToken(fcmToken)
+         UserDefaults.standard.set(fcmToken, forKey: UserDefaultKey.deviceToken)
         let dataDict:[String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.
@@ -148,6 +144,6 @@ extension AppDelegate: MessagingDelegate {
     }
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        Logger.log("Message data:\(remoteMessage.appData)")
+        print("Message data:\(remoteMessage.appData)")
     }
 }

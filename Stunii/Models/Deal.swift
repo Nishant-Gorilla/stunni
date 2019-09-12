@@ -11,6 +11,7 @@ import ObjectMapper
 
 class Deal: Mappable {
     var provider: Provider?
+    var providers: [Provider] = []
     var id          : String?
     var title       : String?
     var desc        : String?
@@ -58,7 +59,12 @@ class Deal: Mappable {
     
     func mapping(map: Map) {
          id <- map[ "_id"]
-        provider <- map["_provider"]
+    
+         provider <- map["_provider"]
+        if provider == nil {
+            providers <- map["_provider"]
+            provider = providers.first
+        }
         title  <- map["title"]
         desc  <- map["desc"]
         location <- map["location"]

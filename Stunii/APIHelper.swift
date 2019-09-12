@@ -225,10 +225,11 @@ class APIHelper {
         request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+         let fcmToken =   UserDefaults.standard.string(forKey: UserDefaultKey.deviceToken) ?? ""
         let parameters: [String: Any] = [
             "email": email,
-            "password": password
+            "password": password,
+            "device_token":fcmToken
         ]
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
@@ -245,6 +246,7 @@ class APIHelper {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                     user =  Mapper<User>().map(JSON: json as! [String : Any])
+                
                 }
                 catch {
                     _error = error.localizedDescription
@@ -284,6 +286,7 @@ class APIHelper {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                     user =  Mapper<User>().map(JSON: json as! [String : Any])
+                  
                 }
                 catch {
                     _error = error.localizedDescription
@@ -340,9 +343,9 @@ class APIHelper {
     
     class func sendStripeToken(_ token: String,
                                completion: @escaping (Bool, String?)->(())) {
-        let url = "http://108.61.175.63:40117/api/vipsubscription"//WebServicesURL.baseURL + WebServicesURL.stripeToken
+        let url = "http://108.61.175.63:40117/api/vipsubscription" //WebServicesURL.baseURL + WebServicesURL.stripeToken
         let params: [String: String] = [
-            "emailuser": "zazazaud@gmail.com",//UserData.loggedInUser?.email ?? "",
+            "emailuser": UserData.loggedInUser?.email ?? "",
             "userid": UserData.loggedInUser?._id ?? "",
             "name": UserData.loggedInUser?.fname ?? "",
             "mobile": UserData.loggedInUser?.phone_number ?? "",
@@ -408,8 +411,8 @@ class APIHelper {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                     if let _json = json as? [String: Any],
-                        let createAt = _json["created_at"] as? String {
-                        var stuId = StuId(date: createAt)
+                        let createAt = _json["created_at"] as? String, let graduationDate = _json["graduationDate"] as? String {
+                        var stuId = StuId(date: createAt, graduationDate: graduationDate)
                         stuId.photo = _json["photo"] as? String
                         completion(stuId)
                     }

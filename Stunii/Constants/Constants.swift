@@ -42,12 +42,20 @@ struct WebServicesURL {
         static let gallary: String = baseURL + "fs/galleries/"
         static let provider: String = baseURL + "fs/providers/"
         static let students: String = baseURL + "fs/students/"
-        static let jobs: String = baseURL + "images/"
+        static let jobs: String = baseURL 
     }
 }
 
 class UserData {
-    static var loggedInUser: User? 
+    static var loggedInUser: User? {
+        didSet {
+            if loggedInUser == nil {
+            UserDefaults.standard.removeObject(forKey: "user")
+            } else {
+            User.save(user: loggedInUser!)
+            }
+        }
+    }
 }
 
 //MARK:- Storyboard ID
@@ -182,5 +190,7 @@ struct UserDefaultKey {
 }
 
 struct APIKeys {
-    static let stripe = "pk_test_Qhkxp3lPza9CaAkvLKYh4WpM"
+   static let live = "pk_live_6IVrA5mKQ8TrEvn10EG5Djni"
+  static let test = "pk_test_Qhkxp3lPza9CaAkvLKYh4WpM"
+static let stripe = live
 }

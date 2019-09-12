@@ -74,4 +74,3 @@ class DemandViewController: BaseViewController {
         }
     }
 }
-    

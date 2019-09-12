@@ -65,9 +65,12 @@ class HomeViewController: BaseViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: {  [weak self] (_) in
             guard let _self = self else { return }
             DispatchQueue.main.async {
-                collectionView?.scrollToItem(at: IndexPath(row: _self.nextIndex, section: 0), at: .left, animated: true)
+                if self?.tableView.indexPathsForVisibleRows?.contains(IndexPath(row: 0, section: 0)) ?? false {
+                    let _collectionView = (self?.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? HomeTableViewCell)?.collectionView
+                    _collectionView?.scrollToItem(at: IndexPath(row: _self.nextIndex, section: 0), at: .left, animated: true)
                 _self.nextIndex += 1
-                if _self.nextIndex == totalRows { _self.nextIndex = 0}
+                if _self.nextIndex == _collectionView?.numberOfItems(inSection: 0) { _self.nextIndex = 0}
+                }
             }
         })
     }
@@ -168,6 +171,7 @@ extension HomeViewController: HomeVMDelegate {
     func reloadData() {
         tableView.reloadData()
         hideLoader()
+       
         playSlideShow()
     }
     
