@@ -80,6 +80,7 @@
 		84E2A18423242B45008ED74C /* Stripe.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84E2A18223242B44008ED74C /* Stripe.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84E2A189232431CC008ED74C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2A188232431CC008ED74C /* PaymentViewController.swift */; };
 		84F2BD6E2326D923004E719E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F2BD6D2326D923004E719E /* ForgotPasswordViewController.swift */; };
+		91F002942331E4C200FCDE5C /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F002932331E4C200FCDE5C /* ApiManager.swift */; };
 		9617D1D2231B7B76002B1CD4 /* FormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9617D1D1231B7B76002B1CD4 /* FormValidator.swift */; };
 		966B3F8A2323A4DA001D56C9 /* DealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966B3F892323A4DA001D56C9 /* DealsViewModel.swift */; };
 		967FDBB82318285B00BD473A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FDBB72318285B00BD473A /* Category.swift */; };
@@ -203,6 +204,7 @@
 		84E2A18223242B44008ED74C /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
 		84E2A188232431CC008ED74C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		84F2BD6D2326D923004E719E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		91F002932331E4C200FCDE5C /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		9617D1D1231B7B76002B1CD4 /* FormValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidator.swift; sourceTree = "<group>"; };
 		966B3F892323A4DA001D56C9 /* DealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsViewModel.swift; sourceTree = "<group>"; };
 		967FDBB72318285B00BD473A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 		6B724D8622BFA57100C25E6A /* App Files */ = {
 			isa = PBXGroup;
 			children = (
+				91F002932331E4C200FCDE5C /* ApiManager.swift */,
 				6B0D23C522BF9D7D007908F1 /* Info.plist */,
 				6B0D23B922BF9D7B007908F1 /* AppDelegate.swift */,
 			);
@@ -808,6 +811,7 @@
 				9617D1D2231B7B76002B1CD4 /* FormValidator.swift in Sources */,
 				96C6CA2F2320276E009093A7 /* JobDetailViewModel.swift in Sources */,
 				6B706EE622C1C7A20001A8B9 /* SignupViewController.swift in Sources */,
+				91F002942331E4C200FCDE5C /* ApiManager.swift in Sources */,
 				6BA9E7FC22C5BC0300A81A6C /* HomeCollectionViewCell.swift in Sources */,
 				96A94BA82323E31900758850 /* OfferCell.swift in Sources */,
 				6B5B95E922DE4AF700B6394F /* HomeCategories.swift in Sources */,
@@ -1009,8 +1013,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Stunii/Stunii.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ET5U3VXV98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1024,7 +1028,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stunii.stunii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "iOS App Store Dist";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1036,8 +1040,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Stunii/Stunii.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ET5U3VXV98;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1051,7 +1055,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.stunii.stunii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "iOS App Store Dist";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

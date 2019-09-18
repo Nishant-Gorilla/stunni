@@ -30,9 +30,10 @@ class DealsViewController: BaseViewController {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
              self.showLoader()
+            self.dealsViewModel = DealsViewModel(dealId:self.deal?.id ?? "", delegate: self)
+            self.tvCellFactory = DealsTVCellFactory(tblView: self.tableView)
         }
-        dealsViewModel = DealsViewModel(dealId:deal?.id ?? "", delegate: self)
-        tvCellFactory = DealsTVCellFactory(tblView: tableView)
+     
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -183,16 +184,35 @@ class DealsViewController: BaseViewController {
     }
     
     private func showStuId() {
-        let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
-        vc.willPop = true
-        vc.actionClouser = {
-            self.showLoader()
-            APIHelper.countDealLimit(id: (self.deal?.id ?? ""), completion: {[weak self] (data, error) in
-                self?.hideLoader()
-                self?.dealsViewModel?.getData(id:self?.deal?.id ?? "")
-            })
+        
+//        let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
+//        vc.willPop = true
+//        vc.actionClouser = {
+//            self.showLoader()
+//            DispatchQueue.main.async {
+//
+//            APIHelper.countDealLimit(id: (self.deal?.id ?? ""), completion: {[weak self] (data, error) in
+//                self?.hideLoader()
+//                self?.dealsViewModel?.getData(id:self?.deal?.id ?? "")
+//
+//            })
+//            }
+//        }
+        showLoader()
+        let params = ["dealId":self.deal?.id ?? ""]
+        ApiManager.apiObject.APIPost(action:WebServicesURL.countDealLimit,parameters: params) { (masgdata) in
+            print(masgdata)
+            self.hideLoader()
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
+            vc.willPop = true
+            vc.actionClouser = {
+                self.dealsViewModel?.getData(id:self.deal?.id ?? "")
+                    }
+            self.hideLoader()
+            self.navigationController?.pushViewController(vc, animated: true)
+           // })
         }
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }
@@ -283,9 +303,12 @@ class CellMap: UITableViewCell {
 
 extension DealsViewController: DealsViewModelDelegate {
     func reloadData() {
-        isLoading = false
-       setData()
-        hideLoader()
+        DispatchQueue.main.async {
+            self.isLoading = false
+            self.setData()
+            self.hideLoader()
+        }
+       
         
     }
     

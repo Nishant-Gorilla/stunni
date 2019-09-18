@@ -116,6 +116,7 @@ class APIHelper {
     
     class func countDealLimit(id:String, completion: @escaping completionClosure<[String:Any]>) {
         let url = NSURL(string: WebServicesURL.baseURL + WebServicesURL.countDealLimit)
+        print(url,id)
         let request = NSMutableURLRequest(url: url! as URL)
         request.setValue("YW5kcm9pZF9hcHA6MzA1MEI3V1QwVmoz", forHTTPHeaderField: "Authorization") //**
         request.httpMethod = "POST"
@@ -130,7 +131,7 @@ class APIHelper {
         }
         
         let session = URLSession.shared
-        
+        print(request)
         let mData = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
             var _error: String?
             var resultData: [String: Any]?
@@ -173,7 +174,7 @@ class APIHelper {
             }
         }
     }
-    
+    //https://api.stunii.com/home/hero/?isActive=true&type=1&lat=5353&lon=2636&page=1    //https://api.stunii.com/countDealLimit/?dealId=59efa9a215209335837f81a0
     
     class func forgotPassword(email: String,
                               completion: @escaping ((Bool, String?)->())) {

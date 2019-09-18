@@ -28,7 +28,7 @@
                         <rect key="frame" x="5" y="2" width="247" height="222"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img1" translatesAutoresizingMaskIntoConstraints="NO" id="x4u-3V-THR" customClass="VIPImageView" customModule="Stunii" customModuleProvider="target">
-                                <rect key="frame" x="2" y="2" width="243" height="184"/>
+                                <rect key="frame" x="2" y="2" width="243" height="176"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -37,7 +37,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="5a3-VQ-vuf">
-                                <rect key="frame" x="2" y="188.5" width="33" height="33"/>
+                                <rect key="frame" x="2" y="183" width="33" height="33"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="2wH-xk-tWv"/>
@@ -49,24 +49,24 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fwZ-5X-yKm">
-                                <rect key="frame" x="45" y="190" width="192" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fwZ-5X-yKm">
+                                <rect key="frame" x="45" y="182" width="192" height="35"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CJ! Bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="2Qo-ts-qFF">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="12.5"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CJ! Bar" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="2Qo-ts-qFF">
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SU Friday: Half Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="r99-c8-4Xn">
-                                        <rect key="frame" x="0.0" y="17.5" width="192" height="12.5"/>
-                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SU Friday: Half Price" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="r99-c8-4Xn">
+                                        <rect key="frame" x="0.0" y="17.5" width="130.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="GCZ-m5-Rfp"/>
+                                    <constraint firstAttribute="height" constant="35" id="GCZ-m5-Rfp"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -79,7 +79,7 @@
                             <constraint firstAttribute="trailing" secondItem="x4u-3V-THR" secondAttribute="trailing" constant="2" id="OGb-6A-C2z"/>
                             <constraint firstItem="x4u-3V-THR" firstAttribute="leading" secondItem="nKk-QF-jY9" secondAttribute="leading" constant="2" id="URs-o3-1bg"/>
                             <constraint firstAttribute="trailing" secondItem="fwZ-5X-yKm" secondAttribute="trailing" constant="10" id="q68-Wn-TCi"/>
-                            <constraint firstAttribute="bottom" secondItem="fwZ-5X-yKm" secondAttribute="bottom" constant="2" id="ri9-n9-GqY"/>
+                            <constraint firstAttribute="bottom" secondItem="fwZ-5X-yKm" secondAttribute="bottom" constant="5" id="ri9-n9-GqY"/>
                             <constraint firstItem="5a3-VQ-vuf" firstAttribute="centerY" secondItem="fwZ-5X-yKm" secondAttribute="centerY" id="zkF-4k-b2o"/>
                         </constraints>
                     </view>

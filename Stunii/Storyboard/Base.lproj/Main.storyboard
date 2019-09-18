@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CZf-n6-pX4">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -49,7 +49,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSC-ru-Neg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-967" y="1557"/>
+            <point key="canvasLocation" x="-1074" y="1746"/>
         </scene>
         <!--Home-->
         <scene sceneID="ikS-Pj-WzP">
@@ -59,14 +59,14 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31j-bi-LKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-451" y="1556"/>
+            <point key="canvasLocation" x="-428" y="1745"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qa1-lC-2fR">
             <objects>
                 <viewController id="5NJ-Ze-eCX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YSp-bE-cOG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4fA-gg-j4M"/>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FH2-2t-ulK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="1611"/>
+            <point key="canvasLocation" x="161" y="1729"/>
         </scene>
         <!--Menu-->
         <scene sceneID="NMb-Py-1m6">
@@ -89,7 +89,7 @@
             <objects>
                 <viewController id="SrY-Xd-Puj" customClass="LGSideMenuController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eHv-VW-YTV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="5yj-OF-ujK"/>
@@ -162,7 +162,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9iI-0Y-iWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2176" y="1219"/>
+            <point key="canvasLocation" x="2177" y="1328"/>
         </scene>
         <!--Jobs-->
         <scene sceneID="zxf-s9-CgM">
@@ -172,7 +172,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0K-OH-J30" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392" y="1212"/>
+            <point key="canvasLocation" x="403" y="1259"/>
         </scene>
         <!--Demand-->
         <scene sceneID="8z8-N2-Rgk">
@@ -200,7 +200,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obf-6e-hCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3033" y="1198"/>
+            <point key="canvasLocation" x="3053" y="1304"/>
         </scene>
         <!--Categories-->
         <scene sceneID="Ytd-b3-EXD">
@@ -228,7 +228,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hA5-mF-mpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1270" y="1212"/>
+            <point key="canvasLocation" x="1269" y="1318"/>
         </scene>
     </scenes>
     <resources>

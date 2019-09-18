@@ -17,4 +17,6 @@ target 'Stunii' do
   pod 'Cosmos', '19.0.3'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Alamofire', '~> 4.7'
+
   end

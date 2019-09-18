@@ -53,7 +53,7 @@ class ProfileViewController: BaseViewController {
                 self.verifiedUntilLabel.text = "Verfied until: " + (data?.verifiedUntil ?? "")
                 if let _photo = data?.photo {
                     let url = WebServicesURL.ImagesBase.students + UserData.loggedInUser!._id + "/o/" + _photo
-                    //self.setImage(url: url)
+                    self.setImage(url: url)
                 }
             }
         })
