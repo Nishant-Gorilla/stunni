@@ -36,6 +36,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 m" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="jrT-td-1Qs">
+                                <rect key="frame" x="5" y="160.5" width="35.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="5a3-VQ-vuf">
                                 <rect key="frame" x="2" y="183" width="33" height="33"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,8 +84,10 @@
                             <constraint firstItem="fwZ-5X-yKm" firstAttribute="top" secondItem="x4u-3V-THR" secondAttribute="bottom" constant="4" id="MLq-z6-jnQ"/>
                             <constraint firstAttribute="trailing" secondItem="x4u-3V-THR" secondAttribute="trailing" constant="2" id="OGb-6A-C2z"/>
                             <constraint firstItem="x4u-3V-THR" firstAttribute="leading" secondItem="nKk-QF-jY9" secondAttribute="leading" constant="2" id="URs-o3-1bg"/>
+                            <constraint firstItem="fwZ-5X-yKm" firstAttribute="top" secondItem="jrT-td-1Qs" secondAttribute="bottom" constant="5" id="Ue3-aO-oQC"/>
                             <constraint firstAttribute="trailing" secondItem="fwZ-5X-yKm" secondAttribute="trailing" constant="10" id="q68-Wn-TCi"/>
                             <constraint firstAttribute="bottom" secondItem="fwZ-5X-yKm" secondAttribute="bottom" constant="5" id="ri9-n9-GqY"/>
+                            <constraint firstItem="jrT-td-1Qs" firstAttribute="leading" secondItem="nKk-QF-jY9" secondAttribute="leading" constant="5" id="uSL-cP-3yT"/>
                             <constraint firstItem="5a3-VQ-vuf" firstAttribute="centerY" secondItem="fwZ-5X-yKm" secondAttribute="centerY" id="zkF-4k-b2o"/>
                         </constraints>
                     </view>
@@ -96,6 +104,7 @@
             <connections>
                 <outlet property="coverImageView" destination="x4u-3V-THR" id="3cr-Z2-xJu"/>
                 <outlet property="descLabel" destination="r99-c8-4Xn" id="NrS-Tz-Xzz"/>
+                <outlet property="distancLabel" destination="jrT-td-1Qs" id="HpF-xs-Abg"/>
                 <outlet property="photoImageView" destination="5a3-VQ-vuf" id="10x-wc-oFi"/>
                 <outlet property="titleLabel" destination="2Qo-ts-qFF" id="zgd-ZF-fqU"/>
             </connections>

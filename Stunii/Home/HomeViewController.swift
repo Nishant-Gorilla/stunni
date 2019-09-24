@@ -8,12 +8,16 @@
 
 import UIKit
 import LGSideMenuController
+import CoreLocation
 
 class HomeViewController: BaseViewController {
 
     //MARK:- IBOutlet
     @IBOutlet weak var collectionView   : UICollectionView!
     @IBOutlet weak var tableView        : UITableView!
+    private var locationManager: CLLocationManager!
+    var locValue: CLLocationCoordinate2D!
+
     
     //MARK:- Variables & Constants
     private var viewModel       : HomeViewModel!
@@ -27,7 +31,13 @@ class HomeViewController: BaseViewController {
     //MARK:- VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         showLoader()
+        guard locationManager != nil else {
+            self.loadCurrentLocation()
+            return
+        }
+        
         
         sideMenuController?.isLeftViewSwipeGestureEnabled   = false
         sideMenuController?.isRightViewSwipeGestureEnabled  = false
@@ -37,6 +47,8 @@ class HomeViewController: BaseViewController {
         
         collectionView.dataSource   = headerCollectionViewDataSource
         collectionView.delegate     = headerCollectionViewDataSource
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -179,6 +191,13 @@ extension HomeViewController: HomeVMDelegate {
         hideLoader()
         showAlertWith(title: "Error!", message: error.localizedDescription)
     }
+    
+    func getRequstParam() -> [String:String]
+    {
+    let data = ["isActive":"true","type":"1","lat":"\(locValue.latitude)","lon":"\(locValue.longitude)","page":"1"]
+        
+        return data
+    }
 }
 
 
@@ -199,4 +218,25 @@ extension HomeViewController {
             }
         }
     }
+}
+
+extension HomeViewController:CLLocationManagerDelegate
+{
+    func loadCurrentLocation(){
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedWhenInUse {return}
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        locValue = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        self.viewDidLoad()
+    }
+    
 }

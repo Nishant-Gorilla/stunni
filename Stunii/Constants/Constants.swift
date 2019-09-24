@@ -11,6 +11,7 @@ import UIKit
 let POUNDS_STRING = "£"
 
 //MARK:- API URLs
+
 struct WebServicesURL {
     static let baseURL : String = "https://api.stunii.com/"
     

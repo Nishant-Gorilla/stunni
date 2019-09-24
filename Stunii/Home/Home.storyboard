@@ -252,10 +252,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Qis-sX-WqU" id="LHq-40-l3h"/>
-                                    <outlet property="delegate" destination="Qis-sX-WqU" id="KEz-HF-eY0"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.89696687460000002" green="0.32045713069999998" blue="0.2000323534" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

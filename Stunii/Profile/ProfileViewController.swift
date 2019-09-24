@@ -46,6 +46,8 @@ class ProfileViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
+        userProfileImageView.layer.cornerRadius = userProfileImageView.frame.height/2
+        userProfileImageView.clipsToBounds = true
         
         APIHelper.stuId(completion: {
             data in

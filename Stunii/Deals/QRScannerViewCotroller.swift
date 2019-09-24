@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRScannerViewController: UIViewController {
+class QRScannerViewController: BaseViewController {
     @IBOutlet weak var containerView: CodeScannerView!
     typealias qrCodeResponse = (String?) -> ()
     var qrCodeCompletion: qrCodeResponse?
@@ -150,6 +150,7 @@ class QRScannerViewController: UIViewController {
     }
     
     private func showAlert(message: String) {
+        self.hideLoader()
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
@@ -172,11 +173,15 @@ extension QRScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
+        
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
             //  messageLabel.text = "No QR code is detected"
             return
         }
+        self.showLoader()
+        captureSession.stopRunning()
+
         // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
         

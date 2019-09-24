@@ -55,7 +55,8 @@ class HomeViewModel: NSObject {
     }
     
     private func getData() {
-        APIHelper.getAllDeals { [weak self] (data, error) in
+        let parm = self.delegate?.getRequstParam()
+        APIHelper.getAllDeals(param: parm!) { [weak self] (data, error) in
             if let err = error {
                 self?.delegate?.didReceive(error: err)
             }
@@ -69,4 +70,5 @@ class HomeViewModel: NSObject {
 
 protocol HomeVMDelegate: ReloadDataAndErrorHandler {
     
+    func getRequstParam()->[String:String]
 }

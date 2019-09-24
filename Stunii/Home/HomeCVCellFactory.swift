@@ -31,6 +31,7 @@ class HomeCVCellFactory: NSObject {
         cell.set(deal: data)
         cell.titleLabel.text = data.provider?.name
         cell.descLabel.text = data.meta_title ?? ""
+        cell.distancLabel.text = String(data.distance ?? 0.0)+" mi"
         return cell
     }
     

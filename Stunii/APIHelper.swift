@@ -12,9 +12,10 @@ import ObjectMapper
 class APIHelper {
     
     typealias completionClosure<T> = ((T?, Error?) -> ())
-    class func getAllDeals(completion: @escaping completionClosure<[HomeData]>) {
+    class func getAllDeals(param:[String:String],completion: @escaping completionClosure<[HomeData]>) {
         let url = WebServicesURL.baseURL + WebServicesURL.home
-        APIManager.shared.getAPI(url: url) { (response, error) in
+        //let param : [String: String] = ["isActive":"true","type":"1","lat":"5353","lon":"2636","page":"1"]
+        APIManager.shared.getAPI(url: url,parameters: param) { (response, error) in
             if let data = response as? [String: Any],
                 let dataArray = data["data"] as? [[String: Any]]{
                 let allDeals = Mapper<HomeData>().mapArray(JSONArray: dataArray)
@@ -174,7 +175,7 @@ class APIHelper {
             }
         }
     }
-    //https://api.stunii.com/home/hero/?isActive=true&type=1&lat=5353&lon=2636&page=1    //https://api.stunii.com/countDealLimit/?dealId=59efa9a215209335837f81a0
+   
     
     class func forgotPassword(email: String,
                               completion: @escaping ((Bool, String?)->())) {

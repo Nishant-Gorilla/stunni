@@ -61,4 +61,6 @@ class DealProfileViewModel: NSObject {
     }
 }
 
-protocol DealProfileViewModelDelegate:ReloadDataAndErrorHandler { }
+protocol DealProfileViewModelDelegate:ReloadDataAndErrorHandler {
+    
+}

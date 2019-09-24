@@ -36,6 +36,7 @@ class DealsTVCellFactory: NSObject {
                 case 0:
                     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.text, for: indexPath) as! CellText
                     cell.dealDescriptionLabel.text = deal?.desc ?? ""
+                    cell.legalLabel.text = deal?.legal ?? ""
                 return cell
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.map, for: indexPath) as! CellMap
@@ -67,6 +68,7 @@ cell.leftCountLabel.text = String(deal?.limitTotal ?? 0 )
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.text, for: indexPath) as! CellText
                cell.dealDescriptionLabel.text = deal?.desc ?? ""
+                cell.legalLabel.text = deal?.legal ?? ""
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.map, for: indexPath) as! CellMap

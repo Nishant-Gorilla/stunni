@@ -44,6 +44,7 @@ class DealsViewController: BaseViewController {
                 if qrCode != nil {
                     self?.getDeailOf(qr: qrCode!)
                 } else {
+                    self?.hideLoader()
                     self?.showAlertWith(title: nil, message: "Unable to scan code")
                 }
             }
@@ -78,13 +79,50 @@ class DealsViewController: BaseViewController {
   
     private func getDeailOf(qr: String) {
         APIHelper.getQrData(userId: UserData.loggedInUser!._id, qrCode: qr) { [weak self] (data, err) in
+            self?.hideLoader()
             let message = data?["message"] as? String ?? ""
             let status =  (data?["status"] as? String ?? "" ) == "1"
-            self?.showAlertWith(title: status ? "Success" : "Failed", message:  message, buttonTitle: "Ok", clickHandler: {
+//           self?.showAlertWith(title: status ? "Success" : "Failed", message:  message, buttonTitle: "Ok", clickHandler: {
+//                if status {
+//                   self?.redeemDeal()
+//                }
+//            })
+            
+            
+            
+            let alertController = UIAlertController(title: status ? "Success" : "Failed", message: message, preferredStyle: .alert)
+            
+           // let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
                 if status {
-                   self?.redeemDeal()
+                    self?.redeemDeal()
                 }
             })
+            alertController.addAction(okAction)
+            //alertController.addAction(cancelAction)
+          
+            let FirstSubview = alertController.view.subviews.first
+            let AlertContentView = FirstSubview?.subviews.first
+            for subview in (AlertContentView?.subviews)! {
+                if status == true
+                {
+                    subview.backgroundColor = UIColor.green.withAlphaComponent(0.7)
+                }else{
+                    subview.backgroundColor = UIColor.red.withAlphaComponent(0.7)
+                }
+                subview.alpha = 0.5
+                subview.layer.cornerRadius = 10
+                subview.alpha = 1
+            }
+
+            
+            self?.present(alertController, animated: true, completion: nil)
+            
+            
+            
+    
+            
+            
         }
     }
     
@@ -199,15 +237,30 @@ class DealsViewController: BaseViewController {
 //            }
 //        }
         showLoader()
+        
+        var res = false
+        DispatchQueue.main.asyncAfter(deadline: .now()+10) {
+            guard res == false else{return}
+            self.hideLoader()
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
+            vc.willPop = true
+           // vc.actionClouser = {
+               // self.dealsViewModel?.getData(id:self.deal?.id ?? "")
+          //  }
+            self.hideLoader()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         let params = ["dealId":self.deal?.id ?? ""]
         ApiManager.apiObject.APIPost(action:WebServicesURL.countDealLimit,parameters: params) { (masgdata) in
+            res = true
             print(masgdata)
             self.hideLoader()
             let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
             vc.willPop = true
-            vc.actionClouser = {
-                self.dealsViewModel?.getData(id:self.deal?.id ?? "")
-                    }
+            //vc.actionClouser = {
+            //    self.dealsViewModel?.getData(id:self.deal?.id ?? "")
+            //        }
             self.hideLoader()
             self.navigationController?.pushViewController(vc, animated: true)
            // })
@@ -260,6 +313,7 @@ extension DealsViewController: UITableViewDelegate {
 class CellText: UITableViewCell {
     
     @IBOutlet weak var dealDescriptionLabel: UILabel!
+    @IBOutlet weak var legalLabel: UILabel!
 }
 
 class CellSimilar: UITableViewCell {

@@ -11,3 +11,5 @@ protocol ReloadDataAndErrorHandler: class {
     func reloadData()
     func didReceive(error: Error)
 }
+
+
