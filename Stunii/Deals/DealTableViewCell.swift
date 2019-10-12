@@ -24,7 +24,7 @@ class DealTableViewCell: UITableViewCell {
 
     func set(deal:Deal) {
         coverImageView.kf.indicatorType = .activity
-       providerImageView.kf.indicatorType = .activity
+        providerImageView.kf.indicatorType = .activity
         coverImageView.kf.setImage(with: URL(string: deal.coverPhoto ?? ""))
         providerImageView.kf.setImage(with: URL(string: deal.photo ?? ""))
         ratingCountLabel.text = String(deal.ratings ?? 0)
@@ -36,7 +36,7 @@ class DealTableViewCell: UITableViewCell {
         openDay = startDay + " to " + endDay
         }
         openingDayLabel.text = openDay
-        distanceLabel.text = "\(deal.distance ?? 0)mi"
+        distanceLabel.text = "\(deal.distance ?? 0) mi"
         providerTitle.text = deal.provider?.name ?? "Provider"
         dealTitle.text = deal.title ?? ""
         

@@ -20,6 +20,7 @@ class LoginViewController:BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -91,3 +92,5 @@ extension CharacterSet {
         return allowed
     }()
 }
+
+

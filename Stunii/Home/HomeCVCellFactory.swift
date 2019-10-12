@@ -14,6 +14,9 @@ class HomeCVCellFactory: NSObject {
     
     func cellFor(collectionView: UICollectionView,
                  indexPath: IndexPath, with data: HomeData) -> UICollectionViewCell {
+//        data.deals = data.deals.sorted {
+//            $0.distance! < $1.distance!
+//        }
         if data.isFeatured {
             return cellForFeatured(collectionView: collectionView,
                             indexPath: indexPath, with: data.deals[indexPath.row])

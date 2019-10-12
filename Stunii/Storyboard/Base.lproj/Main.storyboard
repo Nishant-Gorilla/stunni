@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main TabVC-->
         <scene sceneID="Ueh-I4-ouc">
             <objects>
-                <tabBarController id="CZf-n6-pX4" sceneMemberID="viewController">
+                <tabBarController id="CZf-n6-pX4" customClass="MainTabVC" customModule="Stunii" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gT2-VC-UVw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -233,6 +233,7 @@ class APIHelper {
             "password": password,
             "device_token":fcmToken
         ]
+        print("************->",parameters)
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) // pass dictionary to nsdata object and set it as request body
         } catch let error {

@@ -61,7 +61,21 @@ class HomeViewModel: NSObject {
                 self?.delegate?.didReceive(error: err)
             }
             else if let allDeals = data {
-                self?.model = allDeals
+                //sort deals on location base
+                var sortModel = [HomeData]()
+                if let dist = allDeals.first?.deals.first?.distance , dist > 0
+                {
+                    for i in allDeals{
+                        
+                        i.deals = i.deals.sorted(by: {$0.distance! < $1.distance!})
+                        sortModel.append(i)
+                        
+                    }
+                }else{
+                    sortModel = allDeals
+                }
+                //                self?.model = allDeals
+                self?.model = sortModel
             }
         }
     }

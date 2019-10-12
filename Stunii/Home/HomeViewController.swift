@@ -12,11 +12,11 @@ import CoreLocation
 
 class HomeViewController: BaseViewController {
 
+    private var locationManager: CLLocationManager!
+
     //MARK:- IBOutlet
     @IBOutlet weak var collectionView   : UICollectionView!
     @IBOutlet weak var tableView        : UITableView!
-    private var locationManager: CLLocationManager!
-    var locValue: CLLocationCoordinate2D!
 
     
     //MARK:- Variables & Constants
@@ -31,13 +31,13 @@ class HomeViewController: BaseViewController {
     //MARK:- VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         showLoader()
-        guard locationManager != nil else {
-            self.loadCurrentLocation()
-            return
-        }
+        loadCurrentLocation()
         
+        
+
+    }
+    @objc func viewSetupAction(){
         
         sideMenuController?.isLeftViewSwipeGestureEnabled   = false
         sideMenuController?.isRightViewSwipeGestureEnabled  = false
@@ -50,6 +50,7 @@ class HomeViewController: BaseViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         playSlideShow()
@@ -68,6 +69,11 @@ class HomeViewController: BaseViewController {
         }
     }
     
+    @IBAction func serchAction(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SearchDealVC") as! SearchDealVC
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
     private func playSlideShow() {
         if timer != nil { timer.invalidate() }
@@ -103,6 +109,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let obj = viewModel.modelObjectAt(index: indexPath.row)!
+        
         return tvCellFactory.cellFor(indexPath: indexPath, with: obj, vc: self)
     }
 }
@@ -194,8 +201,16 @@ extension HomeViewController: HomeVMDelegate {
     
     func getRequstParam() -> [String:String]
     {
-    let data = ["isActive":"true","type":"1","lat":"\(locValue.latitude)","lon":"\(locValue.longitude)","page":"1"]
-        
+        var data : [String:String] = [:]
+        if locValue==nil
+        {
+             data = ["isActive":"true","type":"1","page":"1"]
+
+        }else{
+             data = ["isActive":"true","type":"1","lat":"\(locValue==nil ? 0.0:locValue.latitude)","lon":"\(locValue==nil ? 0.0:locValue.longitude)","page":"1"]
+
+        }
+        print(data)
         return data
     }
 }
@@ -220,6 +235,7 @@ extension HomeViewController {
     }
 }
 
+
 extension HomeViewController:CLLocationManagerDelegate
 {
     func loadCurrentLocation(){
@@ -231,12 +247,17 @@ extension HomeViewController:CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedWhenInUse {return}
+        if status != .authorizedWhenInUse {
+            locValue = nil
+            self.viewSetupAction()
+
+            //showAlertWith(title: "Location!", message: "Allow location authorized for stunii")
+            return}
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        locValue = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
-        self.viewDidLoad()
+        locValue = locationManager.location?.coordinate
+        self.viewSetupAction()
+
     }
     
 }

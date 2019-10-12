@@ -8,10 +8,12 @@
 
 import UIKit
 import AVKit
-
+import CoreLocation
 class OnboardingViewController: BaseViewController {
 
     //MARK: IBOutlets
+    private var locationManager: CLLocationManager!
+
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bgImageView: UIImageView!
@@ -58,6 +60,8 @@ class OnboardingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadCurrentLocation()
+
     }
     
     
@@ -141,4 +145,25 @@ extension OnboardingViewController {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         pageControl.currentPage = Int( collectionView.contentOffset.x / collectionView.frame.size.width)
     }
+}
+extension OnboardingViewController:CLLocationManagerDelegate
+{
+    func loadCurrentLocation(){
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedWhenInUse {
+            locValue = nil
+            //showAlertWith(title: "Location!", message: "Allow location authorized for stunii")
+            return}
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        locValue = locationManager.location?.coordinate
+    }
+    
 }

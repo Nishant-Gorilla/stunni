@@ -60,11 +60,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ho3-Vb-Ayl">
                                         <rect key="frame" x="335" y="5" width="40" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-7h-VYe">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Xth-7h-VYe">
                                                 <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5G-mT-HSP">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5G-mT-HSP">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </button>
@@ -548,7 +548,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_text" rowHeight="60" id="qQn-bh-rSG" customClass="CellText" customModule="Stunii" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_text" rowHeight="60" id="qQn-bh-rSG" customClass="CellText" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="407" width="500" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qQn-bh-rSG" id="Gy9-Iy-XUg">
@@ -556,14 +556,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOS-iP-Uq4">
-                                                    <rect key="frame" x="8" y="4" width="484" height="18.5"/>
+                                                    <rect key="frame" x="8" y="4" width="609" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <string key="userLabel">App Information This information is used for all platforms of this app. Any changes will be released with your next app version. Save English (U.K.) Localized English (U.K.) Primary  You can find the languages that you have localized in this menu. Learn more about App Stores and localizations. Localizable Information  Name  The name of your app as it will appear on the App Store. This can't be longer than 30 characters. Stunii  Subtitle  A summary of your app that appears below your app name throughout the App Store in iOS 11 or later and the Mac App Store in macOS Mojave or later. Student Perks  Privacy Policy URL  A URL that links to your privacy policy. A privacy policy is required for all apps. https://stunii.com/privacy.html  General Information  Bundle ID The bundle ID must match the one you used in Xcode. It can't be changed after you upload your first build. com.stunii.stunii SKU A unique ID for your app that is not visible on the App Store. 10 Apple ID An automatically generated ID assigned to your app. 1281476467 Primary Language  If localized app information isn’t available in an App Store territory, the information from your primary language will be used instead. Learn more English (U.K.) Category  The category that best describes this app. Learn More Lifestyle</string>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTW-zq-YSB">
-                                                    <rect key="frame" x="5" y="29" width="490" height="18.5"/>
+                                                    <rect key="frame" x="5" y="29" width="615" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -586,7 +586,7 @@
                                             <outlet property="legalLabel" destination="OTW-zq-YSB" id="Pvf-zS-0ES"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_similar" rowHeight="250" id="xeo-FS-H2u" customClass="HomeTableViewCell" customModule="Stunii" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_similar" rowHeight="250" id="xeo-FS-H2u" customClass="HomeTableViewCell" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="467" width="500" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xeo-FS-H2u" id="qli-iM-qOS">
@@ -594,13 +594,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Similar Deals" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmI-CD-iYf">
-                                                    <rect key="frame" x="12" y="8" width="480" height="21.5"/>
+                                                    <rect key="frame" x="12" y="8" width="605" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="906-vU-dCI">
-                                                    <rect key="frame" x="8" y="37.5" width="484" height="150"/>
+                                                    <rect key="frame" x="8" y="37.5" width="609" height="150"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="NsB-vh-iZG"/>
@@ -623,7 +623,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAy-Pn-HT4">
-                                                    <rect key="frame" x="0.0" y="199.5" width="500" height="50"/>
+                                                    <rect key="frame" x="0.0" y="199.5" width="625" height="50"/>
                                                     <color key="backgroundColor" red="0.893626868724823" green="0.32522648572921753" blue="0.19788146018981934" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="FBJ-Gx-6Rw"/>
@@ -654,7 +654,7 @@
                                             <outlet property="redeemButton" destination="PAy-Pn-HT4" id="Avv-Kd-svi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_selling" rowHeight="75" id="n0M-gT-i8B" customClass="CellSelling" customModule="Stunii" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_selling" rowHeight="75" id="n0M-gT-i8B" customClass="CellSelling" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="717" width="500" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n0M-gT-i8B" id="f9o-Eq-Okh">
@@ -662,7 +662,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="XwX-M8-4lA">
-                                                    <rect key="frame" x="82.5" y="12" width="305" height="50.5"/>
+                                                    <rect key="frame" x="145" y="12" width="305" height="50.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="zEm-aH-m7f">
                                                             <rect key="frame" x="0.0" y="0.0" width="100.5" height="50.5"/>
@@ -732,7 +732,7 @@
                                             <outlet property="sellingFastLabel" destination="0vc-mw-tIw" id="K4F-2O-hsr"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_map" rowHeight="645" id="cw9-oZ-akL" customClass="CellMap" customModule="Stunii" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_map" rowHeight="645" id="cw9-oZ-akL" customClass="CellMap" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="792" width="500" height="645"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cw9-oZ-akL" id="rKq-v4-5OK">
@@ -740,7 +740,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2G-Au-x0w">
-                                                    <rect key="frame" x="30" y="285" width="440" height="60"/>
+                                                    <rect key="frame" x="30" y="285" width="565" height="60"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="direction" translatesAutoresizingMaskIntoConstraints="NO" id="ynJ-2K-ON0">
                                                             <rect key="frame" x="16" y="12" width="36" height="36"/>
@@ -766,10 +766,10 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhI-jz-9Xz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="440" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="565" height="60"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UD2-S2-Z3U">
-                                                            <rect key="frame" x="0.0" y="0.0" width="440" height="60"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="565" height="60"/>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -792,10 +792,10 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FDL-1k-cRa">
-                                                    <rect key="frame" x="10" y="375" width="480" height="50"/>
+                                                    <rect key="frame" x="10" y="375" width="605" height="50"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CeW-5q-eZa">
-                                                            <rect key="frame" x="0.0" y="0.0" width="235" height="50"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="297.5" height="50"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="UJf-QO-NSv">
                                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="50"/>
@@ -804,14 +804,14 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sja-Yg-Srx">
-                                                                    <rect key="frame" x="25" y="0.0" width="210" height="50"/>
+                                                                    <rect key="frame" x="25" y="0.0" width="272.5" height="50"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="18"/>
                                                                     <state key="normal" title="Catch a Cab"/>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tK4-YE-yww">
-                                                            <rect key="frame" x="245" y="0.0" width="235" height="50"/>
+                                                            <rect key="frame" x="307.5" y="0.0" width="297.5" height="50"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="taxi" translatesAutoresizingMaskIntoConstraints="NO" id="VBh-Tl-jeJ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="50"/>
@@ -820,7 +820,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOE-Jz-ycX">
-                                                                    <rect key="frame" x="30" y="0.0" width="205" height="50"/>
+                                                                    <rect key="frame" x="30" y="0.0" width="267.5" height="50"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="18"/>
                                                                     <state key="normal" title="Download App"/>
                                                                 </button>
@@ -832,7 +832,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rEw-NQ-VBO">
-                                                    <rect key="frame" x="0.0" y="15" width="500" height="240"/>
+                                                    <rect key="frame" x="0.0" y="15" width="625" height="240"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="240" id="kQ9-0P-bfB"/>
                                                     </constraints>
@@ -884,7 +884,7 @@
                                     <action selector="backButtonClicked:" destination="vv7-Y3-fCq" eventType="touchUpInside" id="PoM-ip-XPv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYd-2o-LJ8">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYd-2o-LJ8">
                                 <rect key="frame" x="455" y="24" width="25" height="25"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -971,11 +971,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-Di-uty">
                                         <rect key="frame" x="335" y="5" width="40" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="M4g-Q4-gde">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="M4g-Q4-gde">
                                                 <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-hR-of1">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-hR-of1">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </button>
@@ -1334,11 +1334,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzo-9C-Rgb">
                                         <rect key="frame" x="335" y="5" width="40" height="40"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Wa2-Kl-VNU">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="Wa2-Kl-VNU">
                                                 <rect key="frame" x="10" y="10" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bF1-ur-WEC">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bF1-ur-WEC">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </button>

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 let POUNDS_STRING = "£"
+var locValue: CLLocationCoordinate2D!
 
 //MARK:- API URLs
 
@@ -195,3 +197,5 @@ struct APIKeys {
   static let test = "pk_test_Qhkxp3lPza9CaAkvLKYh4WpM"
 static let stripe = live
 }
+
+

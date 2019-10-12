@@ -26,7 +26,18 @@ class Deal: Mappable {
     var facebook: String?
     var instagram: String?
      var affiliate: String?
-    var distance: Float?
+    var distance: Float?{
+        didSet(val){
+            if distance != nil
+            {
+                distance=(distance!*10).rounded()/10
+//              distance = Float(distance!/1.60934).rounded()
+            }
+            
+        }
+    }
+    
+    
     var isLiked: Bool?
     var slug: String?
     var meta_title: String?

@@ -73,6 +73,7 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
             self?.hideLoader()
             if success {
                 UserData.loggedInUser?.isVIP = true
+                User.save(user: UserData.loggedInUser!)
                 let alert = UIAlertController(title: "Success", message: errorMessage ?? "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
                     MainScreenUtility.setHomeAsRoot()
