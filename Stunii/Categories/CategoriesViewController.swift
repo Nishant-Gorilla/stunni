@@ -14,12 +14,22 @@ class CategoriesViewController: BaseViewController {
     
     //MARK:- Properties
     private var categoryViewModel: CategoryViewModel!
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoader()
         categoryViewModel = CategoryViewModel(delegate: self)
-    }
+         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+         refreshControl.backgroundColor = UIColor.white
+         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+         collectionView.addSubview(refreshControl)
+        }
+                        
+        @objc func refresh(sender:AnyObject) {
+                       // Code to refresh table view
+            refreshControl.endRefreshing()
+              }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DealsProfileViewControllerSegue" {

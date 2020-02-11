@@ -43,3 +43,26 @@ class Provider: Mappable {
     }
     
 }
+
+
+
+class Taxi: Mappable {
+    var id: String?
+    var updated_at: String?
+    var created_at: String?
+    var app_link: String?
+    var phone_number: String?
+    var taxi_company: String?
+    
+    required init?(map: Map) {}
+    
+    func mapping(map:Map) {
+         id  <- map["_id"]
+         updated_at  <- map["updated_at"]
+         created_at  <- map["created_at"]
+         app_link  <- map["app_link"]
+         phone_number  <- map["phone_number"]
+         taxi_company  <- map["taxi_company"]
+    }
+    
+}

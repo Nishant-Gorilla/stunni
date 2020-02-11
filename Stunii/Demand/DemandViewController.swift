@@ -17,6 +17,7 @@ class DemandViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.isHidden = true
         setTextFieldTitleFormatter()
     }
     
@@ -58,19 +59,25 @@ class DemandViewController: BaseViewController {
                 "city":cityTextField.text!.trimSpace(),
                 "organisation":organisationTextField.text!.trimSpace(),
                 "dealType":dealTypeField.text!.trimSpace(),
-                "studentId":UserData.loggedInUser?._id ?? ""
+                "student_name":UserData.loggedInUser?.fname ?? ""
             ]
             APIHelper().postDemand(parameters: paramater) {[weak self] (dict, error) in
                 self?.hideLoader()
                 if error == nil {
                     let status = dict?["status"] as? Int ?? 0
-                    let message = dict?["message"] as? String ?? ""
+                    //let message = dict?["message"] as? String ?? ""
                     let alertTitle = status == 200 ? "Success" : "Failed"
-                    self?.showAlertWith(title: alertTitle, message: message)
+                    self?.showAlertWith(title: alertTitle, message: "Thank you! Your Deal Demand has successfully been submitted. Be sure to keep an eye out for this offer! ")
                 } else {
                     self?.showAlertWith(title: "Failed", message: "Something went wrong please try again latter")
                 }
             }
         }
+    }
+    
+    @IBAction func backbtnTapped(sender: UIButton){
+       let storyBoard : UIStoryboard = UIStoryboard(name: "Home", bundle:nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "HomeViewController")
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 }

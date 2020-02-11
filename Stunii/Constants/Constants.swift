@@ -16,28 +16,35 @@ var locValue: CLLocationCoordinate2D!
 
 struct WebServicesURL {
     static let baseURL : String = "https://api.stunii.com/"
-    
+    static let submitBaseURL : String = "http://108.61.175.63:40117/api/"
     static let signup  : String = "students/signup"
     static let signin  : String = "students/signin"
     static let forgotPassword: String = "students/forgot"
     static let home    : String = "home/hero"
     static let category: String = "categories"
-    static let providers = "allProvider"
+    static let providers = "allProviders?"
     static let jobs = "allJobs"
     static let jobDetail = "jobDetail"
-    static let dealDetail = "dealDetail"
+    static let dealDetail = "dealDetailDeals?dealId="
     static let isVipUser = "isVip"
     static let stripeToken = "vipsubscription"
-    static let premiumOffers = "premiumOffers"
+    static let premiumOffers = "premiumOffersDeals?"
     static let checkQr = "checkQr"
     static let countDealLimit = "countDealLimit"
     static let redeemDeal = "redeemed"
     static let stuId = "students/" + (UserData.loggedInUser?._id)!
     static let uploadImage = "studentSqid?studentId=" + (UserData.loggedInUser?._id)!
-    static let categoryDetail = "categoryDetail"
-    static let subCategoryDetail = "subcategoryDetail"
-    static let providerDetail = "providerDetail"
+    static let categoryDetail = "categoryDeals?categoryId="
+    static let subCategoryDetail = "subCategoryDeals?subCategoryId="
+    static let providerDetail = "providerDetailDeals?providerId="
     static let demandDeal = "demandDeal"
+    static let nearMeDeals = "deals/?isActive=true"
+    static let getReferral = "getReferrals"
+    static let submitReferral = "reference?&"
+    static let validateEmail  = "emailVarification"
+    static let redeamPayment = "payment/redeem/"
+    static let applyPromoCode = "redeemCoupan"
+    
     
     struct ImagesBase {
         static let home : String = baseURL + "fs/deals/"

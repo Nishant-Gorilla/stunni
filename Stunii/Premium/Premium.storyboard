@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXO-eH-OqC">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jXO-eH-OqC">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,7 +54,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_details" rowHeight="150" id="TzI-yd-Rbu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlanTblCell" rowHeight="150" id="TzI-yd-Rbu" customClass="PlanTblCell" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="268" width="500" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TzI-yd-Rbu" id="mYw-wq-X0X">
@@ -68,7 +66,7 @@
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Save up to £300 every month by simply upgrading" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYZ-Ht-Gqu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYZ-Ht-Gqu">
                                                     <rect key="frame" x="8" y="42.5" width="484" height="92.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
@@ -85,6 +83,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="lblDescription" destination="XYZ-Ht-Gqu" id="TGb-fy-qrT"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_offers" rowHeight="250" id="Hds-oK-vSC" customClass="OfferCell" customModule="Stunii" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="418" width="500" height="250"/>
@@ -93,7 +94,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="500" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIP Offers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-7Z-1SI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHAT YOU WILL GAIN ACCESS TO :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRM-7Z-1SI">
                                                     <rect key="frame" x="8" y="8" width="484" height="79"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
@@ -137,93 +138,98 @@
                                             <outlet property="collectionView" destination="sKT-5h-1lN" id="17u-XO-6Ep"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_price" rowHeight="150" id="Nlh-69-ex2" customClass="PriceCell" customModule="Stunii" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="668" width="500" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell_price" rowHeight="160" id="Nlh-69-ex2" customClass="PriceCell" customModule="Stunii" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="668" width="500" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nlh-69-ex2" id="HDp-Hs-0Yw">
-                                            <rect key="frame" x="0.0" y="0.0" width="500" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="500" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offer-stripe" translatesAutoresizingMaskIntoConstraints="NO" id="0pn-WW-ZGy">
-                                                    <rect key="frame" x="15" y="10" width="120" height="30"/>
+                                                    <rect key="frame" x="15" y="10" width="416.5" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="adO-ic-wac"/>
                                                         <constraint firstAttribute="height" constant="30" id="rmQ-5V-wet"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTd-9q-7rj">
-                                                    <rect key="frame" x="15" y="40" width="595" height="98"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Yearly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs3-98-nnZ">
-                                                            <rect key="frame" x="8" y="8" width="50" height="22"/>
-                                                            <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="18"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aU-dY-r8X">
-                                                            <rect key="frame" x="8" y="38" width="105.5" height="25"/>
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="£ 9.99">
-                                                                    <attributes>
-                                                                        <font key="NSFont" metaFont="system" size="20"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content=" / year">
-                                                                    <attributes>
-                                                                        <font key="NSFont" metaFont="system" size="18"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Cancel anytime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obu-8t-pH8">
-                                                            <rect key="frame" x="8" y="71" width="102" height="19"/>
-                                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="Obu-8t-pH8" firstAttribute="leading" secondItem="cTd-9q-7rj" secondAttribute="leading" constant="8" id="6kF-dY-MgY"/>
-                                                        <constraint firstItem="3aU-dY-r8X" firstAttribute="leading" secondItem="cTd-9q-7rj" secondAttribute="leading" constant="8" id="GF4-aV-dQh"/>
-                                                        <constraint firstItem="3aU-dY-r8X" firstAttribute="top" secondItem="fs3-98-nnZ" secondAttribute="bottom" constant="8" id="KED-kF-7ET"/>
-                                                        <constraint firstItem="fs3-98-nnZ" firstAttribute="leading" secondItem="cTd-9q-7rj" secondAttribute="leading" constant="8" id="Ngv-Kx-DTn"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Obu-8t-pH8" secondAttribute="bottom" constant="8" id="W58-Tf-seT"/>
-                                                        <constraint firstItem="fs3-98-nnZ" firstAttribute="top" secondItem="cTd-9q-7rj" secondAttribute="top" constant="8" id="Zat-7l-UNK"/>
-                                                        <constraint firstItem="Obu-8t-pH8" firstAttribute="top" secondItem="3aU-dY-r8X" secondAttribute="bottom" constant="8" id="w4H-46-cDg"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.89348220825195312" green="0.32248657941818237" blue="0.19760948419570923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <real key="value" value="1.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Offer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqa-Dw-ivW">
-                                                    <rect key="frame" x="20" y="15.5" width="89" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select your preferred plan below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqa-Dw-ivW">
+                                                    <rect key="frame" x="23" y="16" width="269" height="18.5"/>
                                                     <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="paw-KJ-9UJ">
+                                                    <rect key="frame" x="15" y="45" width="470" height="104"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="J7C-R2-jl3"/>
+                                                    </constraints>
+                                                    <prototypes>
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanTblCell" rowHeight="70" id="nDY-1e-NsS" customClass="PlanTblCell" customModule="Stunii" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="28" width="470" height="70"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nDY-1e-NsS" id="KCV-pP-w8P">
+                                                                <rect key="frame" x="0.0" y="0.0" width="470" height="70"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTd-9q-7rj">
+                                                                        <rect key="frame" x="10" y="5" width="450" height="60"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs3-98-nnZ">
+                                                                                <rect key="frame" x="8" y="5" width="434" height="50"/>
+                                                                                <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="18"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="fs3-98-nnZ" secondAttribute="trailing" constant="8" id="Fmo-qW-hqw"/>
+                                                                            <constraint firstItem="fs3-98-nnZ" firstAttribute="top" secondItem="cTd-9q-7rj" secondAttribute="top" constant="5" id="fP9-1Z-kD5"/>
+                                                                            <constraint firstItem="fs3-98-nnZ" firstAttribute="leading" secondItem="cTd-9q-7rj" secondAttribute="leading" constant="8" id="hsR-1M-kpA"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="fs3-98-nnZ" secondAttribute="bottom" constant="5" id="i7b-iJ-vHa"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" red="0.89348220825195312" green="0.32248657941818237" blue="0.19760948419570923" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                                                <real key="value" value="1.5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="cTd-9q-7rj" secondAttribute="trailing" constant="10" id="Frf-P3-dSk"/>
+                                                                    <constraint firstItem="cTd-9q-7rj" firstAttribute="top" secondItem="KCV-pP-w8P" secondAttribute="top" constant="5" id="T8F-eM-tOz"/>
+                                                                    <constraint firstItem="cTd-9q-7rj" firstAttribute="leading" secondItem="KCV-pP-w8P" secondAttribute="leading" constant="10" id="gWZ-Xq-9Gd"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="cTd-9q-7rj" secondAttribute="bottom" constant="5" id="u4u-I1-nfL"/>
+                                                                </constraints>
+                                                            </tableViewCellContentView>
+                                                            <connections>
+                                                                <outlet property="lblDescription" destination="fs3-98-nnZ" id="J4U-IQ-s0P"/>
+                                                                <outlet property="vew" destination="cTd-9q-7rj" id="FEM-uz-hRR"/>
+                                                            </connections>
+                                                        </tableViewCell>
+                                                    </prototypes>
+                                                </tableView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="cTd-9q-7rj" firstAttribute="leading" secondItem="HDp-Hs-0Yw" secondAttribute="leading" constant="15" id="4KL-yT-sIZ"/>
+                                                <constraint firstItem="0pn-WW-ZGy" firstAttribute="width" secondItem="HDp-Hs-0Yw" secondAttribute="width" multiplier="1:1.2" id="SPd-3m-I1k"/>
                                                 <constraint firstItem="fqa-Dw-ivW" firstAttribute="centerY" secondItem="0pn-WW-ZGy" secondAttribute="centerY" id="WTp-Fd-c21"/>
-                                                <constraint firstAttribute="bottom" secondItem="cTd-9q-7rj" secondAttribute="bottom" constant="12" id="dFY-pi-pPf"/>
-                                                <constraint firstItem="cTd-9q-7rj" firstAttribute="top" secondItem="0pn-WW-ZGy" secondAttribute="bottom" id="eKY-jM-Oly"/>
-                                                <constraint firstItem="fqa-Dw-ivW" firstAttribute="leading" secondItem="0pn-WW-ZGy" secondAttribute="leading" constant="5" id="eZ8-3U-lKc"/>
+                                                <constraint firstItem="paw-KJ-9UJ" firstAttribute="top" secondItem="0pn-WW-ZGy" secondAttribute="bottom" constant="5" id="bSS-jy-EoC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="paw-KJ-9UJ" secondAttribute="trailing" id="ctL-vz-ehH"/>
+                                                <constraint firstItem="fqa-Dw-ivW" firstAttribute="leading" secondItem="0pn-WW-ZGy" secondAttribute="leading" constant="8" id="eZ8-3U-lKc"/>
                                                 <constraint firstItem="0pn-WW-ZGy" firstAttribute="top" secondItem="HDp-Hs-0Yw" secondAttribute="top" constant="10" id="gRk-vl-q5e"/>
-                                                <constraint firstAttribute="trailing" secondItem="cTd-9q-7rj" secondAttribute="trailing" constant="15" id="mTL-kF-Dqy"/>
-                                                <constraint firstItem="0pn-WW-ZGy" firstAttribute="leading" secondItem="cTd-9q-7rj" secondAttribute="leading" id="zhM-XC-lPz"/>
+                                                <constraint firstItem="paw-KJ-9UJ" firstAttribute="bottom" secondItem="HDp-Hs-0Yw" secondAttribute="bottomMargin" id="hDq-HL-ueA"/>
+                                                <constraint firstItem="0pn-WW-ZGy" firstAttribute="leading" secondItem="HDp-Hs-0Yw" secondAttribute="leading" constant="15" id="n0E-RT-mvI"/>
+                                                <constraint firstItem="paw-KJ-9UJ" firstAttribute="leading" secondItem="HDp-Hs-0Yw" secondAttribute="leadingMargin" id="xwf-XT-wAQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="lbl_price" destination="3aU-dY-r8X" id="jiK-tg-fis"/>
+                                            <outlet property="tblVew" destination="paw-KJ-9UJ" id="9kq-i2-fAw"/>
+                                            <outlet property="tblVewHeight" destination="J7C-R2-jl3" id="PDX-gN-WMK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -233,7 +239,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzo-eh-oO4">
-                                <rect key="frame" x="0.0" y="20" width="500" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked Offers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aro-cX-HPn">
                                         <rect key="frame" x="193" y="13" width="114" height="22"/>
@@ -269,7 +275,7 @@
                                     <constraint firstAttribute="height" constant="50" id="s0x-cp-2wu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="19"/>
-                                <state key="normal" title="HELL YEAH! UPGRADE ME">
+                                <state key="normal" title="SUBSCRIBE NOW">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -279,7 +285,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="upgradeButtonAction:" destination="jXO-eH-OqC" eventType="touchUpInside" id="90k-1G-hMC"/>
-                                    <segue destination="VeK-5w-b9v" kind="show" id="huF-s5-86Z"/>
+                                    <segue destination="VeK-5w-b9v" kind="show" identifier="paymentViewControllerSegue" id="nAz-11-HnR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -310,7 +316,9 @@
         <!--Payment-->
         <scene sceneID="Glz-hd-aCm">
             <objects>
-                <viewControllerPlaceholder storyboardName="Payment" id="VeK-5w-b9v" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Payment" id="VeK-5w-b9v" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9HR-Wb-58K"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUs-OP-MkA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="833" y="65"/>

@@ -227,6 +227,7 @@ struct SignUpUIModel {
         APIHelper().signUp(parameters: param) { (user, error) in
             if error == nil && user != nil {
                 UserData.loggedInUser = user!
+                MainScreenUtility.setHomeAsRoot()
                 completion(nil)
             } else {
                 completion(error?.localizedDescription ?? "Signup failed!")

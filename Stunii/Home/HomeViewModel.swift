@@ -25,12 +25,15 @@ class HomeViewModel: NSObject {
         getData()
     }
     
+   
+    
     var numberOfRows: Int {
         return model.count
     }
     
     func modelObjectAt(index: Int) -> HomeData? {
-        return model[index]
+        print(index)
+        return model[safe:index]
     }
     
     func heightForObjectAt(index: Int) -> CGFloat {
@@ -54,8 +57,17 @@ class HomeViewModel: NSObject {
         
     }
     
+    
+    func fetchData(){
+        getData()
+        
+    }
+    
     private func getData() {
         let parm = self.delegate?.getRequstParam()
+        print(parm)
+//        param!["lat"] = "\(locValue==nil ? 0.0:locValue.latitude)",
+//        parm!["lng"] = "\(locValue==nil ? 0.0:locValue.longitude)"
         APIHelper.getAllDeals(param: parm!) { [weak self] (data, error) in
             if let err = error {
                 self?.delegate?.didReceive(error: err)
@@ -85,4 +97,11 @@ class HomeViewModel: NSObject {
 protocol HomeVMDelegate: ReloadDataAndErrorHandler {
     
     func getRequstParam()->[String:String]
+}
+
+
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
 }

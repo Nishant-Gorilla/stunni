@@ -37,7 +37,7 @@ class LoginViewController:BaseViewController {
                                 })
                             } else {
                                 DispatchQueue.main.async {
-                                self?.showAlertWith(title: nil, message: error?.localizedDescription ?? "Login failed!")
+                                self?.showAlertWith(title: nil, message: error?.localizedDescription ?? "You’re so close but that looks like the wrong login details. Please make sure you’re using an Educational Email Address. You can also use the “Forgot Password” section if needs be. If you're still having issues singing in, please don’t hesitate to contact us on: help@stunii.com")
                                 }
                             }
         }

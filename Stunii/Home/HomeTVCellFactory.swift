@@ -17,14 +17,14 @@ class HomeTVCellFactory: NSObject {
         tblView = tableView
     }
     
-    func cellFor(indexPath: IndexPath, with data: HomeData, vc: UIViewController) -> UITableViewCell {
+    func cellFor(indexPath: IndexPath, with data: HomeData? = nil, vc: UIViewController) -> UITableViewCell {
         let cell = tblView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! HomeTableViewCell
-        cell.label.text = data.name ?? ""
+        cell.label.text = data?.name ?? ""
         cell.collectionView.tag = indexPath.row
         cell.collectionView.dataSource  = vc as? UICollectionViewDataSource
         cell.collectionView.delegate    = vc as? UICollectionViewDelegate
         
-        if data.isFeatured {
+        if data?.isFeatured ?? false {
             let nib = UINib(nibName: CVCell.Name.home, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.home)
             cell.label.isHidden = true

@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class ForgotPasswordViewController: BaseViewController {
     
-    @IBOutlet weak var textFieldEmail: UITextField!
+  
+    @IBOutlet weak var textFieldEmail: SkyFloatingLabelTextField!
     
     @IBAction func dismissButtonAction(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func btnCancel(_ sender: UIButton) {
         dismiss(animated: false, completion: nil)
     }
     

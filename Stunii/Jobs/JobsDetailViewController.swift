@@ -37,7 +37,6 @@ class JobsDetailViewController: BaseViewController {
         addressLabel.text = job.jobAddress
         jobTypeLabel.text = job.jobType
         jobRateLabel.text = job.jobRate
-        
         companyImageView.kf.indicatorType = .activity
         companyImageView.kf.setImage(with: URL(string:job.companyImage ?? ""))
     }

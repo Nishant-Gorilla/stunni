@@ -13,6 +13,7 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var tableview: UITableView!
     
     let dataArray: [(title: String, image: UIImage)] = [
+        ("Demand A Deal", UIImage(named:"demand")!),
         ("Facebook", #imageLiteral(resourceName: "facebook")),
         ("Twitter", #imageLiteral(resourceName: "twitter")),
         ("Instagram", #imageLiteral(resourceName: "intagram")),
@@ -44,37 +45,51 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let homeVC = (sideMenuController?.rootViewController as! UINavigationController).viewControllers[0]
-        
         if indexPath.row == 0 {
+            if #available(iOS 13.0, *) {
+            
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Demand", bundle:nil)
+                let vc = storyBoard.instantiateViewController(identifier:"DemandViewController")as!DemandViewController
+               // vc.type = "nearMe"
+                let navigationController = UINavigationController(rootViewController: vc)
+                navigationController.isNavigationBarHidden = true
+               
+               sideMenuController?.rootViewController = navigationController
+            } else {
+                // Fallback on earlier versions
+            }
+          
+        }
+       else if indexPath.row == 1 {
             let fbUrl = "https://www.facebook.com/STUNiiAPP/"
             Utilities.openUrlInSafari(string: fbUrl)
         }
-        else if indexPath.row == 1 {
+        else if indexPath.row == 2 {
             let twitterUrl
                 = "https://twitter.com/stuniiapp?lang=en"
             Utilities.openUrlInSafari(string: twitterUrl)
         }
-        else if indexPath.row == 2 {
+        else if indexPath.row == 3 {
             let instaUrl
                 = "https://www.instagram.com/stuniiapp/?hl=en"
             Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 3 { //service
+        else if indexPath.row == 4 { //service
             let instaUrl = "https://stunii.com/terms"
             
             Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 4 { //privacy
+        else if indexPath.row == 5 { //privacy
             let instaUrl = "https://stunii.com/privacy"
             Utilities.openUrlInSafari(string: instaUrl)
         }
-        else if indexPath.row == 5 { // cancel
+        else if indexPath.row == 6 { // cancel
             let message = "We don’t want you to miss out on our amazing package deals, but we understand if you need to go. You can cancel your deal package by visiting www.stunii.com/cancelpackage and proceeding to ‘Cancel Package'"
             showAlertWith(title: "Cancel Premium", message: message, buttonTitle: "Cancel Premium", clickHandler: {
                      Utilities.openUrlInSafari(string:"https://stunii.com")
             })
         }
-        else if indexPath.row == 6 {
+        else if indexPath.row == 7 {
             UserData.loggedInUser = nil
             MainScreenUtility.setSignupAsRoot()
         }

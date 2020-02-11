@@ -11,6 +11,8 @@ import IQKeyboardManagerSwift
 import  Stripe
 import UserNotifications
 import Firebase
+import FBSDKCoreKit
+import CardScan
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,15 +29,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         let _ = NotificationManager.init()
         Stripe.setDefaultPublishableKey(APIKeys.stripe)
-      
+       // Settings.setAutoLogAppEventsEnabled(true)
        // Firebase setup
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         notificationSetup(application: application)
-        
+        ScanViewController.configure(apiKey: "MyQskLEJQB33ikCoXTED_R8ggD92C3r") 
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
+   
 
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = ApplicationDelegate.shared.application(app, open: url, options: options)
+
+      // Add any custom logic here.
+      
+      return handled
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -51,31 +62,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // If you are receiving a notification message while your app is in the background,
-        // this callback will not be fired till the user taps on the notification launching the application.
-        // TODO: Handle data of notification
-
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-
-        // Print message ID.
-        if let messageID = userInfo[gcmMessageIDKey] {
-            print("Message ID: \(messageID)")
-        }
-
-        // Print full message.
-        print(userInfo)
-
-        completionHandler(UIBackgroundFetchResult.newData)
-    }
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+//                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        // If you are receiving a notification message while your app is in the background,
+//        // this callback will not be fired till the user taps on the notification launching the application.
+//        // TODO: Handle data of notification
+//
+//        // With swizzling disabled you must let Messaging know about the message, for Analytics
+//        // Messaging.messaging().appDidReceiveMessage(userInfo)
+//
+//        // Print message ID.
+//        if let messageID = userInfo[gcmMessageIDKey] {
+//            print("Message ID: \(messageID)")
+//        }
+//
+//        // Print full message.
+//        print(userInfo)
+//
+//        completionHandler(UIBackgroundFetchResult.newData)
+//    }
 
     
     /**

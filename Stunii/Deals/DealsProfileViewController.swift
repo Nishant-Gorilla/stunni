@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import  CoreLocation
 
 class DealsProfileViewController:BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    private var locationManager: CLLocationManager!
     var dealProfileViewModel: DealProfileViewModel!
     var category: Category?
     struct TVCellIdentifier {
         let collectionView = "cell_collView"
         let deal = "cell_deal"
     }
+    var isRefresh = Bool()
     struct CVCellIdentifier {
         let image = "cell_image"
         let subCategory = "SubCategoryLabelCollectionViewCell"
@@ -24,11 +27,23 @@ class DealsProfileViewController:BaseViewController {
     
     let cellIdentifier      = TVCellIdentifier()
     let cvCellIdentifier    = CVCellIdentifier()
+     var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoader()
-        dealProfileViewModel = DealProfileViewModel(delegate: self, category: category!)
+       loadCurrentLocation()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.backgroundColor = UIColor.white
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+         tableView.addSubview(refreshControl)
+    }
+    
+
+    @objc func refresh(sender:AnyObject) {
+       // Code to refresh table view
+        loadCurrentLocation()
+        refreshControl.endRefreshing()
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -142,5 +157,53 @@ extension DealsProfileViewController: DealProfileViewModelDelegate {
         showAlertWith(title: "Error!", message: error.localizedDescription)
     }
     
+    
+}
+
+extension DealsProfileViewController:CLLocationManagerDelegate
+{
+    func loadCurrentLocation(){
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status != .authorizedWhenInUse {
+            locValue = nil
+            
+            if(isRefresh){
+                
+                 self.dealProfileViewModel?.getData()
+                isRefresh = false
+            }
+            else{
+                
+            dealProfileViewModel = DealProfileViewModel(delegate: self, category: category!)
+                tableView.delegate = self
+                tableView.dataSource = self
+
+            }
+
+            return}
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        locValue = locationManager.location?.coordinate
+         if(isRefresh){
+                       
+                    self.dealProfileViewModel?.getData()
+                    isRefresh = false
+                   }
+                   else{
+            dealProfileViewModel = DealProfileViewModel(delegate: self, category: category!)
+              tableView.delegate = self
+              tableView.dataSource = self
+
+
+                   }
+
+    }
     
 }

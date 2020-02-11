@@ -33,13 +33,13 @@ class DealTableViewCell: UITableViewCell {
         let startDay = deal.startDay ?? ""
         let endDay = deal.endDay ?? ""
         if (startDay+endDay).trimSpace() != "" {
-        openDay = startDay + " to " + endDay
+        openDay = startDay  +  endDay
         }
         openingDayLabel.text = openDay
         distanceLabel.text = "\(deal.distance ?? 0) mi"
         providerTitle.text = deal.provider?.name ?? "Provider"
         dealTitle.text = deal.title ?? ""
-        
+        print(deal.title)
         coverImageView.setVIPImage(deal: deal)
         
     }

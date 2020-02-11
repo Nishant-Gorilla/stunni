@@ -1,11 +1,39 @@
 PODS:
   - Alamofire (4.8.2)
+  - CardScan (1.0.5027):
+    - CardScan/Core (= 1.0.5027)
+  - CardScan/Core (1.0.5027)
   - Cosmos (19.0.3)
+  - FacebookSDK (5.15.0):
+    - FacebookSDK/CoreKit (= 5.15.0)
+    - FacebookSDK/MarketingKit (= 5.15.0)
+  - FacebookSDK/CoreKit (5.15.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookSDK/MarketingKit (5.15.0):
+    - FacebookSDK/CoreKit
+    - FBSDKMarketingKit (~> 5.0)
+  - FBAudienceNetwork (5.6.0):
+    - FBSDKCoreKit/Basics (>= 5.6.0)
+  - FBSDKCoreKit (5.11.1):
+    - FBSDKCoreKit/Basics (= 5.11.1)
+    - FBSDKCoreKit/Core (= 5.11.1)
+  - FBSDKCoreKit/Basics (5.11.1)
+  - FBSDKCoreKit/Core (5.11.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKMarketingKit (5.14.0):
+    - FBSDKCoreKit (~> 5.5)
+  - Firebase (6.8.1):
+    - Firebase/Core (= 6.8.1)
+  - Firebase/Analytics (6.8.1):
+    - Firebase/Core
   - Firebase/Core (6.8.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.1.1)
   - Firebase/CoreOnly (6.8.1):
     - FirebaseCore (= 6.2.3)
+  - Firebase/InAppMessagingDisplay (6.8.1):
+    - Firebase/CoreOnly
+    - FirebaseInAppMessagingDisplay (~> 0.15.4)
   - Firebase/Messaging (6.8.1):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.1.4)
@@ -30,6 +58,14 @@ PODS:
     - GoogleUtilities/Environment (~> 6.2)
     - GoogleUtilities/Logger (~> 6.2)
   - FirebaseCoreDiagnosticsInterop (1.0.0)
+  - FirebaseInAppMessaging (0.15.5):
+    - FirebaseAnalyticsInterop (~> 1.3)
+    - FirebaseCore (~> 6.2)
+    - FirebaseInstanceID (~> 4.0)
+    - GoogleDataTransportCCTSupport (~> 1.0)
+  - FirebaseInAppMessagingDisplay (0.15.5):
+    - FirebaseCore (~> 6.2)
+    - FirebaseInAppMessaging (>= 0.15.0)
   - FirebaseInstanceID (4.2.5):
     - FirebaseCore (~> 6.0)
     - GoogleUtilities/Environment (~> 6.0)
@@ -90,8 +126,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire (= 4.8.2)
   - Alamofire (~> 4.7)
+  - CardScan
   - Cosmos (= 19.0.3)
+  - FacebookSDK
+  - FBAudienceNetwork
+  - Firebase
+  - Firebase/Analytics
   - Firebase/Core
+  - Firebase/InAppMessagingDisplay
   - Firebase/Messaging
   - IQKeyboardManagerSwift (= 6.3.0)
   - Kingfisher (~> 5.7)
@@ -102,15 +144,22 @@ DEPENDENCIES:
   - SkyFloatingLabelTextField (= 3.5.2)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
+    - CardScan
     - Cosmos
+    - FacebookSDK
+    - FBAudienceNetwork
+    - FBSDKCoreKit
+    - FBSDKMarketingKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseCoreDiagnosticsInterop
+    - FirebaseInAppMessaging
+    - FirebaseInAppMessagingDisplay
     - FirebaseInstanceID
     - FirebaseMessaging
     - GoogleAppMeasurement
@@ -129,13 +178,20 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CardScan: 1287bb9e81874702dd5c422f4020e9c95b55a157
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
+  FacebookSDK: c3feaf4733c9696039307821cbbf4471dc278f0b
+  FBAudienceNetwork: 1ea63543665445a3a5b4a059e8210a343b6ab3c1
+  FBSDKCoreKit: 5aada61a229054694810f3cee231f986004b3c49
+  FBSDKMarketingKit: b9dd220b38cc613c71d3eb626cd60bc8e938fbb4
   Firebase: 9cbe4e5b5eaafa05dc932be58b7c8c3820d71e88
   FirebaseAnalytics: 843c7f64a8f9c79f0d03281197ebe7bb1d58d477
   FirebaseAnalyticsInterop: d48b6ab67bcf016a05e55b71fc39c61c0cb6b7f3
   FirebaseCore: e9d9bd1dae61c1e82bc1e0e617a9d832392086a0
   FirebaseCoreDiagnostics: 4c04ae09d0ab027c30179828c6bb47764df1bd13
   FirebaseCoreDiagnosticsInterop: 6829da2b8d1fc795ff1bd99df751d3788035d2cb
+  FirebaseInAppMessaging: acbfa8c5582b11ccc0366511d29ef1d288f302fc
+  FirebaseInAppMessagingDisplay: 60a65c8277f17675a8a5b92e9a97cd914b45d4ff
   FirebaseInstanceID: 550df9be1f99f751d8fcde3ac342a1e21a0e6c42
   FirebaseMessaging: 9483ac438b7b223c09dad8712310e9ee7d562c99
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
@@ -152,6 +208,6 @@ SPEC CHECKSUMS:
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   SkyFloatingLabelTextField: f0672b67cd0e86abda946c0dc3b2fe8580767dbb
 
-PODFILE CHECKSUM: d1956a3c43e72be888cf584dc549f02ea5641262
+PODFILE CHECKSUM: 008fea9fc49a847e5dd99a663b098b3c862f9b17
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.4

@@ -147,6 +147,23 @@ class SignupViewController: BaseViewController {
         passwordEyeImageView.image = passwordTextField.isSecureTextEntry ? #imageLiteral(resourceName: "eye-close") : #imageLiteral(resourceName: "eye-open")
     }
     
+   @IBAction func textFieldDidEndEditing(_ sender: SkyFloatingLabelTextField) {
+    if currentPageIndex == 1 && sender == textFields.first{
+       print("Hello")
+        print(textFields.first?.text)
+        DispatchQueue.main.async {
+            self.showLoader()
+            APIHelper.validateEmail(email: self.textFields.first?.text ?? "") { (status, str) in
+            self.hideLoader()
+            if !(status){
+                self.showAlertWith(title:"Alert", message: str)
+            }
+        }
+    }
+    }
+       }
+    
+    
     @IBAction func textFieldDidBeginEditing(_ sender: SkyFloatingLabelTextField) {
         if currentPageIndex == 2 &&
             sender == textFields.first! {
@@ -414,6 +431,8 @@ class SignupViewController: BaseViewController {
     }
 }
 
+
+ 
 
 extension SignupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

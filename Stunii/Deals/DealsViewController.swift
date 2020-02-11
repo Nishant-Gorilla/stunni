@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Kingfisher
+import MessageUI
 
 class DealsViewController: BaseViewController {
     var dealsViewModel: DealsViewModel?
@@ -16,7 +17,7 @@ class DealsViewController: BaseViewController {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-  
+    @IBOutlet weak var redeeamBtn: UIButton!
     @IBOutlet weak var ratingCountLabel: UILabel!
     @IBOutlet weak var ratingStarImageVIew: UIImageView!
     @IBOutlet weak var everyDayLabel: UILabel!
@@ -26,15 +27,28 @@ class DealsViewController: BaseViewController {
     private var tvCellFactory: DealsTVCellFactory!
     var deal: Deal?
     var isLoading = true
+    var contactNo = String()
+    var appLink = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
              self.showLoader()
             self.dealsViewModel = DealsViewModel(dealId:self.deal?.id ?? "", delegate: self)
-            self.tvCellFactory = DealsTVCellFactory(tblView: self.tableView)
+            self.tvCellFactory = DealsTVCellFactory(tblView: self.tableView,view:self)
         }
-     
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "QRScannerView" {
@@ -52,6 +66,9 @@ class DealsViewController: BaseViewController {
     }
     
     
+    @IBAction func redeemBtnActn(_ sender: UIButton) {
+        redeemButtonAction(sender)
+    }
     
     
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -59,9 +76,12 @@ class DealsViewController: BaseViewController {
     }
     
     private func setData() {
+        
         let deal = dealsViewModel?.deal
+        contactNo = deal?.taxi?.phone_number ?? ""
+        appLink = deal?.taxi?.app_link ?? ""
          titleLabel.text = deal?.title ?? ""
-         distanceLabel.text = String(deal?.distance ?? 0)
+         distanceLabel.text = String(deal?.distance ?? 0) + "mi"
          ratingCountLabel.text = String(deal?.ratings ?? 0)
         subTitleLabel.text = deal?.provider?.name ?? ""
         var openInfo = ""
@@ -74,6 +94,17 @@ class DealsViewController: BaseViewController {
         coverImageView.kf.indicatorType = .activity
         providerImageView.kf.setImage(with: URL(string:deal?.photo ?? ""))
         coverImageView.kf.setImage(with: URL(string:deal?.coverPhoto ?? ""))
+        if(deal?.web == "" && deal?.societyEmail?.replacingOccurrences(of:" ", with: "") == ""){
+          
+        let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
+        redeeamBtn.setTitle(buttonTitle, for: .normal)
+        }
+        else if(deal?.societyEmail?.replacingOccurrences(of:" ", with: "") != ""){
+            redeeamBtn.setTitle("Join Society", for: .normal)
+        }
+        else{
+         redeeamBtn.setTitle("Open Website", for: .normal)
+        }
         tableView.reloadData()
     }
   
@@ -117,11 +148,6 @@ class DealsViewController: BaseViewController {
 
             
             self?.present(alertController, animated: true, completion: nil)
-            
-            
-            
-    
-            
             
         }
     }
@@ -173,14 +199,21 @@ class DealsViewController: BaseViewController {
     }
     
     @objc func catchACab() {
-        let number = "01244318318"
-        if let url = URL(string: "tel://\(number)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
+        if let phoneCallURL = URL(string: "tel://\(contactNo.replacingOccurrences(of:" ", with: ""))") {
+
+          let application:UIApplication = UIApplication.shared
+          if (application.canOpenURL(phoneCallURL)) {
+              application.open(phoneCallURL, options: [:], completionHandler: nil)
+          }
+        }
+
     }
     
     @objc func downloadApp() {
-         let cabAppUrl = URL(string:"https://apps.apple.com/gb/app/abbey-taxis-chester/id1314307916")
+        print(appLink)
+        let cabAppUrl = URL(string: appLink.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed) ?? "")
+        print(cabAppUrl!)
+        
         if UIApplication.shared.canOpenURL(cabAppUrl!)
         {
             UIApplication.shared.open(cabAppUrl!, options: [:], completionHandler: nil)
@@ -198,6 +231,12 @@ class DealsViewController: BaseViewController {
     
     
     @objc func redeemButtonAction(_ sender: UIButton) {
+        
+        if(sender.titleLabel?.text == "Open Website"){
+            Utilities.openUrlInSafari(string: deal?.web ?? "")
+        }else if(sender.titleLabel?.text == "Join Society"){
+            showSendMail(email: deal?.societyEmail ?? "")
+        }else{
         // check limit
         if deal?.redeemType == "limited" &&  (deal?.limitTotal ?? 0) < 1 {
             showAlertWith(title: nil, message: "OOPS YOU HAVE JUST MISSED THIS ONE. KEEP A LOOK FOR NEXT ONE.")
@@ -209,33 +248,28 @@ class DealsViewController: BaseViewController {
                 redeemDealFlow(isScan: false)
             }
         }
-
-//            if  {
-//                redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
-//            } else {
-//                            }
-//        } else  { //
-//            showStuId()
-//            //redeemDealFlow(isScan: deal?.scanForRedeem ?? false)
-//        }
+        }
       
     }
     
+    private func showSendMail(email:String) {
+    if MFMailComposeViewController.canSendMail() {
+        let toRecipents = [email]
+       
+        let mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject("Subject")
+        mc.setMessageBody("", isHTML: false)
+        mc.setToRecipients(toRecipents)
+     //   mc.setCcRecipients(cc)
+        self.present(mc, animated: true, completion: nil)
+    } else {
+        showAlertWith(title: nil, message: "This device not able to send email.")
+    }
+    }
+    
+    
     private func showStuId() {
-        
-//        let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
-//        vc.willPop = true
-//        vc.actionClouser = {
-//            self.showLoader()
-//            DispatchQueue.main.async {
-//
-//            APIHelper.countDealLimit(id: (self.deal?.id ?? ""), completion: {[weak self] (data, error) in
-//                self?.hideLoader()
-//                self?.dealsViewModel?.getData(id:self?.deal?.id ?? "")
-//
-//            })
-//            }
-//        }
         showLoader()
         
         var res = false
@@ -244,6 +278,8 @@ class DealsViewController: BaseViewController {
             self.hideLoader()
             let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
             vc.willPop = true
+           
+            vc.dealId = self.deal?.id ?? ""
            // vc.actionClouser = {
                // self.dealsViewModel?.getData(id:self.deal?.id ?? "")
           //  }
@@ -257,6 +293,7 @@ class DealsViewController: BaseViewController {
             print(masgdata)
             self.hideLoader()
             let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
+            vc.dealId = self.deal?.id ?? ""
             vc.willPop = true
             //vc.actionClouser = {
             //    self.dealsViewModel?.getData(id:self.deal?.id ?? "")
@@ -289,7 +326,7 @@ extension DealsViewController: UITableViewDataSource {
                 self.dealsViewModel?.getData(id: dealId)
             }
             })
-        (cell as? HomeTableViewCell)?.redeemButton.addTarget(self, action: #selector(redeemButtonAction(_:)), for: .touchUpInside)
+//        (cell as? HomeTableViewCell)?.redeemButton.addTarget(self, action: #selector(redeemButtonAction(_:)), for: .touchUpInside)
         (cell as? CellMap)?.getMeThereButton.addTarget(self, action: #selector(openMapForPlace), for: .touchUpInside)
           (cell as? CellMap)?.catchACabButton.addTarget(self, action: #selector(catchACab), for: .touchUpInside)
         (cell as? CellMap)?.downloadAppButton.addTarget(self, action: #selector(downloadApp), for: .touchUpInside)
@@ -370,6 +407,12 @@ extension DealsViewController: DealsViewModelDelegate {
         isLoading = false
         hideLoader()
         showAlertWith(title: "Error!", message: error.localizedDescription)
+    }
+    
+}
+extension DealsViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
     
 }

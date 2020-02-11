@@ -12,6 +12,7 @@ class SubCategoryDealsViewController: BaseViewController {
         @IBOutlet weak var tableView: UITableView!
         var viewModel: SubCategoryDealsViewModel!
         var subCategory: SubCategory?
+        var type  = String()
         struct TVCellIdentifier {
             let deal = "cell_deal"
         }
@@ -25,11 +26,14 @@ class SubCategoryDealsViewController: BaseViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             showLoader()
-            viewModel = SubCategoryDealsViewModel(delegate: self, subCategory: subCategory)
+           
+            viewModel = SubCategoryDealsViewModel(delegate: self, subCategory: subCategory,type:type)
         }
         
         @IBAction func backButtonClicked(_ sender: Any) {
+           
             navigationController?.popViewController(animated: true)
+            
         }
     }
     

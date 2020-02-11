@@ -42,8 +42,12 @@ class DealProfileViewModel: NSObject {
     func getProviderImageUrl(at index: Int) -> String {
         return providers[index].photoURL ?? ""
     }
-    private func getData() {
-        APIHelper.getAllProviders{ [weak self] (data, error) in
+    
+    func getData() {
+
+        let param = "lat=\("\(locValue==nil ? 0.0:locValue.latitude)")&lng=\("\(locValue==nil ? 0.0:locValue.longitude)")"
+    
+        APIHelper.getAllProviders(param:param){ [weak self] (data, error) in
             if let err = error {
                 self?.delegate?.didReceive(error: err)
             }

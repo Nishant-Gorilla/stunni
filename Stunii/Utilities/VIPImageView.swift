@@ -46,9 +46,9 @@ class VIPImageView: UIImageView {
         vipImageView.isHidden = true
     }
     
-    func setVIPImage(deal: Deal) {
+    func setVIPImage(deal: Deal? = nil) {
         guard let isVip = UserData.loggedInUser?.isVIP, !isVip else {return}
-        if deal.isVIP ?? false {
+        if deal?.isVIP ?? false {
             showVIP()
         }
         else {

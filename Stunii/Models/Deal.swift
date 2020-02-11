@@ -26,7 +26,9 @@ class Deal: Mappable {
     var facebook: String?
     var instagram: String?
      var affiliate: String?
-    var distance: Float?{
+     var taxi: Taxi?
+    var distance: Float?
+    {
         didSet(val){
             if distance != nil
             {
@@ -63,8 +65,7 @@ class Deal: Mappable {
     var metaDescription: String?
     var startDay: String?
     var endDay: String?
-    
-    
+    var societyEmail:String?
 
     required init?(map: Map) {}
     
@@ -79,6 +80,8 @@ class Deal: Mappable {
         title  <- map["title"]
         desc  <- map["desc"]
         location <- map["location"]
+        taxi <- map["_taxi"]
+        societyEmail <- map["society_email"]
         address  <- map["address"]
         accommodation_email <- map["accommodation_email "]
         scanForRedeem <- map["scanForRedeem"]

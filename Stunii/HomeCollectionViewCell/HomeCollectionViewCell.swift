@@ -20,14 +20,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func set(deal: Deal) {
+    func set(deal: Deal? = nil) {
         photoImageView.kf.indicatorType = .activity
         imgView.kf.indicatorType = .activity
-        photoImageView.kf.setImage(with: URL(string: deal.photo ?? ""))
-        imgView.kf.setImage(with:  URL(string: deal.coverPhoto ?? ""))
-        providerNameLabel.text = deal.provider?.name ?? ""
-        dealTitleLabel.text = deal.title ?? ""
-        distanceLabel.text = String(deal.distance ?? 0) + " mi"
+        photoImageView.kf.setImage(with: URL(string: deal?.photo ?? ""))
+        imgView.kf.setImage(with:  URL(string: deal?.coverPhoto ?? ""))
+        providerNameLabel.text = deal?.provider?.name ?? ""
+        dealTitleLabel.text = deal?.title ?? ""
+        distanceLabel.text = String(deal?.distance ?? 0) + " mi"
         
         imgView.setVIPImage(deal: deal)
     }

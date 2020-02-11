@@ -113,6 +113,13 @@
 		96FF628823253ACE000549D2 /* DealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FF628723253ACE000549D2 /* DealTableViewCell.swift */; };
 		96FF628A2325445D000549D2 /* SubCategoryDealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FF62892325445D000549D2 /* SubCategoryDealsViewController.swift */; };
 		96FF628C232544F3000549D2 /* SubCategoryDealsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FF628B232544F3000549D2 /* SubCategoryDealsViewModel.swift */; };
+		B7C3FFB8235B2D710092CB1F /* NearMeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C3FFB7235B2D710092CB1F /* NearMeController.swift */; };
+		B7C3FFBA235CC7350092CB1F /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C3FFB9235CC7350092CB1F /* ReferralViewController.swift */; };
+		B7C3FFBC235CCBD70092CB1F /* ReferralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C3FFBB235CCBD70092CB1F /* ReferralViewModel.swift */; };
+		B7C3FFBE235CCDD20092CB1F /* Referral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C3FFBD235CCDD20092CB1F /* Referral.swift */; };
+		B7F0007423D46EA1005AED37 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0007323D46EA1005AED37 /* Plan.swift */; };
+		B7F0007623D472BF005AED37 /* PlanTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0007523D472BE005AED37 /* PlanTblCell.swift */; };
+		B7F0007823D4B804005AED37 /* PromoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F0007723D4B804005AED37 /* PromoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -239,6 +246,13 @@
 		96FF628723253ACE000549D2 /* DealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealTableViewCell.swift; sourceTree = "<group>"; };
 		96FF62892325445D000549D2 /* SubCategoryDealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryDealsViewController.swift; sourceTree = "<group>"; };
 		96FF628B232544F3000549D2 /* SubCategoryDealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryDealsViewModel.swift; sourceTree = "<group>"; };
+		B7C3FFB7235B2D710092CB1F /* NearMeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMeController.swift; sourceTree = "<group>"; };
+		B7C3FFB9235CC7350092CB1F /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
+		B7C3FFBB235CCBD70092CB1F /* ReferralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewModel.swift; sourceTree = "<group>"; };
+		B7C3FFBD235CCDD20092CB1F /* Referral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Referral.swift; sourceTree = "<group>"; };
+		B7F0007323D46EA1005AED37 /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		B7F0007523D472BE005AED37 /* PlanTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTblCell.swift; sourceTree = "<group>"; };
+		B7F0007723D4B804005AED37 /* PromoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoModel.swift; sourceTree = "<group>"; };
 		FE21AA082E9FCDAF0966A588 /* Pods_Stunii.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stunii.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -270,6 +284,7 @@
 				96A875E82324382D009251A4 /* QRScannerViewCotroller.swift */,
 				96FF628723253ACE000549D2 /* DealTableViewCell.swift */,
 				96FF62892325445D000549D2 /* SubCategoryDealsViewController.swift */,
+				B7C3FFB7235B2D710092CB1F /* NearMeController.swift */,
 			);
 			path = Deals;
 			sourceTree = "<group>";
@@ -279,6 +294,10 @@
 			children = (
 				6BCE40A922C2AD5A0057B9D6 /* Payment.storyboard */,
 				84E2A188232431CC008ED74C /* PaymentViewController.swift */,
+				B7C3FFBB235CCBD70092CB1F /* ReferralViewModel.swift */,
+				B7C3FFB9235CC7350092CB1F /* ReferralViewController.swift */,
+				B7C3FFBD235CCDD20092CB1F /* Referral.swift */,
+				B7F0007723D4B804005AED37 /* PromoModel.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -289,6 +308,8 @@
 				96A94BA62323E2E900758850 /* CellClassed */,
 				6B0B959522C53058002687D9 /* Premium.storyboard */,
 				6B0B959722C53CC6002687D9 /* PremiumViewController.swift */,
+				B7F0007323D46EA1005AED37 /* Plan.swift */,
+				B7F0007523D472BE005AED37 /* PlanTblCell.swift */,
 			);
 			path = Premium;
 			sourceTree = "<group>";
@@ -665,6 +686,7 @@
 				EA586C1E1E4B7F140F7CDE69 /* [CP] Embed Pods Frameworks */,
 				84E2A18523242B45008ED74C /* Embed Frameworks */,
 				84E2A18723242D3D008ED74C /* ShellScript */,
+				AF25028B77721CF8B551E42A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -769,6 +791,23 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nbash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework/integrate-dynamic-framework.sh\"\n";
 		};
+		AF25028B77721CF8B551E42A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stunii/Pods-Stunii-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Stunii/Pods-Stunii-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stunii/Pods-Stunii-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EA586C1E1E4B7F140F7CDE69 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -823,6 +862,8 @@
 				6BE2DD1722C8778F00C0C34A /* TestViewController.swift in Sources */,
 				96A2C55323201EE700B1FA57 /* JobTableViewCell.swift in Sources */,
 				6BBBCAA622D9D18700AFEB77 /* JobsViewController.swift in Sources */,
+				B7F0007823D4B804005AED37 /* PromoModel.swift in Sources */,
+				B7C3FFBA235CC7350092CB1F /* ReferralViewController.swift in Sources */,
 				6B7AF73522DA249900CD5427 /* SearchTableViewViewController.swift in Sources */,
 				8405EFA02325567F00921F49 /* VIPImageView.swift in Sources */,
 				96A875EC232439E3009251A4 /* CodeScannerView.swift in Sources */,
@@ -831,7 +872,9 @@
 				91EB2531233DCD4D00503DD3 /* MainTabVC.swift in Sources */,
 				6B0D23BA22BF9D7B007908F1 /* AppDelegate.swift in Sources */,
 				967FDBC52318527F00BD473A /* Location.swift in Sources */,
+				B7C3FFBC235CCBD70092CB1F /* ReferralViewModel.swift in Sources */,
 				96FE480B231D85BF00E320B0 /* ProfileViewController.swift in Sources */,
+				B7C3FFB8235B2D710092CB1F /* NearMeController.swift in Sources */,
 				9617D1D2231B7B76002B1CD4 /* FormValidator.swift in Sources */,
 				96C6CA2F2320276E009093A7 /* JobDetailViewModel.swift in Sources */,
 				6B706EE622C1C7A20001A8B9 /* SignupViewController.swift in Sources */,
@@ -863,7 +906,9 @@
 				967FDBBA2318330100BD473A /* CategoryViewModel.swift in Sources */,
 				6B724D9A22BFB19200C25E6A /* APIManager.swift in Sources */,
 				6BCE40A522C2A48C0057B9D6 /* MenuViewController.swift in Sources */,
+				B7F0007623D472BF005AED37 /* PlanTblCell.swift in Sources */,
 				96FF628A2325445D000549D2 /* SubCategoryDealsViewController.swift in Sources */,
+				B7C3FFBE235CCDD20092CB1F /* Referral.swift in Sources */,
 				967FDBC7231852EA00BD473A /* Address.swift in Sources */,
 				96FB41FA232188AD00A31DC6 /* ProviderDealsViewController.swift in Sources */,
 				96FF628823253ACE000549D2 /* DealTableViewCell.swift in Sources */,
@@ -875,6 +920,7 @@
 				6B7D0AA622DD019100E708B6 /* HomeCVCellFactory.swift in Sources */,
 				96A61A782328234E00824607 /* WebViewController.swift in Sources */,
 				6B3C94C022C14BD700FDD68E /* OnboardingCollectionViewCell.swift in Sources */,
+				B7F0007423D46EA1005AED37 /* Plan.swift in Sources */,
 				6B39DDD622CA78EF00B64C9B /* DealsLabelCollectionViewCell.swift in Sources */,
 				6B3C94B722C1223700FDD68E /* MainScreenUtility.swift in Sources */,
 				96FF628623252E38000549D2 /* SubCategory.swift in Sources */,
@@ -966,7 +1012,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1021,7 +1067,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1050,6 +1096,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stunii.stunii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1077,6 +1124,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.0.23;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stunii.stunii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

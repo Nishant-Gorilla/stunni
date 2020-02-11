@@ -11,6 +11,7 @@ import UIKit
 class DealsTVCellFactory: NSObject {
     
     private var tableView: UITableView!
+    private var currentVc : UIViewController!
     typealias _actionHanlder = (Deal) -> ()
     var rowActionHandler: _actionHanlder?
     private var deal: Deal?
@@ -21,10 +22,13 @@ class DealsTVCellFactory: NSObject {
         let map = "cell_map"
     }
     
-    init(tblView: UITableView) {
+    init(tblView: UITableView,view:UIViewController) {
         super.init()
         tableView = tblView
+        currentVc = view
     }
+
+   
     
     func cellForRowAt(indexPath: IndexPath, deal:Deal? = nil, rowAction:_actionHanlder? = nil) -> UITableViewCell {
         self.rowActionHandler = rowAction
@@ -49,8 +53,12 @@ class DealsTVCellFactory: NSObject {
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.similarDeals, for: indexPath) as! HomeTableViewCell
                 let nib = UINib(nibName: CVCell.Name.deals, bundle: nil)
                 cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
-                let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
-                cell.redeemButton.setTitle(buttonTitle, for: .normal)
+//                if(deal?.web == ""){
+//                let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
+//                cell.redeemButton.setTitle(buttonTitle, for: .normal)
+//                }else{
+//                    cell.redeemButton.setTitle("Open Website", for: .normal)
+//                }
                 cell.collectionView.dataSource = self
                 cell.collectionView.delegate = self
                 cell.collectionView.reloadData()
@@ -63,7 +71,7 @@ class DealsTVCellFactory: NSObject {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.sellingFast, for: indexPath) as! CellSelling
-cell.leftCountLabel.text = String(deal?.limitTotal ?? 0 )
+          cell.leftCountLabel.text = String(deal?.limitByStudent ?? 0 )
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.text, for: indexPath) as! CellText
@@ -81,8 +89,12 @@ cell.leftCountLabel.text = String(deal?.limitTotal ?? 0 )
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifiers.similarDeals, for: indexPath) as! HomeTableViewCell
             let nib = UINib(nibName: CVCell.Name.deals, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
-              let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
-            cell.redeemButton.setTitle(buttonTitle, for: .normal)
+            if(deal?.web == ""){
+                    let buttonTitle = (deal?.scanForRedeem ?? false) ? "Press for QR Reader" : "Redeem"
+                    cell.redeemButton.setTitle(buttonTitle, for: .normal)
+                    }else{
+                cell.redeemButton.setTitle("Open Website", for: .normal)
+                }
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
             cell.collectionView.reloadData()
@@ -100,7 +112,7 @@ cell.leftCountLabel.text = String(deal?.limitTotal ?? 0 )
 
 extension DealsTVCellFactory: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return deal?.similarDeals.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -117,6 +129,39 @@ extension DealsTVCellFactory: UICollectionViewDataSource, UICollectionViewDelega
         return CGSize(width: width, height: height)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        rowActionHandler?(deal!.similarDeals[indexPath.row])
+       
+      //  rowActionHandler?(deal!.similarDeals[indexPath.row])
+        
+        let isUserVip = UserData.loggedInUser?.isVIP ?? false
+               let isDealVip = deal!.similarDeals[indexPath.row].isVIP ?? false
+               if isUserVip {
+                   // show deals
+                   rowActionHandler?(deal!.similarDeals[indexPath.row])
+               } else {
+                   if isDealVip {
+                       //open subscription
+                    print("Hello")
+                    if #available(iOS 13.0, *) {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Premium", bundle:nil)
+                    let vc = storyBoard.instantiateViewController(identifier:"PremiumViewController")as!PremiumViewController
+            
+                    currentVc.navigationController?.pushViewController(vc, animated: true)
+                    }
+                   } else {
+                       //showDeals
+                       rowActionHandler?(deal!.similarDeals[indexPath.row])
+                   }
+               }
     }
+    
+   
+    
+}
+
+extension UITableViewCell {
+
+    var viewControllerForTableView : UIViewController?{
+        return ((self.superview as? UITableView)?.delegate as? UIViewController)
+    }
+
 }

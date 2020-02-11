@@ -18,5 +18,10 @@ target 'Stunii' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Alamofire', '~> 4.7'
-
+  pod 'Firebase'
+  pod 'Firebase/InAppMessagingDisplay'
+  pod 'Firebase/Analytics'
+  pod 'FBAudienceNetwork'
+  pod 'FacebookSDK'
+  pod 'CardScan'
   end

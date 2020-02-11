@@ -8,6 +8,7 @@
 
 import UIKit
 import Stripe
+import CardScan
 
 class PaymentViewController: BaseViewController, UITextFieldDelegate {
 
@@ -15,10 +16,20 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var textField_year: UITextField!
     @IBOutlet weak var textField_cvv: UITextField!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var txtFldPromocode: UITextField!
+    @IBOutlet weak var btnApply: UIButton!
+    @IBOutlet weak var btnRemove: UIButton!
+    @IBOutlet weak var tblVew: UITableView!
     
     
-    var price: String = "\(POUNDS_STRING) 9.99"
-    
+    var price: String?
+    var id : String?
+    var planId : String?
+    var couponId :String?
+    var number : String?
+    var expiryMonth : String?
+    var expiryYear : String?
+    var cardIsScanned = false
     private var datePicker: DatePickerView!
     private var stripeToken: String? {
         didSet {
@@ -32,12 +43,51 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
         datePicker = DatePickerView()
         textField_year.inputView = datePicker
         textField_year.delegate = self
-        
-        priceLabel.text = "ANNUAL DEAL PACKAGE \(price) YEARLY"
+        priceLabel.text = "£ \(price ?? "")"
+        if !ScanViewController.isCompatible() {
+            
+        }
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        if let headerView = tblVew.tableHeaderView {
+
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var headerFrame = headerView.frame
+
+            //Comparison necessary to avoid infinite loop
+            if height != headerFrame.size.height {
+                headerFrame.size.height = height
+                headerView.frame = headerFrame
+                tblVew.tableHeaderView = headerView
+            }
+        }
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+     @IBAction func applyPromoCode(_ sender: Any) {
+        if(txtFldPromocode.text == ""){
+            showAlertWith(title:"Alert", message:"Please enter your promo code first.")
+        }else{
+       applyPromoCode()
+        }
+    }
+     @IBAction func btnCardScanner(_ sender: Any) {
+        guard let vc = ScanViewController.createViewController(withDelegate: self) else {
+              print("This device is incompatible with CardScan")
+              return
+          }
+       self.present(vc, animated: true)
+    }
+    
+    @IBAction func btnRemoveActn(_ sender: Any) {
+        txtFldPromocode.text = ""
+        btnRemove.isHidden = true
+        
     }
     @IBAction func paymentButtonAction(_ sender: Any) {
         
@@ -46,15 +96,18 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
             return}
         
         showLoader()
-        
-        
         let calendar = Calendar.current
         let cardParams = STPCardParams()
         cardParams.number = textField_cardNo.text!
-        cardParams.expMonth = UInt(calendar.component(.month, from: datePicker.date))
-        cardParams.expYear = UInt(calendar.component(.year, from: datePicker.date))
+        if cardIsScanned == true{
+            cardParams.expMonth = UInt(expiryMonth ?? "0") ?? 0
+            cardParams.expYear = UInt(expiryYear ?? "0") ?? 0
+        }
+        else{
+            cardParams.expMonth = UInt(calendar.component(.month, from: datePicker.date))
+            cardParams.expYear = UInt(calendar.component(.year, from: datePicker.date))
+        }
         cardParams.cvc = textField_cvv.text!
-        
         STPAPIClient.shared().createToken(withCard: cardParams) {
             [weak self] (token, error) in
             if let err = error {
@@ -67,8 +120,30 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     
+     private func applyPromoCode() {
+        self.showLoader()
+        APIHelper.applyPromoCode(txtFldPromocode.text ?? "") { (dict, str) -> (()) in
+            print(dict)
+            self.hideLoader()
+            let dataDict = dict?["data"]as?[String:Any]
+            let discount = dataDict?["description"]as?String
+            self.couponId = dataDict?["coupan_id"]as?String
+            if(dict?["status"]as?Int == 200){
+            DispatchQueue.main.async { // Correct
+                let price = ((Double(self.price ?? "") ?? 0.0) / 100 * (Double(discount ?? "") ?? 0.0)).rounded()
+                self.priceLabel.text = "£ \(price)"
+                self.btnApply.setTitle("Applied", for: .normal)
+            }
+            }else{
+                DispatchQueue.main.async {
+                self.btnRemove.isHidden = false
+                self.showAlertWith(title:"Alert", message:dict?["message"]as?String)
+                }
+            }
+        }
+    }
     private func hitStripeAPI() {
-        APIHelper.sendStripeToken(stripeToken!, completion: {
+        APIHelper.sendStripeToken(stripeToken!, planId: planId ?? "", couponId: couponId ?? "", offerId: id ?? "", completion: {
             [weak self] (success, errorMessage) in
             self?.hideLoader()
             if success {
@@ -76,7 +151,13 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
                 User.save(user: UserData.loggedInUser!)
                 let alert = UIAlertController(title: "Success", message: errorMessage ?? "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
-                    MainScreenUtility.setHomeAsRoot()
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Payment", bundle:nil)
+                    if #available(iOS 13.0, *) {
+                        let vc = storyBoard.instantiateViewController(identifier:"ReferralViewController")as!ReferralViewController
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        // Fallback on earlier versions
+                    }
                 }))
                 self?.present(alert, animated: true, completion: nil)
             }
@@ -98,23 +179,11 @@ class PaymentViewController: BaseViewController, UITextFieldDelegate {
         let calendar = Calendar.current
         let month = UInt(calendar.component(.month, from: datePicker.date))
         let year = UInt(calendar.component(.year, from: datePicker.date))
-        textField.text = "\(month)-\(year)"
+        textField.text = "\(month)/\(year)"
+        cardIsScanned = false
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 enum DatePickerComponent : Int
@@ -385,5 +454,42 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
             return months[row % months.count]
         }
         return years[row % years.count]
+    }
+}
+
+extension PaymentViewController : ScanDelegate{
+    func userDidCancel(_ scanViewController: ScanViewController) {
+        self.dismiss(animated: true)
+        
+    }
+    
+    func userDidScanCard(_ scanViewController: ScanViewController, creditCard: CreditCard) {
+         cardIsScanned = true
+         number = creditCard.number
+         expiryMonth = creditCard.expiryMonth
+         expiryYear = creditCard.expiryYear
+  //      let cardParams = creditCard.cardParams()
+        textField_cardNo.text = number
+        textField_year.text = "\(expiryMonth ?? "")/\(expiryYear ?? "")"
+        
+        
+        
+        // At this point you have the credit card number and optionally the expiry.
+        // You can either tokenize the number or prompt the user for more
+        // information (e.g., CVV) before tokenizing.
+
+            self.dismiss(animated: true)
+
+    }
+    
+    func userDidSkip(_ scanViewController: ScanViewController) {
+         self.dismiss(animated: true)
+    }
+}
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }

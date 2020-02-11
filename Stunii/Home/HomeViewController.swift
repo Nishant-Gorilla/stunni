@@ -17,6 +17,7 @@ class HomeViewController: BaseViewController {
     //MARK:- IBOutlet
     @IBOutlet weak var collectionView   : UICollectionView!
     @IBOutlet weak var tableView        : UITableView!
+    
 
     
     //MARK:- Variables & Constants
@@ -27,16 +28,29 @@ class HomeViewController: BaseViewController {
     var timer: Timer!
      var nextIndex = 0
     let category: String = "cell_cat"
+    var refreshControl = UIRefreshControl()
+    var isRefresh = Bool()
     
     //MARK:- VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoader()
-        loadCurrentLocation()
-        
-        
-
-    }
+       loadCurrentLocation()
+        self.tabBarController?.tabBar.isHidden = false
+      refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+      refreshControl.backgroundColor = UIColor.white
+      refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
+     tableView.addSubview(refreshControl)
+        }
+                  
+        @objc func refresh(sender:AnyObject) {
+                 // Code to refresh table view
+            isRefresh = true
+            loadCurrentLocation()
+            refreshControl.endRefreshing()
+        }
+    
+    
     @objc func viewSetupAction(){
         
         sideMenuController?.isLeftViewSwipeGestureEnabled   = false
@@ -92,11 +106,9 @@ class HomeViewController: BaseViewController {
             }
         })
     }
-
-    
-    
     
     //MARK:- IBActions
+    
     @IBAction func unwindFromSearch(_ sender: UIStoryboardSegue) {
     }
 }
@@ -136,7 +148,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let tableViewIndex = collectionView.tag
        
         let obj = viewModel.modelObjectAt(index: tableViewIndex)
-        return cvCellFactory.cellFor(collectionView: collectionView, indexPath: indexPath, with: obj!)
+        return cvCellFactory.cellFor(collectionView: collectionView, indexPath: indexPath, with: obj)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -177,10 +189,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 performSegue(withIdentifier: "dealViewControllerSegue", sender: deal)
             }
         }
-        
-        
-        
-        
     }
     
 }
@@ -249,14 +257,28 @@ extension HomeViewController:CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status != .authorizedWhenInUse {
             locValue = nil
+            
+            if(isRefresh){
+                
+                 self.viewModel.fetchData()
+                isRefresh = false
+            }
+            else{
             self.viewSetupAction()
+            }
 
-            //showAlertWith(title: "Location!", message: "Allow location authorized for stunii")
             return}
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         locValue = locationManager.location?.coordinate
-        self.viewSetupAction()
+         if(isRefresh){
+                       
+                        self.viewModel.fetchData()
+                       isRefresh = false
+                   }
+                   else{
+                   self.viewSetupAction()
+                   }
 
     }
     
