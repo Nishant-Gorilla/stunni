@@ -11,8 +11,8 @@ import UIKit
 class HomeViewModel: NSObject {
     
     private weak var delegate: HomeVMDelegate?
-    
-    private var model: [HomeData] = [] {
+    var categoryID = ""
+    var model: [HomeData] = [] {
         didSet {
             delegate?.reloadData()
         }
@@ -46,7 +46,15 @@ class HomeViewModel: NSObject {
     }
     
     func numberOfItemsAt(index: Int) -> Int {
-        return modelObjectAt(index: index)?.deals.count ?? 0
+        if modelObjectAt(index: index)?.name == "Featured"{
+            return modelObjectAt(index: index)?.deals.count ?? 0
+        }
+        else if (modelObjectAt(index: index)?.deals.count ?? 0) < 20{
+            return modelObjectAt(index: index)?.deals.count ?? 0
+        }
+        else{
+            return 21
+        }
     }
     
     func itemWidthWithCollectionView(width: CGFloat, for index: Int) -> CGFloat {

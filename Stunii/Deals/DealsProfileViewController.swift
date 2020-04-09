@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import  CoreLocation
+import CoreLocation
 
 class DealsProfileViewController:BaseViewController {
     
@@ -24,15 +24,15 @@ class DealsProfileViewController:BaseViewController {
         let image = "cell_image"
         let subCategory = "SubCategoryLabelCollectionViewCell"
     }
-    
+    var categoryID = ""
     let cellIdentifier      = TVCellIdentifier()
     let cvCellIdentifier    = CVCellIdentifier()
-     var refreshControl = UIRefreshControl()
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoader()
-       loadCurrentLocation()
+        loadCurrentLocation()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.backgroundColor = UIColor.white
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
@@ -180,8 +180,8 @@ extension DealsProfileViewController:CLLocationManagerDelegate
                 isRefresh = false
             }
             else{
-                
-            dealProfileViewModel = DealProfileViewModel(delegate: self, category: category!)
+             
+                dealProfileViewModel = DealProfileViewModel(delegate: self, category: categoryID)
                 tableView.delegate = self
                 tableView.dataSource = self
 
@@ -197,7 +197,7 @@ extension DealsProfileViewController:CLLocationManagerDelegate
                     isRefresh = false
                    }
                    else{
-            dealProfileViewModel = DealProfileViewModel(delegate: self, category: category!)
+              dealProfileViewModel = DealProfileViewModel(delegate: self, category: categoryID)
               tableView.delegate = self
               tableView.dataSource = self
 

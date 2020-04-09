@@ -19,9 +19,8 @@ class User: Mappable, Codable {
     var device_token: String?
     var institution: String?
     var personal_email: String?
-   var  phone_number: String?
+    var phone_number: String?
     var isVIP: Bool?
-    
    // init( _id: String!, email: String?, fname: String?, lname: String?, photoUrl: String?, type: String?, access_token: String?, device_token: String?, institution: String?, personal_email: String?
 //        , phone_number: String?, isVIP: Bool?) {
 //        super.init()

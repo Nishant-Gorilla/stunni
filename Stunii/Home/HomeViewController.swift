@@ -10,6 +10,7 @@ import UIKit
 import LGSideMenuController
 import CoreLocation
 
+var dateOfBirth=Date()
 class HomeViewController: BaseViewController {
 
     private var locationManager: CLLocationManager!
@@ -21,12 +22,13 @@ class HomeViewController: BaseViewController {
 
     
     //MARK:- Variables & Constants
-    private var viewModel       : HomeViewModel!
+    private var viewModel       :
+    HomeViewModel!
     private var tvCellFactory   : HomeTVCellFactory!
     private let cvCellFactory   : HomeCVCellFactory = HomeCVCellFactory()
     private let headerCollectionViewDataSource = HomeCategoriesDataSource()
     var timer: Timer!
-     var nextIndex = 0
+    var nextIndex = 0
     let category: String = "cell_cat"
     var refreshControl = UIRefreshControl()
     var isRefresh = Bool()
@@ -81,6 +83,10 @@ class HomeViewController: BaseViewController {
                 (segue.destination as? DealsViewController)?.deal = deal
             }
         }
+        else if segue.identifier == "seeMoreViewControllerSegue" {
+            let vc = segue.destination as! DealsProfileViewController
+            vc.categoryID = viewModel.categoryID
+        }
     }
     
     @IBAction func serchAction(_ sender: UIButton) {
@@ -88,6 +94,7 @@ class HomeViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
+ 
     
     private func playSlideShow() {
         if timer != nil { timer.invalidate() }
@@ -121,7 +128,6 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let obj = viewModel.modelObjectAt(index: indexPath.row)!
-        
         return tvCellFactory.cellFor(indexPath: indexPath, with: obj, vc: self)
     }
 }
@@ -148,6 +154,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let tableViewIndex = collectionView.tag
        
         let obj = viewModel.modelObjectAt(index: tableViewIndex)
+    
         return cvCellFactory.cellFor(collectionView: collectionView, indexPath: indexPath, with: obj)
     }
     
@@ -173,7 +180,19 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       let obj = viewModel.modelObjectAt(index: collectionView.tag)
+        let obj = viewModel.modelObjectAt(index: collectionView.tag)
+        var indexPathCmp = 0
+            if (obj?.deals.count)! < 20{
+                  indexPathCmp = (obj?.deals.count)!-1
+              }
+              else{
+                  indexPathCmp = 20
+              }
+        if obj?.name != "Featured"&&indexPath.row==indexPathCmp{
+            viewModel.categoryID = obj?.id ?? ""
+            performSegue(withIdentifier: "seeMoreViewControllerSegue", sender: nil)
+        }
+        else{
         let deal = obj?.deals[indexPath.row]
         let isUserVip = UserData.loggedInUser?.isVIP ?? false
         let isDealVip = deal?.isVIP ?? false
@@ -189,6 +208,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 performSegue(withIdentifier: "dealViewControllerSegue", sender: deal)
             }
         }
+        }
     }
     
 }
@@ -196,10 +216,29 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
 //MARK:- ViewModel Delegate
 extension HomeViewController: HomeVMDelegate {
     func reloadData() {
-        tableView.reloadData()
-        hideLoader()
-       
-        playSlideShow()
+        APIHelper.stuId(completion: {
+                         data in
+            DispatchQueue.main.async {
+                if !data!.dob!.isEmpty{
+                    dateOfBirth = Utilities.convertStringToDate(data?.dob ?? "")
+                                   if Utilities.yearsBetweenDate(startDate: dateOfBirth, endDate: Date()) < 18{
+                                       for i in self.viewModel.model{
+                                           if i.name == "OUTOUT "
+                                           {
+                                               self.viewModel.model.removeAll { (data) -> Bool in
+                                                   data.name == i.name
+                                               }
+                                           }
+                                       }
+                    }
+                }
+                self.tableView.reloadData()
+                self.hideLoader()
+                self.playSlideShow()
+            }
+           
+        })
+        
     }
     
     func didReceive(error: Error) {

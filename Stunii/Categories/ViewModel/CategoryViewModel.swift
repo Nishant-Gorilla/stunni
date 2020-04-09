@@ -9,7 +9,7 @@
 import Foundation
 class CategoryViewModel: NSObject {
     var delegate: CategoryViewModelDelegate?
-    private var categories: [Category] = [] {
+    var categories: [Category] = [] {
         didSet {
             delegate?.reloadData()
         }

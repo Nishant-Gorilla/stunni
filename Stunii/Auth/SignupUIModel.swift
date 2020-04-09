@@ -123,9 +123,9 @@ struct SignUpUIModel {
         case "phone":
             error = FormValidator.checkValidPhone(value)
         case "eduEmail", "personalEmail":
-            error = FormValidator.checkValidEmail(value)
+            error = FormValidator.checkValidEmail(key: key,value)
         case "institute":
-            error = FormValidator.checkValidInstitute(value)
+             error = FormValidator.checkValidInstitute(value)
         case "course":
             error = FormValidator.checkValidCourse(value)
         case "graduationDate":

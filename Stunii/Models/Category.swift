@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import  ObjectMapper
+import ObjectMapper
 class Category : Mappable {
     var id: String?
     var name: String?

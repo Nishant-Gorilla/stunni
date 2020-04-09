@@ -58,7 +58,9 @@ extension SearchDealVC:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier.deal, for: indexPath) as! DealTableViewCell
         
         let obj = viewModel.modelObjectAt(index: indexPath.section)
-        cell.set(deal:(obj?.deals[indexPath.row])!)
+        if indexPath.row <= (obj?.deals.count)! - 1{
+            cell.set(deal:(obj?.deals[indexPath.row])!)
+        }
         return cell
     }
 

@@ -29,4 +29,21 @@ class Utilities {
         }
     }
     
+    class func yearsBetweenDate(startDate: Date, endDate: Date) -> Int {
+
+        let calendar = Calendar.current
+
+        let components = calendar.dateComponents([.year], from: startDate, to: endDate)
+
+        return components.year!
+    }
+    class func convertStringToDate(_ date: String) -> Date{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        return formatter.date(from: date) ?? Date()
+    }
+
+    
 }

@@ -23,7 +23,7 @@ class ForgotPasswordViewController: BaseViewController {
     }
     
     @IBAction func resetButtonAction(_ sender: Any) {
-        if let msg = FormValidator.checkValidEmail(textFieldEmail.text) {
+        if let msg = FormValidator.checkValidEmail(key: "", textFieldEmail.text) {
             showAlertWith(title: "Error!", message: msg)
         }
         else {

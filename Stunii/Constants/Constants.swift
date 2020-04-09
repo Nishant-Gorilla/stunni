@@ -89,6 +89,7 @@ struct Regx {
     static let phone = "[0-9]{11}$"
 }
 
+
 struct InputLengthConstraints {
     struct Minimum {
         static let password = 6
@@ -186,11 +187,14 @@ struct CVCell {
     struct Identifier {
         static let home = "cell_home"
         static let deal = "cell_deals"
+        static let seemore = "see_more"
     }
     
     struct Name {
         static let home = "HomeCollectionViewCell"
         static let deals = "DealsCollectionViewCell"
+        static let seeMore = "SeeMoreCollectionViewCell"
+
     }
 }
 

@@ -9,14 +9,19 @@
 import Foundation
 class FormValidator {
     
-    class func checkValidEmail(_ email:String?) -> String? {
+    class func checkValidEmail(key:String?,_ email:String?) -> String? {
         guard let email = email, !email.trimSpace().isEmpty else {
             return "Please enter email address "
         }
         var error: String?
         let emailTest = NSPredicate(format:"SELF MATCHES %@", Regx.email)
-      if !emailTest.evaluate(with: email) {
+        if !emailTest.evaluate(with: email){
             error = ValidationMessage.email.invalid
+        }
+        if key == "eduEmail"{
+            if email.range(of: "ac.uk") == nil{
+                error = "Please enter a valid educational email."
+            }
         }
         return error
     }

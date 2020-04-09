@@ -147,10 +147,18 @@ class SignupViewController: BaseViewController {
         passwordEyeImageView.image = passwordTextField.isSecureTextEntry ? #imageLiteral(resourceName: "eye-close") : #imageLiteral(resourceName: "eye-open")
     }
     
-   @IBAction func textFieldDidEndEditing(_ sender: SkyFloatingLabelTextField) {
+    @IBAction func textFieldDidEndEditing(_ sender: SkyFloatingLabelTextField) {
     if currentPageIndex == 1 && sender == textFields.first{
        print("Hello")
         print(textFields.first?.text)
+        if sender.placeholder == "Educational Email Address"{
+            let error = FormValidator.checkValidEmail(key: "eduEmail", sender.text)
+            if error != nil{
+                showAlertWith(title: nil, message: error)
+                return
+            }
+        }
+        let count = sender.text
         DispatchQueue.main.async {
             self.showLoader()
             APIHelper.validateEmail(email: self.textFields.first?.text ?? "") { (status, str) in

@@ -34,7 +34,8 @@ class CategoriesViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DealsProfileViewControllerSegue" {
             let vc = segue.destination as! DealsProfileViewController
-            vc.category = sender as? Category
+            vc.categoryID = (sender as? Category)?.id ?? ""
+       
         }
     }
 }
@@ -67,8 +68,28 @@ extension CategoriesViewController: UICollectionViewDataSource, UICollectionView
 //MARK:- ViewModel Delegate
 extension CategoriesViewController: CategoryViewModelDelegate {
     func reloadData() {
-        collectionView.reloadData()
-        hideLoader()
+        APIHelper.stuId(completion: {
+                             data in
+                DispatchQueue.main.async {
+                    if !data!.dob!.isEmpty{
+                        dateOfBirth = Utilities.convertStringToDate(data?.dob ?? "")
+                                       if Utilities.yearsBetweenDate(startDate: dateOfBirth, endDate: Date()) < 18{
+                                           for i in self.categoryViewModel.categories{
+                                               if i.name == "OUTOUT "
+                                               {
+                                                   self.categoryViewModel.categories.removeAll { (data) -> Bool in
+                                                       data.name == i.name
+                                                   }
+                                               }
+                                           }
+                        }
+                    }
+                    self.collectionView.reloadData()
+                    self.hideLoader()
+                }
+               
+            })
+        
     }
     
     func didReceive(error: Error) {

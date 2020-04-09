@@ -8,7 +8,7 @@
 
 import Foundation
 class DealProfileViewModel: NSObject {
-    var category: Category?
+    var categoryId = ""
     var providers: [Provider] = []
     
     var subCategories: [SubCategory] = [] {
@@ -19,9 +19,9 @@ class DealProfileViewModel: NSObject {
     var deals:[Deal] = [] 
     
     var delegate: DealProfileViewModelDelegate?
-    init(delegate: DealProfileViewModelDelegate?, category: Category) {
+    init(delegate: DealProfileViewModelDelegate?, category: String) {
         super.init()
-        self.category = category
+        self.categoryId = category
         self.delegate = delegate
         getData()
     }
@@ -55,7 +55,7 @@ class DealProfileViewModel: NSObject {
                 self?.providers = providers
             }
             // Get deals of Category
-            if let id = self?.category?.id {
+            if let id = self?.categoryId {
                 APIHelper().getCategoryDetail(id: id, completion: { [weak self] (dict, error) in
                     self?.deals = dict?["deals"] as? [Deal] ?? []
                     self?.subCategories = dict?["subCat"] as? [SubCategory] ?? []

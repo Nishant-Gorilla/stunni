@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qis-sX-WqU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qis-sX-WqU">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,16 @@
         </array>
     </customFonts>
     <scenes>
+        <!--DealsProfileViewController-->
+        <scene sceneID="sMu-8y-cNq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Deals" referencedIdentifier="DealsProfileViewController" id="FvI-Gq-aRr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Neb-86-UWA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHK-oX-xDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2376" y="-1001"/>
+        </scene>
         <!--DealsVC-->
         <scene sceneID="uvI-4Y-nts">
             <objects>
@@ -287,11 +297,12 @@
                         <outlet property="tableView" destination="EeS-VU-Scy" id="oxT-l7-Xkn"/>
                         <segue destination="c3B-na-cPk" kind="show" identifier="dealViewControllerSegue" id="iz0-B7-Slf"/>
                         <segue destination="FOM-p1-DSN" kind="show" identifier="premiumViewControllerSegue" id="k2s-ee-RlY"/>
+                        <segue destination="FvI-Gq-aRr" kind="show" identifier="seeMoreViewControllerSegue" id="gTv-by-mdQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5P0-K0-h4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1956.521739130435" y="-1454.3478260869567"/>
+            <point key="canvasLocation" x="-1993" y="-1454"/>
         </scene>
         <!--Home-->
         <scene sceneID="GMZ-lP-4zy">

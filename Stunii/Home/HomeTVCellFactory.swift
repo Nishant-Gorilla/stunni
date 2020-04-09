@@ -33,10 +33,13 @@ class HomeTVCellFactory: NSObject {
         
         else {
             let nib = UINib(nibName: CVCell.Name.deals, bundle: nil)
+            let seeMoreNib = UINib(nibName: CVCell.Name.seeMore, bundle: nil)
             cell.collectionView.register(nib, forCellWithReuseIdentifier: CVCell.Identifier.deal)
+            cell.collectionView.register(seeMoreNib, forCellWithReuseIdentifier: CVCell.Identifier.seemore)
             cell.label.isHidden = false
         }
-        cell.collectionView.reloadData()
+        
+         cell.collectionView.reloadData()
          cell.layoutIfNeeded()
         return cell
     }

@@ -572,9 +572,9 @@ class APIHelper {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments)
                     if let _json = json as? [String: Any],
-                        let createAt = _json["created_at"] as? String, let graduationDate = _json["graduationDate"] as? String {
+                        let createAt = _json["created_at"] as? String{
                         print(_json)
-                        var stuId = StuId(date: createAt, graduationDate: graduationDate)
+                        var stuId = StuId(date: createAt, graduationDate: _json["graduationDate"] as? String ?? "",dob:_json["dob"] as? String ?? "")
                         stuId.photo = _json["photo"] as? String
                         completion(stuId)
                     }
